@@ -1,0 +1,194 @@
+#adopt .jumbotron {
+    background-color: rgb(247, 235, 216);
+    font-family: 'Gluten', 'Shippori Antique', sans-serif;
+}
+
+#content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#adopt-content {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+#filter-box {
+    margin-top: 30px;
+    padding: 10px;
+    height: 200px;
+    border-radius: 10px 0 0 10px;
+    background-color: rgb(223, 176, 100);
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.filter-option {
+    font-size: 0.5em;
+}
+
+#adopt-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.cat-card {
+    display: flex;
+    width: 590px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #474747;
+    color: #ffffff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.card-pending {
+    cursor: default;
+}
+
+.cat-name {
+    margin-top: 10px;
+    font-size: 2.5em;
+}
+
+.cat-image {
+    width: 200px;
+    border: 5px solid #ffffff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+}
+
+.status-info {
+    margin-left: 10px;
+}
+
+.card-text {
+    font-size: 1.2em;
+}
+
+#empty-card {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    margin: 5%;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#empty-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 40vh;
+}
+
+#empty-button {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+#empty-button .cat-logo {
+    display: none;
+}
+
+@media screen and (max-width: 912px) {
+    #adopt-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .filter-option {
+        display: none;
+    }
+
+    #filter-box {
+        height: auto;
+        border-radius: 10px 10px 0 0;
+        background-color: rgb(223, 176, 100);
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    #adopt-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+    }
+
+    .status-info {
+        margin-left: 0px;
+    }
+
+    .card-text {
+        display: none;
+    }
+
+    .cat-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 300px;
+        height: auto;
+    }
+
+    .cat-image {
+        margin-bottom: 5px;
+        width: 90%;
+        border: 5px solid #ffffff;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+    }
+
+    #empty-card {
+        display: flex;
+        align-items: center;
+        font-size: 1em;
+        margin: 0%;
+        height: 30vh;
+    }
+
+    #empty-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        width: 95%;
+    }
+
+    #empty-button {
+        display: flex;
+        font-size: 1.5em;
+    }
+
+    #empty-button .cat-logo {
+        display: inline;
+    }
+
+    .cat-logo-right {
+        margin-left: 5px;
+    }
+
+    #empty-card .cat-pic {
+        visibility: hidden;
+    }
+}

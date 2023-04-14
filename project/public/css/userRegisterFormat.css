@@ -1,0 +1,102 @@
+#user-profile .jumbotron {
+    background-color: rgb(247, 235, 216);
+    font-family: 'Shippori Antique', sans-serif;
+}
+
+#content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vh;
+}
+
+#user-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+#edit-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.data-col {
+    margin: 1%;
+}
+
+.data-col-spread {
+    display: flex;
+}
+
+#data-col-radio {
+    display: flex;
+    justify-content: start;
+    width: 410px;
+}
+
+#data-col-left {
+    width: 40%;
+}
+
+#data-col-right {
+    margin-left: 10px;
+}
+
+.text-box-spread {
+    width: 198px;
+}
+
+.text-box-profile {
+    width: 408px;
+}
+
+#register-button {
+    width: 320px;
+}
+
+@media screen and (max-width: 540px) {
+    #register-form {
+        width: 95%;
+    }
+    
+    .data-col-spread {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #data-col-radio {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 300px;
+    }
+
+    #data-col-left {
+        width: 100%;
+    }
+
+    #data-col-right {
+        margin-left: 0px;
+    }
+
+    .text-box {
+        margin: 5px;
+        width: 300px;
+    }
+}
