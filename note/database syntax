@@ -1,0 +1,20 @@
+//--insert data to users
+INSERT INTO users 
+(name,phone_number,email,address,password,username,existed_pet,pet_before,allergy_or_not,smoker,birth_date,knowledge,income_id,home_size_id,future_plan) 
+VALUES 
+('name','phone_number','email','address','password','username','boolean','boolean','boolean','boolean','yyyy-mm-dd','knowledge',number,number,'future_plan');
+// '1'= true '0' =false 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--insert data to volunteer
+INSERT INTO volunteers (name,phone_number,email,address,birth_date,password,username) 
+VALUES 
+('name','phone','email','address','YYYY-MM-DD','password','username');
+//
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--insert data to cat
+INSERT INTO cats ( volunteer_id,name,age,gender,breed,character,cat_health,food_habits,intro)
+VALUES
+(1,'name','1111-11-11','M','breed','character','cat_health','food_habit','intro')
+//
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

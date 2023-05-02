@@ -1,0 +1,153 @@
+#vol-profile .jumbotron {
+    height: 75vh;
+    background-color: rgb(216, 240, 247);
+    font-family: 'Shippori Antique', sans-serif;
+}
+
+#content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#form-content {
+    width: 40vh;
+}
+
+#edit-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-users-gear {
+    margin-left: 20px;
+    font-size: 10em;
+}
+
+.data-col {
+    margin: 1%;
+}
+
+.data-col-spread {
+    display: flex;
+}
+
+#data-col-radio {
+    display: flex;
+    justify-content: start;
+    width: 410px;
+}
+
+#data-col-left {
+    width: 40%;
+}
+
+#data-col-right {
+    margin-left: 10px;
+}
+
+.text-box-spread {
+    width: 198px;
+}
+
+.text-box-profile {
+    width: 408px;
+}
+
+#vol-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+#vol-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+#file-button {
+    margin-bottom: 5px;
+    width: 198px;
+    font-weight: normal;
+}
+
+#submit-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#change-button {
+    width: 320px;
+}
+
+@media screen and (max-width: 540px) {
+    #vol-profile .jumbotron {
+        height: 90vh;
+        background-color: rgb(216, 240, 247);
+        font-family: 'Shippori Antique', sans-serif;
+    }
+
+    #form-content {
+        width: 95%;
+    }
+
+    #vol-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        padding: 10px 20px 10px 20px;
+        margin-bottom: 5%;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .fa-users-gear {
+        display: none;
+    }
+    
+    .data-col-spread {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #data-col-radio {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 300px;
+    }
+
+    #data-col-left {
+        width: 100%;
+    }
+
+    #data-col-right {
+        margin-left: 0px;
+    }
+
+    .text-box {
+        margin: 5px;
+        width: 300px;
+    }
+
+    #file-button {
+        margin-bottom: 5px;
+        width: 300px;
+        font-weight: normal;
+    }
+}
