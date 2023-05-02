@@ -1,15 +1,15 @@
-import { UserService } from "../services/UserService";
+import { UserLoginService } from "../services/UserLoginService";
 import { Request, Response } from "express";
 
-export class UserController {
-  constructor(private userService: UserService) {}
+export class UserLoginController {
+  constructor(private userLoginService: UserLoginService) {}
 
   userLoginControl = async (req: Request, res: Response) => {
     try {
       const username = req.body.username;
       const password = req.body.password;
 
-      await this.userService.login(username, password);
+      await this.userLoginService.login(username, password);
 
       req.session.isLoggedIn = true;
       res.json({ message: "login success!!!" });

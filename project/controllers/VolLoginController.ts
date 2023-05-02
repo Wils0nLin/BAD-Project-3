@@ -1,15 +1,15 @@
-import { VolService } from "../services/VolService";
+import { VolLoginService } from "../services/VolLoginService";
 import { Request, Response } from "express";
 
-export class VolController {
-  constructor(private volService: VolService) {}
+export class VolLoginController {
+  constructor(private volLoginService: VolLoginService) {}
 
   volLoginControl = async (req: Request, res: Response) => {
     try {
       const username = req.body.username;
       const password = req.body.password;
 
-      await this.volService.login(username, password);
+      await this.volLoginService.login(username, password);
 
       req.session.isLoggedIn = true;
       res.json({ message: "login success!!!" });

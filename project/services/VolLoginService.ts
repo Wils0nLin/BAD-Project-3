@@ -1,8 +1,8 @@
-import { User } from "../model";
+import { Vol } from "../model";
 import { checkPassword } from "../utils/hash";
 import type { Knex } from "knex";
 
-export class UserService {
+export class VolLoginService {
     constructor(private knex: Knex) {}
 
   login = async (username: string, password: string) => {
@@ -11,16 +11,16 @@ export class UserService {
     }
 
     // LIMIT 1
-    const foundUser = await this.knex<User>("users")
+    const foundVol = await this.knex<Vol>("volunteers")
       .select("id", "username", "password")
       .where("username", username)
       .first();
 
-    if (!foundUser) {
+    if (!foundVol) {
       throw new Error("invalid username ");
     }
 
-    if (!(await checkPassword(password, foundUser.password))) {
+    if (!(await checkPassword(password, foundVol.password))) {
       throw new Error("invalid password ");
     }
   };
