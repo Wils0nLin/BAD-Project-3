@@ -44,6 +44,18 @@ app.use((req, _res, next) => {
 
 //
 // ------------------------------ Route Handlers ------------------------------ //
+//Part in New Version (With use of Knex)
+//User and Volunteer Login
+// import { UserLoginController, VolLoginController } from "./controllers/LoginController";
+// import { UserLoginService, VolLoginService } from "./services/LoginService";
+// const userLoginService = new UserLoginService(knex);
+// const volLoginService = new VolLoginService(knex);
+// export const userLoginController = new UserLoginController(userLoginService);
+// export const volLoginController = new VolLoginController(volLoginService);
+// import { userLoginRoutes, volLoginRoutes } from "./routers_new/loginRoutes";
+// app.use(userLoginRoutes);
+// app.use(volLoginRoutes);
+
 import { registerRoute } from "./routers/user_register";
 import { volunteer_registerRoute } from "./routers/volunteer_register";
 import { userLoginRoute } from "./routers/userLoginRoute";
@@ -65,23 +77,6 @@ import {
 import { catAdoptRoute, catProfileRoute } from "./routers/catAdoptRoute";
 import { userAdoptFromroute } from "./routers/adoptFormRoute";
 import { userMiddleware, volMiddleware } from "./utils/guard";
-
-// // Controllers
-// import { UserLoginController } from "./controllers/UserLoginController";
-// import { VolLoginController } from "./controllers/VolLoginController";
-
-// // Services
-// import { UserLoginService } from "./services/UserLoginService";
-// import { VolLoginService } from "./services/VolLoginService";
-
-// const userLoginService = new UserLoginService(knex);
-// const volLoginService = new VolLoginService(knex);
-// export const userLoginController = new UserLoginController(userLoginService);
-// export const volLoginController = new VolLoginController(volLoginService);
-
-// // Section 2: Route Handlers
-// import { userLoginRoutes, volLoginRoutes } from "./routers/loginRoutes";
-// app.use(userLoginRoutes, volLoginRoutes);
 
 // ---------- User Register ---------- //
 app.use("/user_register", registerRoute);
