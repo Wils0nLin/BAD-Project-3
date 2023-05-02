@@ -1,5 +1,5 @@
 import { dbClient } from "../server";
-import { checkPassword } from "./hash";
+import { checkPassword } from "../utils/hash";
 import express from "express";
 
 export const userLoginRoute = express.Router();

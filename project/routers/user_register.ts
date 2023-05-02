@@ -1,5 +1,5 @@
 import express from "express";
-import { hashPassword } from "./hash";
+import { hashPassword } from "../utils/hash";
 import { dbClient } from "../server";
 import type { Request, Response } from "express";
 
