@@ -1,0 +1,154 @@
+body {
+    color: #474747;
+    font-family: 'Shippori Antique', sans-serif;
+}
+
+a:link,
+a:visited {
+    color: #474747;
+    text-decoration: none;
+}
+
+nav {
+    height: 10vh;
+}
+
+.navbar-collapse {
+    padding: 0px 5px 0px 5px;
+    width: 100%;
+    flex-basis: 100%;
+    flex-grow: 1;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #f8f9fa;
+    z-index: 10;
+}
+
+#logo {
+    display: flex;
+    font-size: 2.5em;
+    font-family: 'Lemon', cursive;
+    color: rgb(104, 104, 104);
+}
+#logo-a {
+    display: flex;
+    align-items: center;
+    font-size: 0.5em;
+}
+
+#nav-button-box {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+}
+.nav-button:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(216, 216, 216);
+    text-decoration-thickness: 5px;
+}
+
+.fa-solid {
+    margin-right: 5px;
+    color: rgb(104, 104, 104);
+}
+
+#page-title {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.text-box {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid #747474;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-size: 1em;
+}
+
+.dark-button {
+    height: 36px;
+    border: none;
+    border-radius: 5px;
+    background-color: #474747;
+    font-size: 1em;
+    color: #ffffff;
+    cursor: pointer;
+}
+.dark-button:hover {
+    background-color: rgb(104, 104, 104);
+    color: #ffffff;
+}
+
+.light-button {
+    height: 36px;
+    border: 2px solid #747474;
+    border-radius: 5px;
+    background-color: #747474;
+    font-size: 1em;
+    font-weight: bolder;
+    color: #ffffff;
+    cursor: pointer;
+}
+#light-button-login {
+    width: 60px;
+}
+.light-button:hover {
+    border: none;
+    background-color: rgb(104, 104, 104);
+    color: #ffffff;
+}
+
+footer .jumbotron {
+    height: 15vh;
+    background-color: #747474;
+    color: #292929;
+}
+
+#slogan {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#slogan-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#social-title {
+    margin-bottom: 1px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.social-icons {
+    margin: 6px;
+    font-size: 1.3em;
+}
+
+@media screen and (max-width: 414px) {
+    nav {
+        height: 12vh;
+        background-color: #ffffff;
+    }
+
+    #slogan-text {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-size: 0.8em;
+    }
+
+    footer .jumbotron {
+        height: 30vh;
+        background-color: #747474;
+        color: #292929;
+    }
+}

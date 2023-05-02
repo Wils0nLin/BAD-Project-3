@@ -1,0 +1,80 @@
+#login .jumbotron {
+    height: 75vh;
+    background-color: rgb(216, 240, 247);
+}
+
+#login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-text {
+    width: 320px;
+}
+
+#login-button {
+    margin-top: 10px;
+    width: 320px;
+}
+
+#forgot-button {
+    display: flex;
+    justify-content: end;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#line {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    line-height: 0.5;
+    text-align: center;
+}
+#line span {
+    display: inline-block;
+    position: relative;
+}
+#line span:before,
+#line span:after {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 1px;
+    border-bottom: 1px solid #b4b4b4;
+    border-top: 1px solid #b4b4b4;
+    top: 0;
+}
+#line span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+#line span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+#register {
+    display: flex;
+    margin-bottom: 2vh;
+}
+
+@media screen and (max-width: 393px) {
+    #login .jumbotron {
+        height: 90vh;
+        background-color: rgb(247, 235, 216);
+    }
+
+    #platform-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .third-platform {
+        margin: 5px;
+        width: 320px;
+    }
+}
