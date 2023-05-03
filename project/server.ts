@@ -69,6 +69,19 @@ import { userAdoptFromroute } from "./routers/adoptFormRoute";
 import { vol_update } from "./routers/vol_profile_update";
 import { user_update } from "./routers/user_profile_update";
 
+// ------------------------------New Route Handlers ------------------------------ //
+import { user_main_route } from "./routers_new/user_main_route";
+
+// ------------------------------ Controller for user ------------------------------ //
+import { user_apply_controller } from "./controllers/user/user_apply_controller";
+
+// ------------------------------ Service for user ------------------------------ //
+import { user_apply_service } from "./services/user/user_apply_service";
+
+const user_apply_Service = new user_apply_service(dbClient);
+export const user_apply_Controller = new user_apply_controller(user_apply_Service);
+app.use(user_main_route);
+
 // ---------- User Register ---------- //
 app.use("/user_register", registerRoute);
 // ---------- Volunteer Register ---------- //
@@ -106,7 +119,7 @@ app.use(userProfileRoute);
 app.use(volProfileRoute);
 app.use("/vol_update", vol_update);
 app.use(catProfileRoute);
-app.use('/user_profile_update',user_update)
+app.use("/user_profile_update", user_update);
 // ---------- Adoption Posting Page ---------- //
 app.use(catPostRoute);
 app.use(catAdoptRoute);
