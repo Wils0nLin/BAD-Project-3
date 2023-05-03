@@ -52,7 +52,7 @@ async function loadPostedCat() {
           const id = mid.split("-")[1];
           const content = document.querySelector(`#${mid}`).textContent.trim();
           // console.log(content);
-          const resp = await fetch(`/volPostedCat/${id}`, {
+          const resp = await fetch(`/volDeletePostedCat/${id}`, {
             method: "DELETE",
           });
         }

@@ -14,7 +14,7 @@ vol_main_routes.post("/volunteer_login", vol_login_controller.vol_login);
 // from  ../controllers/vol_profile_controller.ts
 vol_main_routes.post("/volunteer_register", vol_profile_controller.vol_profile);
 vol_main_routes.get("/volunteer_profile", vol_profile_controller.vol_profile);
-vol_main_routes.put("/volunteer_profile_update", vol_profile_controller.vol_profile);
+vol_main_routes.put("/volunteer_profile_update/:id", vol_profile_controller.vol_profile);
 
 // from  ../controllers/vol_post_controller.ts
 vol_main_routes.get("/volunteer_post", vol_post_controller.vol_post);

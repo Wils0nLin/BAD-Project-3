@@ -152,7 +152,7 @@ async function userProfileData() {
         };
 
         // console.log(userProfile.id);
-        const response = await fetch(`/user_register/${userProfile.id}`, {
+        const response = await fetch(`/user_profile_update/${userProfile.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formObject),

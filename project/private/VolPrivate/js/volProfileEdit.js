@@ -65,7 +65,7 @@ async function volProfileData() {
         };
 
         // console.log(volProfile.id);
-        const response = await fetch(`/volunteer_register/${volProfile.id}`, {
+        const response = await fetch(`/vol_update/${volProfile.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formObject),

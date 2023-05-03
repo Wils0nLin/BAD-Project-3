@@ -66,6 +66,8 @@ import {
 } from "./routers/adoptFormRoute";
 import { catAdoptRoute, catProfileRoute } from "./routers/catAdoptRoute";
 import { userAdoptFromroute } from "./routers/adoptFormRoute";
+import { vol_update } from "./routers/vol_profile_update";
+import { user_update } from "./routers/user_profile_update";
 
 // ---------- User Register ---------- //
 app.use("/user_register", registerRoute);
@@ -102,7 +104,9 @@ app.get("/volunteerloginstatus", (req, res) => {
 // ---------- Profile Page ---------- //
 app.use(userProfileRoute);
 app.use(volProfileRoute);
+app.use("/vol_update", vol_update);
 app.use(catProfileRoute);
+app.use('/user_profile_update',user_update)
 // ---------- Adoption Posting Page ---------- //
 app.use(catPostRoute);
 app.use(catAdoptRoute);

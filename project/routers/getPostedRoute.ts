@@ -23,7 +23,7 @@ getPostedRoute.get("/volPostedCat", async (req, res) => {
 
 // ALTER TABLE cats ADD COLUMN is_shown boolean;
 
-getPostedRoute.delete("/volPostedCat/:id", async (req, res) => {
+getPostedRoute.delete("/volDeletePostedCat/:id", async (req, res) => {
     const postId = +req.params.id;
 
     if (isNaN(postId)) {
