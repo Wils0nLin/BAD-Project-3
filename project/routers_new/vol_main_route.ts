@@ -8,8 +8,8 @@ import express from "express";
 export const vol_main_routes = express.Router();
 
 // from  ../controllers/volunteer/vol_profile_controller.ts
-vol_main_routes.get("/volunteer_profile", vol_profile_controller.vol_profile);
-vol_main_routes.put("/volunteer_profile_update/:id", vol_profile_controller.vol_profile);
+vol_main_routes.get("/volunteer_profile", vol_profile_controller.vol_profile_info);
+vol_main_routes.put("/volunteer_profile_update/:id", vol_profile_controller.vol_profile_info);
 
 // from  ../controllers/volunteer/vol_post_controller.ts
 vol_main_routes.get("/volunteer_post", vol_post_controller.vol_post);
