@@ -10,7 +10,7 @@ export async function up(knex: Knex): Promise<void> {
         table.date('date');
         table.string('time',10);
         table.boolean('is_select');
-        table.boolean('is_shown').defaultTo('1')
+        table.boolean('is_shown').defaultTo('1');
     })
 }
 
