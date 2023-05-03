@@ -8,7 +8,7 @@ form.addEventListener("submit", async (e) => {
   console.log(password);
 
   // ---------- Login Info Submission ----------//
-  const resp = await fetch("/volunteerlogin", {
+  const resp = await fetch("/volunteer_login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password }),
