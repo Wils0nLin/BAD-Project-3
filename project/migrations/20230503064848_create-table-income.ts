@@ -6,8 +6,8 @@ export async function up(knex: Knex): Promise<void> {
         table.increments();
         table.string('income_value',20);
     })       
-await knex('income').insert([{income_value:'沒有收入'},{income_value:'20000以下'},{income_value:'60000以下'},{income_value:'100000以上'}])
-
+let result=await knex('income').insert([{income_value:'沒有收入'},{income_value:'20000以下'},{income_value:'60000以下'},{income_value:'100000以上'}])
+console.log(result)
    
 
 }
