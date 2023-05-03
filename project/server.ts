@@ -4,9 +4,6 @@ import path from "path";
 import pg from "pg";
 import type { Request, Response, NextFunction } from "express";
 
-import dotenv from "dotenv";
-dotenv.config();
-
 export const dbClient = new pg.Client({
     database: process.env.DB_NAME,
     user: process.env.DB_USERNAME,
