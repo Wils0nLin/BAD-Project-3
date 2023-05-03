@@ -44,12 +44,15 @@ app.use((req, _res, next) => {
     next();
 });
 
+import { vol_login_controller } from "./controllers/public/vol_login_controller";
+import { vol_login_service } from "./services/public/vol_login_service";
+
 //
 // ------------------------------ Route Handlers ------------------------------ //
 import { registerRoute } from "./routers/user_register";
 import { volunteer_registerRoute } from "./routers/volunteer_register";
 import { userLoginRoute } from "./routers/userLoginRoute";
-import { volLoginRoute } from "./routers/volLoginRoute";
+// import { volLoginRoute } from "./routers/volLoginRoute";
 import { userProfileRoute } from "./routers/userProfileRoute";
 import { volProfileRoute } from "./routers/volProfileRoute";
 import { catPostRoute } from "./routers/catPostRoutes";
@@ -88,7 +91,7 @@ app.get("/userloginstatus", (req, res) => {
     }
 });
 // ---------- Volunteer Login ---------- //
-app.use(volLoginRoute);
+// app.use(volLoginRoute);
 app.get("/volunteerloginstatus", (req, res) => {
     if (req.session.isLoggedIn) {
         const volLoginInfo = {
@@ -101,6 +104,12 @@ app.get("/volunteerloginstatus", (req, res) => {
         res.status(200).json({ message: "Not Logged in" });
     }
 });
+
+const volLoginService = new vol_login_service(dbClient);
+export const volLoginController = new vol_login_controller(volLoginService);
+import { public_main_route } from "./routers_new/public_main_route";
+app.use(public_main_route);
+
 // ---------- Profile Page ---------- //
 app.use(userProfileRoute);
 app.use(volProfileRoute);
