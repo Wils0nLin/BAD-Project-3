@@ -7,6 +7,7 @@ CREATE TABLE home_size (
     id serial primary key , 
     home_size VARCHAR(20)
 );
+
 CREATE TABLE users(
     id serial primary key,
     income_id int ,
@@ -86,7 +87,7 @@ CREATE TABLE form_images(
     FOREIGN key (adopt_forms_id) REFERENCES adopt_forms(id),
     f_image VARCHAR(255)
 );
-CREATE TABLE events(
+CREATE TABLE events(t
     id serial primary key,
     event VARCHAR(20),
     adopt_forms_id int,
