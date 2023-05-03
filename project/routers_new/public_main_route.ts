@@ -18,4 +18,3 @@ public_main_route.post("/user_login", user_login_controller.user_login);
 
 // from ../controllers/user_register_controller.ts
 public_main_route.post("/", user_register_controller.user_register);
-public_main_route.put("/:mid", user_register_controller.update_profile);
