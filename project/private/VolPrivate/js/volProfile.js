@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 async function volProfileData() {
-    const resp = await fetch("/volunteerProfileData");
+    const resp = await fetch("/volunteer_profile");
     const volProfile = await resp.json();
     console.log(volProfile);
     let volNameHtml = "";

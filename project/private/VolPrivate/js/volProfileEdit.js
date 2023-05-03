@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 async function volProfileData() {
-  const resp = await fetch("/volunteerProfileData");
+  const resp = await fetch("/volunteer_profile");
   const volProfile = await resp.json();
   console.log(volProfile);
   let volNameHtml = "";
@@ -12,11 +12,8 @@ async function volProfileData() {
   document.querySelector("#vol-info").innerHTML = "";
 
   const v_birth_date = volProfile.v_birth_date.substring(0,10);
-
+  
   volNameHtml = `<div class="info-title"><i class="fa-solid fa-user-check"></i>用戶姓名</div>
-    <input type="text" class="text-box text-box-spread" value="${volProfile.v_name}"  name="v_name">`;
-
-    volNameHtml = `<div class="info-title"><i class="fa-solid fa-user-check"></i>用戶姓名</div>
     <input type="text" class="text-box text-box-spread  text-box-name" value="${volProfile.v_name}"  name="v_name">`;
 
     volBoxHtml = `<div class="data-col">
@@ -65,7 +62,7 @@ async function volProfileData() {
         };
 
         // console.log(volProfile.id);
-        const response = await fetch(`/vol_update/${volProfile.id}`, {
+        const response = await fetch(`/volunteer_profile_update/${volProfile.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formObject),

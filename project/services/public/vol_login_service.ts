@@ -4,6 +4,7 @@ import { checkPassword } from "../../utils/hash";
 
 export class vol_login_service {
     constructor(private client: pg.Client) {}
+    // constructor(private knex: Knex) {}
 
     login = async (username: string, password: string) => {
         if (!username || !password) {
@@ -13,20 +14,20 @@ export class vol_login_service {
         const queryResult = await this.client.query(
             /*SQL*/ `SELECT id, v_username, v_password FROM volunteers WHERE v_username = '${username}';`
         );
-        const foundUser = queryResult.rows[0];
+        const vol_info = queryResult.rows[0];
         
-        // const foundUser = await this.knex("volunteers")
-        //     .select("id", "username", "password")
-        //     .where("username", username)
+        // const vol_info = await this.knex("volunteers")
+        //     .select("id", "v_username", "v_password")
+        //     .where("v_username", username)
         //     .first();
 
-        if (!foundUser) {
+        if (!vol_info) {
             throw new Error("invalid username or password");
         }
 
-        if (!(await checkPassword(password, foundUser.v_password))) {
+        if (!(await checkPassword(password, vol_info.v_password))) {
             throw new Error("invalid username or password");
         }
-        return foundUser;
+        return vol_info;
     };
 }

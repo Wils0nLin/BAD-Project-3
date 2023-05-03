@@ -9,10 +9,10 @@ export class vol_login_controller {
             const username = req.body.username;
             const password = req.body.password;
       
-            const volData = await this.vol_login_service.login(username, password);
+            const vol_info = await this.vol_login_service.login(username, password);
      
             req.session.isLoggedIn = true;
-            req.session.userid = volData.id;
+            req.session.userid = vol_info.id;
             req.session.userType = "volunteer";
             res.status(200).json({ message: "login success!!!" });
         } catch (err) {
