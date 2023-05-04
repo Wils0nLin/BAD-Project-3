@@ -24,7 +24,7 @@ user_main_route.post("/confirm/:id", user_event_insert_Controller.user_event_ins
 // from user_profile_route.ts
 user_main_route.get("/user_profile_data", user_profile_data_Controller.user_get_profile);
 // from user_profile_update.ts
-user_main_route.put("/:mid", user_profile_data_Controller.user_update_profile);
+user_main_route.put("/user_profile_update/:mid", user_profile_data_Controller.user_update_profile);
 
 // from adoptFormRoute.ts
 // 我的拎養

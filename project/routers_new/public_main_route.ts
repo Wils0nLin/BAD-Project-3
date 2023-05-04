@@ -18,4 +18,4 @@ public_main_route.post("/volunteer_login", volLoginController.vol_login);
 public_main_route.post("/user_login", user_login_Controller.user_login);
 
 // // from ../controllers/user_register_controller.ts
-public_main_route.post("/", user_register_Controller.user_register);
+public_main_route.post("/user_register", user_register_Controller.user_register);

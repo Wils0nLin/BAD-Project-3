@@ -9,9 +9,9 @@ async function loadCatIndividualData() {
         return;
     }
 
-    const resp = await fetch(`/catAdoptData/${urlSearchParams.get("id")}`);
+    const resp = await fetch(`/cat_adopt_data/${urlSearchParams.get("id")}`);
     const cats = await resp.json();
-    const imageResp = await fetch(`/getEditCaseDetails/${urlSearchParams.get("id")}`);
+    const imageResp = await fetch(`/get_edit_case_detail/${urlSearchParams.get("id")}`);
     const catProfile = await imageResp.json();
     console.log(catProfile);
     // const today = new Date().getFullYear();
