@@ -6,7 +6,7 @@ window.onload = async () => {
 };
 
 async function pendingCaseData(caseID) {
-    const resp = await fetch(`/pendingCase`);
+    const resp = await fetch(`/volunteer_case_info/${caseID}`);
     const pendingCase = await resp.json();
     console.log(pendingCase);
     let catBoxHtml = "";
@@ -14,7 +14,6 @@ async function pendingCaseData(caseID) {
     document.querySelector("#cat-data").innerHTML = "";
     document.querySelector("#user-data-spread").innerHTML = "";
 
-    
     const lastEvent = pendingCase[pendingCase.length - 1];
 
     for (let file of pendingCase) {
@@ -24,26 +23,25 @@ async function pendingCaseData(caseID) {
         const isAllergy = file.is_allergy;
 
         //------------------ 計算貓貓年齡-----------------//
-    const thisYear = new Date().getFullYear();
-    const thisMonth = new Date().getMonth();
-    const cat_birth_year = new Date(file.age).getFullYear() + 1;
-    const cat_birth_month = new Date(file.age).getMonth();
-    let cat_year_difference = thisYear - cat_birth_year;
-    if (cat_year_difference < 0) {
-        cat_year_difference = 0;
-    }
-    let cat_month_difference = "";
-    if (cat_birth_month <= thisMonth) {
-        cat_month_difference = thisMonth - cat_birth_month;
-    } else {
-        cat_month_difference = 13 - cat_birth_month + thisMonth;
-    }
-    const catAge = cat_year_difference + "歲" + cat_month_difference + "個月";
+        const thisYear = new Date().getFullYear();
+        const thisMonth = new Date().getMonth();
+        const cat_birth_year = new Date(file.age).getFullYear() + 1;
+        const cat_birth_month = new Date(file.age).getMonth();
+        let cat_year_difference = thisYear - cat_birth_year;
+        if (cat_year_difference < 0) {
+            cat_year_difference = 0;
+        }
+        let cat_month_difference = "";
+        if (cat_birth_month <= thisMonth) {
+            cat_month_difference = thisMonth - cat_birth_month;
+        } else {
+            cat_month_difference = 13 - cat_birth_month + thisMonth;
+        }
+        const catAge = cat_year_difference + "歲" + cat_month_difference + "個月";
 
-    //------------------ -----------------//
+        //------------------ -----------------//
 
-        if (file.ad_id == caseID) {
-            catBoxHtml = `
+        catBoxHtml = `
             <div>
                 <div class="cat-name"><i class="fa-solid fa-paw"></i>${file.c_name}</div>
                 <div><i class="fa-solid fa-calendar-days"></i>歲數<div class="text-box text-box-spread">${catAge}</div></div>
@@ -54,7 +52,7 @@ async function pendingCaseData(caseID) {
                 <div id="cat-image-main"><img src="${file.c_image}" id="cat-image" width="200px"></div>
             </div>
         `;
-            userBoxHtml = `
+        userBoxHtml = `
             <div class="data-col"> 
                     <div><i class="fa-solid fa-user-check"></i>用戶姓名</div>
                     <div class="text-box text-box-profile">${file.u_name}</div>
@@ -69,8 +67,8 @@ async function pendingCaseData(caseID) {
                         <div class="text-box text-box-spread">${new Date(
                             file.u_birth_date
                         ).getFullYear()}年${new Date(file.u_birth_date).getMonth() + 1}月${new Date(
-                file.u_birth_date
-            ).getDate()}日</div>
+            file.u_birth_date
+        ).getDate()}日</div>
                     </div>
                     <div id="data-col-right">
                         <div><i class="fa-solid fa-phone-flip"></i>電話號碼</div>
@@ -135,14 +133,13 @@ async function pendingCaseData(caseID) {
                     <div><i class="fa-solid fa-file-image"></i>申請者家居情況</div>
                     <div><img src="${file.f_image}" id="home-image"></div>
                 </div>`;
-        }
     }
     document.querySelector("#cat-data").innerHTML = catBoxHtml;
     document.querySelector("#user-data-spread").innerHTML = userBoxHtml;
 }
 
 async function getPassEvents(caseID) {
-    const resp = await fetch(`/getEvent/${caseID}`);
+    const resp = await fetch(`/volunteer_case_event/${caseID}`);
 
     const result = await resp.json();
     const lastResult = result[result.length - 1];
@@ -219,7 +216,7 @@ document.querySelector("#APPLY").addEventListener("click", async (e) => {
     const formA = { eventObjectArr };
     console.log();
 
-    const resp = await fetch("/APPLY", {
+    const resp = await fetch("/volunteer_case_update", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

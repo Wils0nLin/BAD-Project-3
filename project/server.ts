@@ -91,6 +91,7 @@ import { user_profile_data_controller } from "./controllers/user/user_profile_da
 import { vol_login_controller } from "./controllers/public/vol_login_controller";
 import { vol_profile_controller } from "./controllers/volunteer/vol_profile_controller";
 import { vol_post_controller } from "./controllers/volunteer/vol_post_controller";
+import { vol_case_controller } from "./controllers/volunteer/vol_case_controller";
 // By Wilson
 
 // ------------------------------ Service ------------------------------ //
@@ -147,25 +148,25 @@ export const user_profile_data_Controller = new user_profile_data_controller(
 import { vol_login_service } from "./services/public/vol_login_service";
 import { vol_profile_service } from "./services/volunteer/vol_profile_service";
 import { vol_post_service } from "./services/volunteer/vol_post_service";
+import { vol_case_service } from "./services/volunteer/vol_case_service";
 
 const volLoginService = new vol_login_service(knex);
 const volProfileService = new vol_profile_service(knex);
 const volPostService = new vol_post_service(knex);
+const volCaseService = new vol_case_service(knex);
 export const volLoginController = new vol_login_controller(volLoginService);
 export const volProfileController = new vol_profile_controller(volProfileService);
 export const volPostController = new vol_post_controller(volPostService);
+export const volCaseController = new vol_case_controller(volCaseService);
 // By Wilson
 
 // ------------------------------New Route Handlers ------------------------------ //
-import { user_main_route } from "./routers_new/user_main_route";
 import { public_main_route } from "./routers_new/public_main_route";
+import { user_main_route } from "./routers_new/user_main_route";
 import { vol_main_route } from "./routers_new/vol_main_route";
-app.use(user_main_route);
-// By Tyson
 app.use(public_main_route);
+app.use(user_main_route);
 app.use(vol_main_route);
-// By Wilson
-
 
 // ---------- User Register ---------- //
 app.use("/user_register", registerRoute);

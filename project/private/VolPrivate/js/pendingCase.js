@@ -5,7 +5,7 @@ window.onload = async () => {
 };
 
 async function pendingCaseData(caseID) {
-    const resp = await fetch(`/pendingCase`);
+    const resp = await fetch(`/volunteer_case_info/${caseID}`);
     const pendingCase = await resp.json();
     console.log(pendingCase);
     let catBoxHtml = "";
@@ -37,8 +37,8 @@ async function pendingCaseData(caseID) {
         const catAge = cat_year_difference + "歲" + cat_month_difference + "個月";
 
         //提取貓資料
-        if (file.ad_id == caseID) {
-            catBoxHtml = `
+
+        catBoxHtml = `
             <div>
                 <div class="cat-name"><i class="fa-solid fa-paw"></i>${file.c_name}</div>
                 <div><i class="fa-solid fa-calendar-days"></i>歲數<div class="text-box text-box-spread">${catAge}</div></div>
@@ -50,7 +50,7 @@ async function pendingCaseData(caseID) {
             </div>
             `;
 
-            userBoxHtml = `<div id="apply-detail">
+        userBoxHtml = `<div id="apply-detail">
             <div class="user-data-spread">
                 <div class="data-col"> 
                     <div><i class="fa-solid fa-user-check"></i>用戶姓名</div>
@@ -66,8 +66,8 @@ async function pendingCaseData(caseID) {
                         <div class="text-box text-box-spread">${new Date(
                             file.u_birth_date
                         ).getFullYear()}年${new Date(file.u_birth_date).getMonth() + 1}月${new Date(
-                file.u_birth_date
-            ).getDate()}日</div>
+            file.u_birth_date
+        ).getDate()}日</div>
                     </div>
                     <div id="data-col-right">
                         <div><i class="fa-solid fa-phone-flip"></i>電話號碼</div>
@@ -140,7 +140,6 @@ async function pendingCaseData(caseID) {
             <div id="edit-box">
                 <a href="vol_applicationAfter.html?caseID=${caseID}"><input type="submit" class="dark-button" name="status" id="Accept" value="接受申請"></a>
             </div>`;
-        }
     }
     document.querySelector("#cat-data").innerHTML = catBoxHtml;
     document.querySelector("#user-data").innerHTML = userBoxHtml;
@@ -152,7 +151,7 @@ document.querySelector("#accept").addEventListener("submit", async (e) => {
     const caseID = parseInt(urlSearch);
     let caseOBJ = { caseID: caseID };
     console.log(caseID);
-    const res = await fetch("/ACCEPT", {
+    const res = await fetch("/volunteer_case_accept", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -169,7 +168,7 @@ document.querySelector("#reject").addEventListener("submit", async (e) => {
     const caseID = parseInt(urlSearch);
     let caseOBJ = { caseID: caseID };
     console.log(caseID);
-    const res = await fetch("/REJECT", {
+    const res = await fetch("/volunteer_case_reject", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
