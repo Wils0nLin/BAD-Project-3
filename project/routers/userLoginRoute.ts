@@ -3,7 +3,8 @@ import { checkPassword } from "../utils/hash";
 import express from "express";
 
 export const userLoginRoute = express.Router();
-export const userOtherRoute = express.Router();
+//未用
+// export const userOtherRoute = express.Router();
 
 interface User {
     id: number;
