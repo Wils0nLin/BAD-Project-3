@@ -26,7 +26,14 @@ export class vol_profile_controller {
             const phone_number = req.body.v_phone_number;
             const address = req.body.v_address;
 
-            await this.vol_profile_service.profile_edit(userid, name, email, birth_date, phone_number, address);
+            await this.vol_profile_service.profile_edit(
+                userid,
+                name,
+                email,
+                birth_date,
+                phone_number,
+                address
+            );
 
             res.status(200).json({ message: "success" });
         } catch (err) {

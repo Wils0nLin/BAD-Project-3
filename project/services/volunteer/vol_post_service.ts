@@ -37,7 +37,7 @@ export class vol_post_service {
             .where("volunteer_id", userid)
             .andWhere("cats.is_shown", true);
 
-        return vol_post;123123
+        return vol_post;
     };
 
     post_delete = async (postId: number) => {
@@ -132,19 +132,27 @@ export class vol_post_service {
         return vol_post;
     };
 
-    post_edit = async (userid: number) => {
-        const queryResult = await this.client
-            .query(/*SQL*/ `WITH temp AS (SELECT MIN(id) AS id, cat_id FROM cat_image GROUP BY cat_id)
-                    SELECT volunteer_id, cats.id, c_name, intro, gender, cat_image.id AS c_image_id, cat_image.c_image FROM cats 
-                    LEFT JOIN temp ON cats.id = temp.cat_id
-                    INNER JOIN cat_image ON temp.id = cat_image.id WHERE volunteer_id = ${userid} AND cats.is_shown = true`);
-        const vol_post = queryResult.rows;
-
-        // const vol_post = await this.knex("volunteers")
-        //     .select()
-        //     .where("id", userid);
-        //     .first();
-
-        return vol_post;
+    post_edit = async (
+        catId: number,
+        age: string,
+        gender: string,
+        breed: string,
+        character: string,
+        habit: string,
+        health: string,
+        intro: string
+    ) => {
+        await this.knex("cats")
+            .select()
+            .update({
+                age: age,
+                gender: gender,
+                breed: breed,
+                character: character,
+                food_habits: habit,
+                cat_health: health,
+                intro: intro,
+            })
+            .where("id", catId);
     };
 }

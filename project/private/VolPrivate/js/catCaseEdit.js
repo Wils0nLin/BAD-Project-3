@@ -6,7 +6,7 @@ async function catProfileData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     console.log(urlSearchParams.get("caseID"));
 
-    const resp = await fetch(`/getEditCaseDetails/${urlSearchParams.get("caseID")}`);
+    const resp = await fetch(`/volunteer_post_update/${urlSearchParams.get("caseID")}`);
 
     const catProfile = await resp.json();
 
