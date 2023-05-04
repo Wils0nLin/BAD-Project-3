@@ -49,19 +49,29 @@ export class vol_post_controller {
                 const habit: any = fields.habit;
                 const intro: any = fields.intro;
 
-                const vol_post: any = await this.vol_post_service.post_create(userid, name, gender, age, breed, character, cat_health, habit, intro);
+                const vol_post: any = await this.vol_post_service.post_create(
+                    userid,
+                    name,
+                    gender,
+                    age,
+                    breed,
+                    character,
+                    cat_health,
+                    habit,
+                    intro
+                );
 
                 if (files.image) {
                     const imgArr: formidable.File[] = Array.isArray(files.image)
                         ? files.image
                         : [files.image];
-        
+
                     for (let i = 0; i < imgArr.length; i++) {
                         const img = imgArr[i].newFilename;
                         await this.vol_post_service.post_image(vol_post.id, img);
                     }
                 }
-        
+
                 if (files.video) {
                     const videoArr: formidable.File[] = Array.isArray(files.video)
                         ? files.video
@@ -95,11 +105,27 @@ export class vol_post_controller {
 
     vol_post_edit = async (req: Request, res: Response) => {
         try {
-            const userid: any = req.session.userid;
+            const postId = +req.params.id;
+            const age = req.body.age;
+            const gender = req.body.gender;
+            const breed = req.body.breed;
+            const character = req.body.characters;
+            const habit = req.body.food_habits;
+            const health = req.body.cat_health;
+            const intro = req.body.intro;
 
-            const vol_post = await this.vol_post_service.post_edit(userid);
+            await this.vol_post_service.post_edit(
+                postId,
+                age,
+                gender,
+                breed,
+                character,
+                habit,
+                health,
+                intro
+            );
 
-            res.status(200).json(vol_post);
+            res.status(200).json({ message: "success" });
         } catch (err) {
             console.error(err);
             res.status(400).json({ message: "something wrong with post edition" });
