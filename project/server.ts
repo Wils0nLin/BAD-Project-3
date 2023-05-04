@@ -81,6 +81,8 @@ import { userLoginRoute } from "./routers/userLoginRoute";
 //By Tyson
 
 // ------------------------------ Controller ------------------------------ //
+import { user_login_controller } from "./controllers/public/user_login_controller";
+import { user_register_controller } from "./controllers/public/user_register_controller";
 import { user_apply_controller } from "./controllers/user/user_apply_controller";
 import { user_adopt_form_controller } from "./controllers/user/user_adopt_form_controller";
 import { user_cat_adopt_controller } from "./controllers/user/user_cat_adopt_controller";
@@ -94,12 +96,20 @@ import { vol_post_controller } from "./controllers/volunteer/vol_post_controller
 // By Wilson
 
 // ------------------------------ Service ------------------------------ //
+import { user_login_service } from "./services/public/user_login_service";
+import { user_register_service } from "./services/public/user_register_service";
 import { user_apply_service } from "./services/user/user_apply_service";
 import { user_adopt_form_service } from "./services/user/user_adopt_form_service";
 import { user_cat_adopt_service } from "./services/user/user_cat_adopt_service";
 import { user_event_insert_service } from "./services/user/user_event_insert_service";
 import { user_get_data_edit_case_service } from "./services/user/user_get_data_edit_case_service";
 import { user_profile_data_service } from "./services/user/user_profile_data_service";
+
+const user_login_Service = new user_login_service(knex);
+export const user_login_Controller = new user_login_controller(user_login_Service);
+
+const user_register_Service = new user_register_service(knex);
+export const user_register_Controller = new user_register_controller(user_register_Service);
 
 // const user_apply_Service = new user_apply_service(dbClient);
 // export const user_apply_Controller = new user_apply_controller(user_apply_Service);
@@ -165,7 +175,6 @@ app.use(user_main_route);
 app.use(public_main_route);
 app.use(vol_main_route);
 // By Wilson
-
 
 // ---------- User Register ---------- //
 app.use("/user_register", registerRoute);
