@@ -14,6 +14,7 @@ export class user_event_insert_service {
     };
 }
 
+////舊野
 // import { Client } from "pg";
 // import { Request, Response } from "express";
 
@@ -30,3 +31,4 @@ export class user_event_insert_service {
 //         res.json({ succuss: true });
 //     };
 // }
+////

@@ -56,6 +56,7 @@ export class user_adopt_form_service {
     };
 }
 
+////舊野
 // export class user_adopt_form_service {
 //     constructor(private dbClient: Client) {}
 //     user_apply_status = async (req: Request) => {
@@ -116,3 +117,4 @@ export class user_adopt_form_service {
 //         return queryResult.rows;
 //     };
 // }
+////

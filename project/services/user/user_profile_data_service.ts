@@ -1,12 +1,11 @@
 import type { Knex } from "knex";
-import { User } from "../../model";
 import { Request } from "express";
 
 export class user_profile_data_service {
     constructor(private knex: Knex) {}
 
     user_get_profile = async (req: Request) => {
-        const queryResult = await this.knex<User>("users")
+        const queryResult = await this.knex("users")
             .select("users.*", "income.income_value", "home_size.home_size")
             .join("income", "users.income_id", "=", "income.id")
             .join("home_size", "users.home_size_id", "=", "home_size.id")
@@ -31,6 +30,7 @@ export class user_profile_data_service {
     };
 }
 
+////舊野
 // import { Client } from "pg";
 // import { User } from "../../model";
 // import { Request } from "express";
@@ -62,3 +62,4 @@ export class user_profile_data_service {
 //         );
 //     };
 // }
+////
