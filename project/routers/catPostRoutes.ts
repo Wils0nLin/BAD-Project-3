@@ -6,19 +6,19 @@ import { dbClient } from "../server";
 export const catPostRoute = express.Router();
 
 catPostRoute.post("/post", (req, res) => {
-  console.log("HI");
-  form.parse(req, async (err, fields, files) => {
-    console.log(fields)
-    const names = fields.names;
-    const gender = fields.gender;
-    const age = fields.age;
-    const breed = fields.breed;
-    const character = fields.character;
-    const cat_health = fields.cat_health;
-    const habit = fields.habit;
-    const intro = fields.intro;
-    //volunteer is dummy
-    const volunteer_id = req.session.userid;
+    console.log("HI");
+    form.parse(req, async (err, fields, files) => {
+        console.log(fields);
+        const names = fields.names;
+        const gender = fields.gender;
+        const age = fields.age;
+        const breed = fields.breed;
+        const character = fields.character;
+        const cat_health = fields.cat_health;
+        const habit = fields.habit;
+        const intro = fields.intro;
+        //volunteer is dummy
+        const volunteer_id = req.session.userid;
 
         const idResult = await dbClient.query(
             "INSERT INTO cats (volunteer_id,c_name,age,gender,breed,character,cat_health,food_habits,intro)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING id",

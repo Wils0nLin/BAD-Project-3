@@ -53,22 +53,26 @@ app.use((req, _res, next) => {
     next();
 });
 
-import { vol_login_controller } from "./controllers/public/vol_login_controller";
-import { vol_login_service } from "./services/public/vol_login_service";
-
 //
 // ------------------------------ Route Handlers ------------------------------ //
+import { vol_login_controller } from "./controllers/public/vol_login_controller";
+import { vol_profile_controller } from "./controllers/volunteer/vol_profile_controller";
+import { vol_post_controller } from "./controllers/volunteer/vol_post_controller";
+import { vol_login_service } from "./services/public/vol_login_service";
+import { vol_profile_service } from "./services/volunteer/vol_profile_service";
+import { vol_post_service } from "./services/volunteer/vol_post_service";
+
 import { registerRoute } from "./routers/user_register";
 import { volunteer_registerRoute } from "./routers/volunteer_register";
-// import { userLoginRoute } from "./routers/userLoginRoute";
+import { userLoginRoute } from "./routers/userLoginRoute";
 // import { volLoginRoute } from "./routers/volLoginRoute";
 // import { userProfileRoute } from "./routers/userProfileRoute";
-import { volProfileRoute } from "./routers/volProfileRoute";
-import { catPostRoute } from "./routers/catPostRoutes";
+// import { volProfileRoute } from "./routers/volProfileRoute";
+// import { catPostRoute } from "./routers/catPostRoutes";
 // import { userApply } from "./routers/userApply";
-import { getPostedRoute } from "./routers/getPostedRoute";
+// import { getPostedRoute } from "./routers/getPostedRoute";
 // import { getDataEditCase } from "./routers/getData_editCase";
-import { volInsert } from "./routers/VolEventInsert";
+// import { volInsert } from "./routers/VolEventInsert";
 // import { userInsert } from "./routers/userEventInsert";
 // import {
 //     applyStatusRoute,
@@ -78,7 +82,7 @@ import { volInsert } from "./routers/VolEventInsert";
 // } from "./routers/adoptFormRoute";
 // import { catAdoptRoute, catProfileRoute } from "./routers/catAdoptRoute";
 // import { userAdoptFromroute } from "./routers/adoptFormRoute";
-import { vol_update } from "./routers/vol_profile_update";
+// import { vol_update } from "./routers/vol_profile_update";
 // import { user_update } from "./routers/user_profile_update";
 
 //By Tyson
@@ -165,7 +169,6 @@ app.get("/userloginstatus", (req, res) => {
     }
 });
 // ---------- Volunteer Login ---------- //
-// app.use(volLoginRoute);
 app.get("/volunteerloginstatus", (req, res) => {
     if (req.session.isLoggedIn) {
         const volLoginInfo = {
@@ -179,17 +182,24 @@ app.get("/volunteerloginstatus", (req, res) => {
     }
 });
 
-const volLoginService = new vol_login_service(dbClient);
+const volLoginService = new vol_login_service(knex);
+const volProfileService = new vol_profile_service(knex);
+const volPostService = new vol_post_service(knex);
 export const volLoginController = new vol_login_controller(volLoginService);
+export const volProfileController = new vol_profile_controller(volProfileService);
+export const volPostController = new vol_post_controller(volPostService);
+
 import { public_main_route } from "./routers_new/public_main_route";
+import { vol_main_route } from "./routers_new/vol_main_route";
 app.use(public_main_route);
+app.use(vol_main_route);
 
 // ---------- Profile Page ---------- //
 // app.use(userProfileRoute);
 // app.use(volProfileRoute);
 // app.use("/vol_update", vol_update);
 // app.use(catProfileRoute);
-// app.use("/user_profile_update", user_update);
+// app.use('/user_profile_update',user_update)
 // // ---------- Adoption Posting Page ---------- //
 // app.use(catPostRoute);
 // app.use(catAdoptRoute);
