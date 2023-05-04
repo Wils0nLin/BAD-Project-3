@@ -5,10 +5,10 @@ window.onload = () => {
 async function userProfileData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
 
-    const resp = await fetch(`/formPrePlace/${urlSearchParams.get("id")}`);
+    const resp = await fetch(`/form_pre_place/${urlSearchParams.get("id")}`);
     const catName = await resp.json();
 
-    const resp1 = await fetch("/userProfileData");
+    const resp1 = await fetch("/user_profile_data");
     const userProfile = await resp1.json();
     let catBoxHtml = "";
     let userBoxHtml = "";
@@ -164,7 +164,7 @@ async function userProfileData() {
         const form = e.target;
         const ApplyForm = new FormData(form);
 
-        const resp = await fetch("/applyForm", {
+        const resp = await fetch("/apply_form", {
             method: "POST",
             body: ApplyForm,
         });

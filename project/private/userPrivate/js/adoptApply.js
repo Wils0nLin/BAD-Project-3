@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 async function adoptCaseData() {
-    const sResp = await fetch("/applyStatusData");
+    const sResp = await fetch("/apply_status_data");
     const adoptStatus = await sResp.json();
     console.log(adoptStatus);
     let catAdoptHtml = "";
@@ -61,6 +61,7 @@ async function adoptCaseData() {
                 </div></a>
                 `;
             }
-        }}
+        }
+    }
     document.querySelector("#adopt-box").innerHTML = catAdoptHtml;
 }

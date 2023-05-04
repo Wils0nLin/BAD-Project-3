@@ -7,7 +7,7 @@ window.onload = async () => {
 
 async function pendingCaseData(caseID) {
     console.log(caseID);
-    const resp = await fetch(`/pendingCaseData/${caseID}`);
+    const resp = await fetch(`/pending_case_data/${caseID}`);
     const pendingCase = await resp.json();
     console.log(resp);
     let catBoxHtml = "";
@@ -50,17 +50,17 @@ async function pendingCaseData(caseID) {
     dataApplyHtml = `<div><i class="fa-solid fa-list"></i>義工已初步接受申請，請選擇${lastEvent.event}日子：</div>`;
 
     for (let file of pendingCase) {
-      if(file.is_show){
-        dataApplyHtml += `
+        if (file.is_show) {
+            dataApplyHtml += `
         <div id="date-title">
             <i class="fa-solid fa-calendar-days"></i>日期
         </div>
         <div>${file.event}</div>
         <div class="click-date" id="date" data-value='${file.id}'
         font-size: 1em;">${file.date}</div>`;
-      }else{
-        dataApplyHtml+=""
-      }
+        } else {
+            dataApplyHtml += "";
+        }
     }
 
     document.querySelector("#cat-data").innerHTML = catBoxHtml;
@@ -68,7 +68,7 @@ async function pendingCaseData(caseID) {
 }
 
 async function getPassEvents(caseID) {
-    const resp = await fetch(`/getEvent/${caseID}`);
+    const resp = await fetch(`/get_event/${caseID}`);
 
     const result = await resp.json();
     const lastResult = result[result.length - 1];
@@ -141,7 +141,7 @@ document.querySelector("#user-data").addEventListener("submit", async (e) => {
     console.log(dateSelectForm);
     const urlSearch = new URLSearchParams(window.location.search).get("caseID");
     const caseID = parseInt(urlSearch);
-    console.log(caseID)
+    console.log(caseID);
     const resp = await fetch(`/confirm/${caseID}`, {
         method: "POST",
         headers: {

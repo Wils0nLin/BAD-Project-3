@@ -20,7 +20,6 @@ dbClient.connect();
 
 //try
 const knex: any = Knex(knexConfig[process.env.NODE_ENV || "development"]);
-//要改
 //try
 
 declare module "express-session" {
@@ -58,6 +57,8 @@ app.use((req, _res, next) => {
 import { registerRoute } from "./routers/user_register";
 import { volunteer_registerRoute } from "./routers/volunteer_register";
 import { userLoginRoute } from "./routers/userLoginRoute";
+
+//------------舊野------------//
 // import { volLoginRoute } from "./routers/volLoginRoute";
 // import { userProfileRoute } from "./routers/userProfileRoute";
 // import { volProfileRoute } from "./routers/volProfileRoute";
@@ -77,8 +78,7 @@ import { userLoginRoute } from "./routers/userLoginRoute";
 // import { userAdoptFromroute } from "./routers/adoptFormRoute";
 // import { vol_update } from "./routers/vol_profile_update";
 // import { user_update } from "./routers/user_profile_update";
-
-//By Tyson
+//--------------------------//
 
 // ------------------------------ Controller ------------------------------ //
 import { user_login_controller } from "./controllers/public/user_login_controller";
@@ -106,6 +106,7 @@ import { user_event_insert_service } from "./services/user/user_event_insert_ser
 import { user_get_data_edit_case_service } from "./services/user/user_get_data_edit_case_service";
 import { user_profile_data_service } from "./services/user/user_profile_data_service";
 
+//------------------------------ Run User Controller and Service ------------------------------ //
 const user_login_Service = new user_login_service(knex);
 export const user_login_Controller = new user_login_controller(user_login_Service);
 
@@ -154,6 +155,7 @@ export const user_profile_data_Controller = new user_profile_data_controller(
     user_profile_data_Service
 );
 // By Tyson
+//-------------------------------------------------------------------------------------- //
 
 import { vol_login_service } from "./services/public/vol_login_service";
 import { vol_profile_service } from "./services/volunteer/vol_profile_service";
@@ -210,6 +212,7 @@ app.get("/volunteerloginstatus", (req, res) => {
     }
 });
 
+//------------舊野------------//
 // ---------- Profile Page ---------- //
 // app.use(userProfileRoute);
 // app.use(volProfileRoute);
@@ -230,6 +233,7 @@ app.get("/volunteerloginstatus", (req, res) => {
 // app.use(getDataEditCase);
 // app.use(volInsert);
 // app.use(userInsert);
+//----------------------------//
 
 //
 // ------------------------------ Serve ------------------------------ //
