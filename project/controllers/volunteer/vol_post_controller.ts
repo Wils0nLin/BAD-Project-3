@@ -1,0 +1,108 @@
+import formidable from "formidable";
+import { form } from "../../routers/formidable";
+import { vol_post_service } from "../../services/volunteer/vol_post_service";
+import { Request, Response } from "express";
+
+export class vol_post_controller {
+    constructor(private vol_post_service: vol_post_service) {}
+
+    vol_post = async (req: Request, res: Response) => {
+        try {
+            const userid: any = req.session.userid;
+
+            const vol_post = await this.vol_post_service.post(userid);
+
+            res.status(200).json(vol_post);
+        } catch (err) {
+            console.error(err);
+            res.status(400).json({ message: "something wrong with the posts" });
+        }
+    };
+
+    vol_post_delete = async (req: Request, res: Response) => {
+        try {
+            const postId = +req.params.id;
+            if (isNaN(postId)) {
+                res.status(400).json({ message: "invalid post id" });
+                return;
+            }
+
+            await this.vol_post_service.post_delete(postId);
+
+            res.status(200).json({ message: "success" });
+        } catch (err) {
+            console.error(err);
+            res.status(400).json({ message: "something wrong with post deletion" });
+        }
+    };
+
+    vol_post_create = async (req: Request, res: Response) => {
+        try {
+            form.parse(req, async (err, fields, files) => {
+                const userid: any = req.session.userid;
+                const name: any = fields.names;
+                const gender: any = fields.gender;
+                const age: any = fields.age;
+                const breed: any = fields.breed;
+                const character: any = fields.character;
+                const cat_health: any = fields.cat_health;
+                const habit: any = fields.habit;
+                const intro: any = fields.intro;
+
+                const vol_post: any = await this.vol_post_service.post_create(userid, name, gender, age, breed, character, cat_health, habit, intro);
+
+                if (files.image) {
+                    const imgArr: formidable.File[] = Array.isArray(files.image)
+                        ? files.image
+                        : [files.image];
+        
+                    for (let i = 0; i < imgArr.length; i++) {
+                        const img = imgArr[i].newFilename;
+                        await this.vol_post_service.post_image(vol_post.id, img);
+                    }
+                }
+        
+                if (files.video) {
+                    const videoArr: formidable.File[] = Array.isArray(files.video)
+                        ? files.video
+                        : [files.video];
+                    for (let i = 0; i < videoArr.length; i++) {
+                        const video = videoArr[i].newFilename;
+                        await this.vol_post_service.post_image(vol_post.id, video);
+                    }
+                }
+            });
+
+            res.status(200).json({ message: "success" });
+        } catch (err) {
+            console.error(err);
+            res.status(400).json({ message: "something wrong with post creation" });
+        }
+    };
+
+    vol_post_info = async (req: Request, res: Response) => {
+        try {
+            const postId = +req.params.id;
+
+            const vol_post = await this.vol_post_service.post_info(postId);
+
+            res.status(200).json(vol_post);
+        } catch (err) {
+            console.error(err);
+            res.status(400).json({ message: "something wrong with the post info" });
+        }
+    };
+
+    vol_post_edit = async (req: Request, res: Response) => {
+        try {
+            const userid: any = req.session.userid;
+
+            const vol_post = await this.vol_post_service.post_edit(userid);
+
+            res.status(200).json(vol_post);
+        } catch (err) {
+            console.error(err);
+            res.status(400).json({ message: "something wrong with post edition" });
+        }
+    };
+}

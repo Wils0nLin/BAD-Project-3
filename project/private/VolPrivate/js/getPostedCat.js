@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 async function loadPostedCat() {
-  const resp = await fetch("/volPostedCat");
+  const resp = await fetch("/volunteer_post");
   const volPostedCat = await resp.json();
 
   let htmlStr = "";
@@ -52,7 +52,7 @@ async function loadPostedCat() {
           const id = mid.split("-")[1];
           const content = document.querySelector(`#${mid}`).textContent.trim();
           // console.log(content);
-          const resp = await fetch(`/volDeletePostedCat/${id}`, {
+          const resp = await fetch(`/volunteer_post_delete/${id}`, {
             method: "DELETE",
           });
         }
