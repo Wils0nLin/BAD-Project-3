@@ -6,7 +6,7 @@ async function catProfileData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     console.log(urlSearchParams.get("caseID"));
 
-    const resp = await fetch(`/volunteer_post_update/${urlSearchParams.get("caseID")}`);
+    const resp = await fetch(`/volunteer_post_info/${urlSearchParams.get("caseID")}`);
 
     const catProfile = await resp.json();
 
@@ -92,8 +92,8 @@ const catDateFormat = catProfile.age.substring(0, 10);
         const urlSearchParams = new URLSearchParams(window.location.search);
         const caseID = urlSearchParams.get("caseID");
 
-        const response = await fetch(`/getEditCaseDetails/${caseID}`, {
-            method: "POST",
+        const response = await fetch(`/volunteer_post_update/${caseID}`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },

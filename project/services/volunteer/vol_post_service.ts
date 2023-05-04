@@ -81,7 +81,6 @@ export class vol_post_service {
                 food_habits: habit,
                 intro: intro,
             })
-            .first();
 
         return vol_post;
     };

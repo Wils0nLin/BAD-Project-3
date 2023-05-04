@@ -23,4 +23,4 @@ vol_main_route.get("/volunteer_case_info/:id", volCaseController.vol_case_info);
 vol_main_route.post("/volunteer_case_accept", volCaseController.vol_case_accept);
 vol_main_route.post("/volunteer_case_reject", volCaseController.vol_case_reject);
 vol_main_route.get("/volunteer_case_event/:id", volCaseController.vol_case_event);
-vol_main_route.post("/volunteer_case_update/:id", volCaseController.vol_case_edit);
+vol_main_route.put("/volunteer_case_update/:id", volCaseController.vol_case_edit);

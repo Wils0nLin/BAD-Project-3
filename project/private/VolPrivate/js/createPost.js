@@ -16,7 +16,7 @@ document.querySelector("#content-box").addEventListener("submit", async (event) 
 
         console.log(formObject);
 
-        const res = await fetch("/post", {
+        const res = await fetch("/volunteer_post_create", {
             method: "POST",
             body: formObject,
         });

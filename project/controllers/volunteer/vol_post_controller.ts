@@ -113,6 +113,7 @@ export class vol_post_controller {
             const habit = req.body.food_habits;
             const health = req.body.cat_health;
             const intro = req.body.intro;
+            console.log("HIHIHI");
 
             await this.vol_post_service.post_edit(
                 postId,
