@@ -55,13 +55,6 @@ app.use((req, _res, next) => {
 
 //
 // ------------------------------ Route Handlers ------------------------------ //
-import { vol_login_controller } from "./controllers/public/vol_login_controller";
-import { vol_profile_controller } from "./controllers/volunteer/vol_profile_controller";
-import { vol_post_controller } from "./controllers/volunteer/vol_post_controller";
-import { vol_login_service } from "./services/public/vol_login_service";
-import { vol_profile_service } from "./services/volunteer/vol_profile_service";
-import { vol_post_service } from "./services/volunteer/vol_post_service";
-
 import { registerRoute } from "./routers/user_register";
 import { volunteer_registerRoute } from "./routers/volunteer_register";
 import { userLoginRoute } from "./routers/userLoginRoute";
@@ -86,18 +79,21 @@ import { userLoginRoute } from "./routers/userLoginRoute";
 // import { user_update } from "./routers/user_profile_update";
 
 //By Tyson
-// ------------------------------New Route Handlers ------------------------------ //
-import { user_main_route } from "./routers_new/user_main_route";
 
-// ------------------------------ Controller for user ------------------------------ //
+// ------------------------------ Controller ------------------------------ //
 import { user_apply_controller } from "./controllers/user/user_apply_controller";
 import { user_adopt_form_controller } from "./controllers/user/user_adopt_form_controller";
 import { user_cat_adopt_controller } from "./controllers/user/user_cat_adopt_controller";
 import { user_event_insert_controller } from "./controllers/user/user_event_insert_controller";
 import { user_get_data_edit_case_controller } from "./controllers/user/user_get_data_edit_case_controller";
 import { user_profile_data_controller } from "./controllers/user/user_profile_data_controller";
+// By Tyson
+import { vol_login_controller } from "./controllers/public/vol_login_controller";
+import { vol_profile_controller } from "./controllers/volunteer/vol_profile_controller";
+import { vol_post_controller } from "./controllers/volunteer/vol_post_controller";
+// By Wilson
 
-// ------------------------------ Service for user ------------------------------ //
+// ------------------------------ Service ------------------------------ //
 import { user_apply_service } from "./services/user/user_apply_service";
 import { user_adopt_form_service } from "./services/user/user_adopt_form_service";
 import { user_cat_adopt_service } from "./services/user/user_cat_adopt_service";
@@ -146,9 +142,30 @@ const user_profile_data_Service = new user_profile_data_service(knex);
 export const user_profile_data_Controller = new user_profile_data_controller(
     user_profile_data_Service
 );
+// By Tyson
 
+import { vol_login_service } from "./services/public/vol_login_service";
+import { vol_profile_service } from "./services/volunteer/vol_profile_service";
+import { vol_post_service } from "./services/volunteer/vol_post_service";
+
+const volLoginService = new vol_login_service(knex);
+const volProfileService = new vol_profile_service(knex);
+const volPostService = new vol_post_service(knex);
+export const volLoginController = new vol_login_controller(volLoginService);
+export const volProfileController = new vol_profile_controller(volProfileService);
+export const volPostController = new vol_post_controller(volPostService);
+// By Wilson
+
+// ------------------------------New Route Handlers ------------------------------ //
+import { user_main_route } from "./routers_new/user_main_route";
+import { public_main_route } from "./routers_new/public_main_route";
+import { vol_main_route } from "./routers_new/vol_main_route";
 app.use(user_main_route);
-//Tyson
+// By Tyson
+app.use(public_main_route);
+app.use(vol_main_route);
+// By Wilson
+
 
 // ---------- User Register ---------- //
 app.use("/user_register", registerRoute);
@@ -181,18 +198,6 @@ app.get("/volunteerloginstatus", (req, res) => {
         res.status(200).json({ message: "Not Logged in" });
     }
 });
-
-const volLoginService = new vol_login_service(knex);
-const volProfileService = new vol_profile_service(knex);
-const volPostService = new vol_post_service(knex);
-export const volLoginController = new vol_login_controller(volLoginService);
-export const volProfileController = new vol_profile_controller(volProfileService);
-export const volPostController = new vol_post_controller(volPostService);
-
-import { public_main_route } from "./routers_new/public_main_route";
-import { vol_main_route } from "./routers_new/vol_main_route";
-app.use(public_main_route);
-app.use(vol_main_route);
 
 // ---------- Profile Page ---------- //
 // app.use(userProfileRoute);
