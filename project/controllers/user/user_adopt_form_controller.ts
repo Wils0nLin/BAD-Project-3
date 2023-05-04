@@ -6,16 +6,37 @@ export class user_adopt_form_controller {
 
     user_apply_status = async (req: Request, res: Response) => {
         try {
-            const apply_status = await this.user_adopt_form_service.user_apply_status();
+            const apply_status = await this.user_adopt_form_service.user_apply_status(req);
             res.json(apply_status);
         } catch (err) {
             res.status(500).json({ message: "internal server error" });
         }
     };
 
-    user_pending_case;
+    user_pending_case = async (req: Request, res: Response) => {
+        try {
+            const pending_case = await this.user_adopt_form_service.user_pending_case(req);
+            res.json(pending_case);
+        } catch (err) {
+            res.status(500).json({ message: "internal server error" });
+        }
+    };
 
-    user_get_event;
+    user_get_event_case = async (req: Request, res: Response) => {
+        try {
+            const get_event = await this.user_adopt_form_service.user_get_event(req);
+            res.json(get_event);
+        } catch (err) {
+            res.status(500).json({ message: "internal server error" });
+        }
+    };
 
-    user_adopt_form;
+    user_form_pre_place = async (req: Request, res: Response) => {
+        try {
+            const adopt_form = await this.user_adopt_form_service.user_adopt_form(req);
+            res.json(adopt_form);
+        } catch (err) {
+            res.status(500).json({ message: "internal server error" });
+        }
+    };
 }
