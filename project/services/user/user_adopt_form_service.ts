@@ -6,22 +6,28 @@ export class user_adopt_form_service {
     constructor(private knex: Knex) {}
 
     user_apply_status = async (req: Request) => {
-        const queryResult = await this.knex
-            .select(
-                "cat_image.id AS img_id",
-                "cat_image.c_image AS img",
-                "adopt_forms.id AS form_id",
-                "cats.c_name AS cat_name",
-                "adopt_status AS adopt_status",
-                this.knex.raw("ROW_NUMBER() over(partition by cats.c_name ORDER BY cats.c_name) n")
-            )
-            .from("cats")
-            .join("adopt_forms", "cats.id", "=", "adopt_forms.cat_id")
-            .join("users", "adopt_forms.user_id", "=", "users.id")
-            .join("cat_image", "cat_image.cat_id", "=", "cats.id")
-            .where("adopt_forms.user_id", req.session.userid)
-            .as("x")
-            .where("n", 1);
+        const queryResult = await this.knex.raw(
+            `select *
+        from (
+              select 
+                    cat_image.id AS img_id,
+                    cat_image.c_image AS img,
+                    adopt_forms.id AS form_id,
+                    cats.c_name AS cat_name,
+                    adopt_status AS adopt_status,
+                    ROW_NUMBER() over(
+                          partition by cats.c_name
+                          ORDER BY cats.c_name
+                    ) n
+              from cats 
+              JOIN adopt_forms ON cats.id = adopt_forms.cat_id
+              JOIN users ON adopt_forms.user_id = users.id 
+              JOIN cat_image on cat_image.cat_id = cats.id 
+              where adopt_forms.user_id = ${req.session.userid}
+        ) x
+        where n = 1
+        ;`
+        );
         return queryResult;
     };
 

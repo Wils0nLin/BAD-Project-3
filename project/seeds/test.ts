@@ -3,23 +3,11 @@ import { Knex } from "knex";
 export async function seed(knex: Knex): Promise<void> {
     // Deletes ALL existing entries
     // Inserts seed entries
-    const queryResult = await knex("users").where("id", 1).update({
-        u_name: "1",
-        u_email: "3@3",
-        u_birth_date: 20200202,
-        u_phone_number: "4444444",
-        u_address: "123",
-        u_password: "123123",
-        u_username: "fk",
-        existed_pet: "0",
-        pet_before: "0",
-        is_allergy: "0",
-        smoker: "0",
-        knowledge: "fk",
-        future_plan: "fk",
-        income_id: 1,
-        home_size_id: 2,
-    });
+    const queryResult = await knex("cats")
+        .select("*", "cats.id")
+        .join("cat_image", "cats.id", "=", "cat_image.cat_id")
+        .where("cats.id", 1);
+
     // u_name: "1",
     // u_email: "2@2",
     // u_birth_date: 20200202,
