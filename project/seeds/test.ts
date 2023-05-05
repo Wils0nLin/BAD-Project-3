@@ -3,10 +3,28 @@ import { Knex } from "knex";
 export async function seed(knex: Knex): Promise<void> {
     // Deletes ALL existing entries
     // Inserts seed entries
-    const queryResult = await knex("cats")
-        .select("*", "cats.id")
-        .join("cat_image", "cats.id", "=", "cat_image.cat_id")
-        .where("cats.id", 1);
+    const queryResult = await knex.raw(
+        `select *
+    from (
+          select 
+                cat_image.id AS img_id,
+                cat_image.c_image AS img,
+                adopt_forms.id AS form_id,
+                cats.c_name AS cat_name,
+                adopt_status AS adopt_status,
+                ROW_NUMBER() over(
+                      partition by cats.c_name
+                      ORDER BY cats.c_name
+                ) n
+          from cats 
+          JOIN adopt_forms ON cats.id = adopt_forms.cat_id
+          JOIN users ON adopt_forms.user_id = users.id 
+          JOIN cat_image on cat_image.cat_id = cats.id 
+          where adopt_forms.user_id = 1
+    ) x
+    where n = 1
+    ;`
+    );
 
     // u_name: "1",
     // u_email: "2@2",
