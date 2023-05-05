@@ -5,7 +5,7 @@ window.onload = () => {
 async function userProfileData() {
     const resp = await fetch("/user_profile_data");
     const userProfile = await resp.json();
-    console.log(userProfile);
+    console.log(userProfile.id);
     const smoker = userProfile.smoker;
     const existedPet = userProfile.existed_pet;
     const exp = userProfile.pet_before;
