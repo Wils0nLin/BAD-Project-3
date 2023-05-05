@@ -26,7 +26,6 @@ export class public_cat_service {
             .innerJoin("cat_image", "post.id", "cat_image.id")
             .andWhere("cats.is_shown", 0)
             .orderBy("cats.id")
-            .returning("id");
 
         return public_cat;
     };
@@ -36,6 +35,7 @@ export class public_cat_service {
             .select(
                 this.knex.raw(`json_agg(cat_video.c_video) AS video`),
                 this.knex.raw(`json_agg(cat_image.c_image) AS img`),
+                "cats.id",
                 "cats.c_name AS cat_name",
                 "cats.intro AS intro",
                 "cats.age AS age",
@@ -53,6 +53,7 @@ export class public_cat_service {
             .join("volunteers", "cats.volunteer_id", "=", "volunteers.id")
             .where("cats.id", catId)
             .groupBy(
+                "cats.id",
                 "cats.c_name",
                 "cats.intro",
                 "cats.age",
