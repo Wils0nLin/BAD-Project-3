@@ -37,7 +37,7 @@ export class vol_post_service {
         const vol_post = await this.knex("cats").select("cats.is_shown").where("cats.id", postId);
 
         if (vol_post) {
-            await this.knex("cats").where("id", postId).update("is_shown", false);
+            await this.knex("cats").where("id", postId).update("is_shown", 1);
         }
     };
 

@@ -24,7 +24,7 @@ export class public_cat_service {
                 "post.cat_id"
             )
             .innerJoin("cat_image", "post.id", "cat_image.id")
-            .andWhere("cats.is_shown", true)
+            .andWhere("cats.is_shown", 0)
             .orderBy("cats.id");
 
         return public_cat;
