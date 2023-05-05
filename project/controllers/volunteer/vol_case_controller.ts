@@ -22,7 +22,6 @@ export class vol_case_controller {
             const caseId = +req.params.id;
 
             const vol_case = await this.vol_case_service.case_info(caseId);
-            console.log(vol_case)
 
             res.status(200).json(vol_case);
         } catch (err) {
@@ -33,9 +32,12 @@ export class vol_case_controller {
 
     vol_case_accept = async (req: Request, res: Response) => {
         try {
-            const caseId = +req.params.id;
+            const caseId = req.body.caseID;
+            console.log('hi')
+            console.log(caseId);
 
             await this.vol_case_service.case_accept(caseId);
+            
 
             res.status(200).json({ message: "success" });
         } catch (err) {
@@ -46,7 +48,7 @@ export class vol_case_controller {
 
     vol_case_reject = async (req: Request, res: Response) => {
         try {
-            const caseId = +req.params.id;
+            const caseId = req.body.caseID;
 
             await this.vol_case_service.case_reject(caseId);
 
@@ -78,6 +80,11 @@ export class vol_case_controller {
                 const date = DateAndTime[0];
                 const time = DateAndTime[1];
                 const event = BodyObj.Event;
+                console.log('hi');
+                console.log(caseId);
+                console.log(date);
+                console.log(time);
+                console.log(event);
 
                 await this.vol_case_service.case_edit(caseId, date, time, event);
             }

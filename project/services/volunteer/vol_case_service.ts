@@ -55,12 +55,14 @@ export class vol_case_service {
         return vol_case;
     };
 
-    case_edit = async (caseId: number, date: any, time: any, event: string) => {
-        await this.knex("events").select().update({
+    case_edit = async (caseId: number, date: Date, time: string, event: string) => {
+        console.log('1');
+        await this.knex("events").select().insert({
             adopt_forms_id: caseId,
             date: date,
             time: time,
             event: event,
         });
+        console.log('2')
     };
 }

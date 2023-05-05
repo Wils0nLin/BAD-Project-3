@@ -152,7 +152,7 @@ document.querySelector("#accept").addEventListener("submit", async (e) => {
     let caseOBJ = { caseID: caseID };
     console.log(caseID);
     const res = await fetch("/volunteer_case_accept", {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
@@ -169,7 +169,7 @@ document.querySelector("#reject").addEventListener("submit", async (e) => {
     let caseOBJ = { caseID: caseID };
     console.log(caseID);
     const res = await fetch("/volunteer_case_reject", {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
