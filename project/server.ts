@@ -132,40 +132,12 @@ export const volCaseController = new vol_case_controller(volCaseService);
 
 
 // ------------------------------- Route Handlers -------------------------------- //
-import { public_main_route } from "./routers_new/public_main_route";
-import { user_main_route } from "./routers_new/user_main_route";
-import { vol_main_route } from "./routers_new/vol_main_route";
+import { public_main_route } from "./routers/public_main_route";
+import { user_main_route } from "./routers/user_main_route";
+import { vol_main_route } from "./routers/vol_main_route";
 app.use(public_main_route);
 app.use(user_main_route);
 app.use(vol_main_route);
-
-
-// // ---------- User Login ---------- //
-// app.get("/userloginstatus", (req, res) => {
-//     if (req.session.isLoggedIn) {
-//         const userLoginInfo = {
-//             userid: req.session.id,
-//             username: req.session.username,
-//             userType: req.session.userType,
-//         };
-//         res.status(200).json(userLoginInfo);
-//     } else {
-//         res.status(200).json({ message: "Not Logged in" });
-//     }
-// });
-// // ---------- Volunteer Login ---------- //
-// app.get("/volunteerloginstatus", (req, res) => {
-//     if (req.session.isLoggedIn) {
-//         const volLoginInfo = {
-//             userid: req.session.id,
-//             username: req.session.username,
-//             userType: req.session.userType,
-//         };
-//         res.status(200).json(volLoginInfo);
-//     } else {
-//         res.status(200).json({ message: "Not Logged in" });
-//     }
-// });
 
 
 // ------------------------------ Serve ------------------------------ //
