@@ -15,7 +15,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string('character',20).notNullable();
         table.string('cat_health').notNullable();
         table.string('food_habits').notNullable();
-        
+        table.string('is_shown').defaultTo('0');
     })
 }
 

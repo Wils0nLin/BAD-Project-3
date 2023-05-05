@@ -27,7 +27,7 @@ export class vol_post_service {
             )
             .innerJoin("cat_image", "post.id", "cat_image.id")
             .where("volunteer_id", volId)
-            .andWhere("cats.is_shown", true)
+            .andWhere("cats.is_shown", 0)
             .orderBy("cats.id");
 
         return vol_post;

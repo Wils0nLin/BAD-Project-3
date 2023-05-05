@@ -39,7 +39,7 @@ form.addEventListener("submit", async (event) => {
         v_address,
     };
 
-    const response = await fetch("/volunteer_register", {
+    const response = await fetch("/public_volunteer_register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formObject),
