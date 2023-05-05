@@ -15,8 +15,13 @@ export class user_adopt_form_controller {
 
     user_pending_case = async (req: Request, res: Response) => {
         try {
-            const pending_case = await this.user_adopt_form_service.user_pending_case(req);
+            const caseID = +req.params.caseID;
+            console.log(caseID);
+
+            const pending_case = await this.user_adopt_form_service.user_pending_case(caseID);
             res.json(pending_case);
+            console.log(pending_case);
+
         } catch (err) {
             res.status(500).json({ message: "internal server error" });
         }

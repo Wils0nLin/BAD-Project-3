@@ -18,7 +18,7 @@ export const user_main_route = express.Router();
 user_main_route.post("/apply_form", user_apply_Controller.user_apply);
 
 // from userEventInsert.ts
-user_main_route.post("/confirm/:id", user_event_insert_Controller.user_event_insert);
+user_main_route.post("/confirm/:caseID", user_event_insert_Controller.user_event_insert);
 
 //user profile
 // from user_profile_route.ts
@@ -30,8 +30,8 @@ user_main_route.put("/user_profile_update/:mid", user_profile_data_Controller.us
 // 我的拎養
 user_main_route.get("/apply_status_data", user_adopt_form_Controller.user_apply_status);
 //我的拎養進度
-user_main_route.get("/pending_case_data/:id", user_adopt_form_Controller.user_pending_case);
-user_main_route.get("/get_event/:id", user_adopt_form_Controller.user_get_event_case);
+user_main_route.get("/pending_case_data/:caseID", user_adopt_form_Controller.user_pending_case);
+user_main_route.get("/get_event/:caseID", user_adopt_form_Controller.user_get_event_case);
 user_main_route.get("/form_pre_place/:id", user_adopt_form_Controller.user_form_pre_place);
 
 // from catAdoptRoute.ts
