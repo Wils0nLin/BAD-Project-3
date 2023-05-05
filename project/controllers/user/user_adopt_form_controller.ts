@@ -7,7 +7,7 @@ export class user_adopt_form_controller {
     user_apply_status = async (req: Request, res: Response) => {
         try {
             const apply_status = await this.user_adopt_form_service.user_apply_status(req);
-            res.json(apply_status);
+            res.json(apply_status.rows);
         } catch (err) {
             res.status(500).json({ message: "internal server error" });
         }
