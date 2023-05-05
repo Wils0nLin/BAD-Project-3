@@ -9,11 +9,11 @@ export class user_apply_controller {
     user_apply = async (req: Request, res: Response) => {
         try {
             form.parse(req, async (err, fields, files) => {
-                const user_id = fields.user_id;
-                const cat_id = fields.cat_id;
-
+                const user_id: any = req.session.userid;
+                const cat_id: any = fields.cat_id;
+                
                 const form_id = await this.user_apply_service.user_apply(cat_id, user_id);
-
+                
                 const imgArr: formidable.File[] = Array.isArray(files.image)
                     ? files.image
                     : [files.image];

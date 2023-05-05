@@ -3,14 +3,15 @@ import type { Knex } from "knex";
 export class user_apply_service {
     constructor(private knex: Knex) {}
 
-    user_apply = async (cat_id: any, user_id: any) => {
-        await this.knex("adopt_forms")
+    user_apply = async (cat_id: number, user_id: number) => {
+        const user_apply = await this.knex("adopt_forms")
             .insert({ cat_id: cat_id, user_id: user_id, adopt_status: "pending" })
             .returning("id");
+        return user_apply;
     };
 
     user_apply_for = async (adopt_forms_id: number, f_image: string) => {
-        await this.knex("for_images").insert({ adopt_forms_id, f_image }).returning("id");
+        await this.knex("form_images").insert({ adopt_forms_id, f_image }).returning("id");
     };
 }
 ////舊野
