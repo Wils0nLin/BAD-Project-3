@@ -5,8 +5,9 @@ window.onload = () => {
 async function userProfileData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
 
-    const resp = await fetch(`/form_pre_place/${urlSearchParams.get("id")}`);
+    const resp = await fetch(`/public_cat_info/${urlSearchParams.get("id")}`);
     const catName = await resp.json();
+    console.log(catName);
 
     const resp1 = await fetch("/user_profile_data");
     const userProfile = await resp1.json();
@@ -42,13 +43,13 @@ async function userProfileData() {
     //------------------ -----------------//
 
     catBoxHtml = `<div>
-        <div class="cat-name"><i class="fa-solid fa-paw"></i>${catName.c_name}</div>
+        <div class="cat-name"><i class="fa-solid fa-paw"></i>${catName.cat_name}</div>
         <div><i class="fa-solid fa-calendar-days"></i>歲數<div class="text-box text-box-spread">${catAge}</div></div>
         <div><i class="fa-solid fa-restroom"></i>性別<div class="text-box text-box-spread">${catName.gender}</div></div>
         <div><i class="fa-solid fa-cat"></i>品種<div class="text-box text-box-spread">${catName.breed}</div></div>
     </div>
     <div id="image-box">
-        <div class="cat-image-main"><img src="${catName.c_image}" id="cat-image-main"></div>
+        <div class="cat-image-main"><img src="${catName.img[0]}" id="cat-image-main"></div>
     </div>`;
 
     userBoxHtml = `<div class="data-col">
