@@ -9,7 +9,7 @@ async function pendingCaseData(caseID) {
     console.log(caseID);
     const resp = await fetch(`/pending_case_data/${caseID}`);
     const pendingCase = await resp.json();
-    console.log(resp);
+    console.log(pendingCase);
     let catBoxHtml = "";
     let dataApplyHtml = "";
     document.querySelector("#cat-data").innerHTML = "";
@@ -50,7 +50,7 @@ async function pendingCaseData(caseID) {
     dataApplyHtml = `<div><i class="fa-solid fa-list"></i>義工已初步接受申請，請選擇${lastEvent.event}日子：</div>`;
 
     for (let file of pendingCase) {
-        if (file.is_show) {
+        if (file.is_shown) {
             dataApplyHtml += `
         <div id="date-title">
             <i class="fa-solid fa-calendar-days"></i>日期

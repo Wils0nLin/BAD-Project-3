@@ -31,19 +31,31 @@ export class user_adopt_form_service {
         return queryResult;
     };
 
-    user_pending_case = async (req: Request) => {
+    user_pending_case = async (caseId: number) => {
+        console.log(caseId);
+        console.log('hi');
         const queryResult = await this.knex
-            .raw(`SELECT form_images.f_image,*, adopt_forms.id AS ad_id FROM adopt_forms
-        INNER JOIN users
-        ON users.id = adopt_forms.user_id
-        INNER JOIN cats
-        ON cats.id = adopt_forms.cat_id
-        INNER JOIN cat_image
-        ON cats.id = cat_image.cat_id
-        JOIN form_images 
-        ON form_images.adopt_forms_id = adopt_forms.id;`);
+            .raw(` select * from(select
+                events.is_shown, 
+                events.id,
+                events.date,
+                events.time,
+                cats.age,
+                cats.gender,
+                cats.c_name,
+                cat_image.c_image,
+                cats.breed AS breed,
+                events.event,
+                ROW_NUMBER() over( partition by events.id ORDER BY events.id ) n
+                from events
+                join adopt_forms ON adopt_forms_id = adopt_forms.id
+                join cats ON cats.id = adopt_forms.cat_id
+                JOIN cat_image ON cat_image.cat_id = cats.id 
+                WHERE adopt_forms_id = ${caseId})x
+                where n = 1;`);
 
-        return queryResult.rows;
+            console.log('bye');
+            return queryResult.rows;
     };
 
     user_get_event = async (req: Request) => {
