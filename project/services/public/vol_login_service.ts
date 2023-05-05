@@ -7,7 +7,7 @@ export class vol_login_service {
     // constructor(private client: pg.Client) {}
     constructor(private knex: Knex) {}
 
-    login = async (username: string, password: string) => {
+    vol_login = async (username: string, password: string) => {
         if (!username || !password) {
             throw new Error("missing username or password");
         }

@@ -6,11 +6,11 @@ export class vol_case_controller {
 
     vol_case = async (req: Request, res: Response) => {
         try {
-            const userid: any = req.session.userid;
+            const volId: any = req.session.userid;
 
-            const vol_case = await this.vol_case_service.case(userid);
+            const vol_case = await this.vol_case_service.case(volId);
 
-            res.status(200).json(vol_case);
+            res.status(200).json(vol_case.rows);
         } catch (err) {
             console.error(err);
             res.status(400).json({ message: "something wrong with the cases" });
@@ -22,6 +22,7 @@ export class vol_case_controller {
             const caseId = +req.params.id;
 
             const vol_case = await this.vol_case_service.case_info(caseId);
+            console.log(vol_case)
 
             res.status(200).json(vol_case);
         } catch (err) {

@@ -6,9 +6,9 @@ export class vol_profile_controller {
 
     vol_profile = async (req: Request, res: Response) => {
         try {
-            const userid: any = req.session.userid;
+            const volId: any = req.session.userid;
 
-            const vol_profile = await this.vol_profile_service.profile(userid);
+            const vol_profile = await this.vol_profile_service.profile(volId);
 
             res.status(200).json(vol_profile);
         } catch (err) {
@@ -19,19 +19,19 @@ export class vol_profile_controller {
 
     vol_profile_edit = async (req: Request, res: Response) => {
         try {
-            const userid: any = req.session.userid;
+            const volId: any = req.session.userid;
             const name = req.body.v_name;
             const email = req.body.v_email;
-            const birth_date = req.body.v_birth_date;
-            const phone_number = req.body.v_phone_number;
+            const birth = req.body.v_birth_date;
+            const phone = req.body.v_phone_number;
             const address = req.body.v_address;
 
             await this.vol_profile_service.profile_edit(
-                userid,
+                volId,
                 name,
                 email,
-                birth_date,
-                phone_number,
+                birth,
+                phone,
                 address
             );
 

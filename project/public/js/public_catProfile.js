@@ -4,22 +4,15 @@ window.onload = () => {
 
 async function loadCatIndividualData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
-    if (!urlSearchParams.has("id")) {
-        window.location = "/";
-        return;
-    }
-
-    const resp = await fetch(`/catAdoptData/${urlSearchParams.get("id")}`);
-    const cats = await resp.json();
-    const imageResp = await fetch(`/getEditCaseDetails/${urlSearchParams.get("id")}`);
-    const catProfile = await imageResp.json();
+    const resp = await fetch(`/public_cat_info/${urlSearchParams.get("id")}`);
+    const catProfile = await resp.json();
     console.log(catProfile);
 
     // 計算貓貓年齡;
     const thisYear = new Date().getFullYear();
     const thisMonth = new Date().getMonth();
-    const cat_birth_year = new Date(cats.age).getFullYear() + 1;
-    const cat_birth_month = new Date(cats.age).getMonth();
+    const cat_birth_year = new Date(catProfile.age).getFullYear() + 1;
+    const cat_birth_month = new Date(catProfile.age).getMonth();
     let cat_year_difference = thisYear - cat_birth_year;
     if (cat_year_difference < 0) {
         cat_year_difference = 0;
@@ -42,10 +35,10 @@ async function loadCatIndividualData() {
     htmlStr = `
   <div id="cat-data">
       <div>
-          <div class="cat-name"><i class="fa-solid fa-paw"></i>${cats.c_name}</div>
+          <div class="cat-name"><i class="fa-solid fa-paw"></i>${catProfile.cat_name}</div>
           <div><i class="fa-solid fa-calendar-days"></i>歲數<div class="text-box text-box-spread">${catAge}</div></div>
-          <div><i class="fa-solid fa-restroom"></i>性別<div class="text-box text-box-spread">${cats.gender}</div></div>
-          <div><i class="fa-solid fa-cat"></i>品種<div class="text-box text-box-spread">${cats.breed}</div></div>
+          <div><i class="fa-solid fa-restroom"></i>性別<div class="text-box text-box-spread">${catProfile.gender}</div></div>
+          <div><i class="fa-solid fa-cat"></i>品種<div class="text-box text-box-spread">${catProfile.breed}</div></div>
       </div>
       <div id="image-box">
           <div id="cat-image-main"><img src="${catProfile.img[0]}" id="cat-image" width="200px"></div>
@@ -57,35 +50,35 @@ async function loadCatIndividualData() {
           <div class="data-col data-col-spread">
               <div>
                   <div><i class="fa-solid fa-user-check"></i>負責義工</div>
-                  <div class="text-box text-box-spread">${cats.v_name}</div>
+                  <div class="text-box text-box-spread">${catProfile.v_name}</div>
               </div>
               <div id="data-col-right">
                   <div><i class="fa-solid fa-phone-flip"></i>義工電話</div>
-                  <div class="text-box text-box-spread">${cats.v_phone_number}</div>
+                  <div class="text-box text-box-spread">${catProfile.v_phone_number}</div>
               </div>
           </div>
           <div class="data-col">
               <div><i class="fa-solid fa-envelope"></i>義工電郵</div>
-              <div class="text-box text-box-profile">${cats.v_email}</div>
+              <div class="text-box text-box-profile">${catProfile.v_email}</div>
           </div>
           <div class="data-col"> 
               <div><i class="fa-solid fa-face-smile"></i>性格</div>
-              <div class="text-box text-box-profile">${cats.character}</div>
+              <div class="text-box text-box-profile">${catProfile.characters}</div>
           </div>
           <div class="data-col">
               <div><i class="fa-solid fa-fish"></i>進食習慣</div>
-              <div class="text-box text-box-profile">${cats.food_habits}</div>
+              <div class="text-box text-box-profile">${catProfile.food_habits}</div>
           </div>
           <div class="data-col">
               <div><i class="fa-solid fa-stethoscope"></i>身體狀況</div>
-              <div class="text-box text-box-profile">${cats.cat_health}</div>
+              <div class="text-box text-box-profile">${catProfile.cat_health}</div>
           </div>
       </div>
       <p style="width: 10px"></p>
       <div class="user-data-spread">
           <div class="data-col">
               <div><i class="fa-solid fa-file"></i>簡介</div>
-              <div class="text-box text-box-intro">${cats.intro}</div>
+              <div class="text-box text-box-intro">${catProfile.intro}</div>
           </div>
           <div class="data-col">
               <div><i class="fa-solid fa-video"></i>生活短片</div>

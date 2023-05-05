@@ -13,7 +13,7 @@ export class user_login_controller {
 
             req.session.isLoggedIn = true;
             req.session.userid = user_info.id;
-            req.session.userType = "volunteer";
+            req.session.userType = "user";
             res.status(200).json({ message: "login success!!!" });
         } catch (err) {
             console.error(err);

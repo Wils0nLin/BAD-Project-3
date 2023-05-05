@@ -11,7 +11,7 @@ async function loadPostedCat() {
   if ("message" in volPostedCat) {
     htmlStr += '<P style="style="font-size: 100;"">YOU ARE NOT VOLUNTEER</p>';
 
-    document.querySelector("#adopt-box").innerHTML = htmlStr;
+    document.querySelector("#adopt-box").innerHTML = htmlStr;a
   } else {
     for (let post of volPostedCat) {
       htmlStr += `

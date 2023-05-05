@@ -8,9 +8,9 @@ export class vol_post_controller {
 
     vol_post = async (req: Request, res: Response) => {
         try {
-            const userid: any = req.session.userid;
+            const volId: any = req.session.userid;
 
-            const vol_post = await this.vol_post_service.post(userid);
+            const vol_post = await this.vol_post_service.post(volId);
 
             res.status(200).json(vol_post);
         } catch (err) {
@@ -39,28 +39,28 @@ export class vol_post_controller {
     vol_post_create = async (req: Request, res: Response) => {
         try {
             form.parse(req, async (err, fields, files) => {
-                const userid: any = req.session.userid;
+                const volId: any = req.session.userid;
                 const name: any = fields.names;
                 const gender: any = fields.gender;
                 const age: any = fields.age;
                 const breed: any = fields.breed;
                 const character: any = fields.character;
-                const cat_health: any = fields.cat_health;
+                const health: any = fields.cat_health;
                 const habit: any = fields.habit;
                 const intro: any = fields.intro;
 
                 const vol_post: any = await this.vol_post_service.post_create(
-                    userid,
+                    volId,
                     name,
                     gender,
                     age,
                     breed,
                     character,
-                    cat_health,
+                    health,
                     habit,
                     intro
                 );
-
+                
                 if (files.image) {
                     const imgArr: formidable.File[] = Array.isArray(files.image)
                         ? files.image
@@ -68,7 +68,7 @@ export class vol_post_controller {
 
                     for (let i = 0; i < imgArr.length; i++) {
                         const img = imgArr[i].newFilename;
-                        await this.vol_post_service.post_image(vol_post.id, img);
+                        await this.vol_post_service.post_image(vol_post[0].id, img);
                     }
                 }
 
@@ -78,7 +78,7 @@ export class vol_post_controller {
                         : [files.video];
                     for (let i = 0; i < videoArr.length; i++) {
                         const video = videoArr[i].newFilename;
-                        await this.vol_post_service.post_image(vol_post.id, video);
+                        await this.vol_post_service.post_video(vol_post[0].id, video);
                     }
                 }
             });
@@ -113,7 +113,6 @@ export class vol_post_controller {
             const habit = req.body.food_habits;
             const health = req.body.cat_health;
             const intro = req.body.intro;
-            console.log("HIHIHI");
 
             await this.vol_post_service.post_edit(
                 postId,

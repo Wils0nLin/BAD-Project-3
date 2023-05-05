@@ -68,7 +68,7 @@ form.addEventListener("submit", async (event) => {
     //   passwordInput.onchange = validatePassword;
     // confirmInput.onkeyup = validatePassword;
 
-    const response = await fetch("/user_register", {
+    const response = await fetch("/public_user_register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formObject),

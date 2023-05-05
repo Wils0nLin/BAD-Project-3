@@ -10,7 +10,7 @@ form.addEventListener("submit", async (e) => {
     console.log(email);
 
     // ---------- Login Info Submission ----------//
-    const resp = await fetch("/userLoginRoute/userOtherLogin", {
+    const resp = await fetch("/public_user_forgot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, phone, email }),

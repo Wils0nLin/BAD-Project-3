@@ -4,12 +4,12 @@ import { Request, Response } from "express";
 export class vol_login_controller {
     constructor(private vol_login_service: vol_login_service) {}
 
-    vol_login = async (req: Request, res: Response) => {
+    public_vol_login = async (req: Request, res: Response) => {
         try {
             const username = req.body.username;
             const password = req.body.password;
       
-            const vol_info = await this.vol_login_service.login(username, password);
+            const vol_info = await this.vol_login_service.vol_login(username, password);
      
             req.session.isLoggedIn = true;
             req.session.userid = vol_info.id;

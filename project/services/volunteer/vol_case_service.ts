@@ -3,7 +3,7 @@ import type { Knex } from "knex";
 export class vol_case_service {
     constructor(private knex: Knex) {}
 
-    case = async (userid: number) => {
+    case = async (volId: number) => {
         const vol_case = await this.knex.raw(`select *
         from (
             select 
@@ -20,7 +20,7 @@ export class vol_case_service {
             JOIN adopt_forms ON cats.id = adopt_forms.cat_id
             JOIN users ON adopt_forms.user_id = users.id
             JOIN cat_image on cat_image.cat_id = cats.id 
-            where cats.volunteer_id = ${userid}
+            where cats.volunteer_id = ${volId}
             ) x
             where n = 1;
         `);
@@ -28,19 +28,13 @@ export class vol_case_service {
     };
 
     case_info = async (caseId: number) => {
-        const vol_case = await this.knex
-            .raw(`SELECT form_images.f_image, *, adopt_forms.id AS ad_id FROM adopt_forms
-        INNER JOIN users
-        ON users.id = adopt_forms.user_id
-        INNER JOIN cats
-        ON cats.id = adopt_forms.cat_id
-        INNER JOIN cat_image
-        ON cats.id = cat_image.cat_id
-        JOIN form_images 
-        ON form_images.adopt_forms_id = adopt_forms.id
-        WHERE adopt_forms_id = ${caseId})x
-            where n = 1
-        `);
+        const vol_case = await this.knex("adopt_forms")
+            .select("form_images.f_image", "*", "adopt_forms.id as ad_id")
+            .join("users", "users.id", "=", "adopt_forms.user_id")
+            .join("cats", "cats.id", "=", "adopt_forms.cat_id")
+            .join("cat_image", "cats.id", "=", "cat_image.cat_id")
+            .join("form_images", "form_images.adopt_forms_id", "=", "adopt_forms.id")
+            .where("adopt_forms_id", caseId);
         return vol_case;
     };
 

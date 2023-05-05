@@ -5,15 +5,7 @@ export class vol_post_service {
     // constructor(private client: pg.Client) {}
     constructor(private knex: Knex) {}
 
-    post = async (userid: number) => {
-        // const queryResult = await this.client.query(
-        //     /*SQL*/ `WITH temp AS (SELECT MIN(id) AS id, cat_id FROM cat_image GROUP BY cat_id)
-        //             SELECT volunteer_id, cats.id, c_name, intro, gender, cat_image.id AS c_image_id, cat_image.c_image FROM cats
-        //             LEFT JOIN temp ON cats.id = temp.cat_id
-        //             INNER JOIN cat_image ON temp.id = cat_image.id WHERE volunteer_id = ${userid} AND cats.is_shown = true`
-        // );
-        // const vol_post = queryResult.rows;
-
+    post = async (volId: number) => {
         const vol_post = await this.knex("cats")
             .select(
                 "volunteer_id",
@@ -34,23 +26,14 @@ export class vol_post_service {
                 "post.cat_id"
             )
             .innerJoin("cat_image", "post.id", "cat_image.id")
-            .where("volunteer_id", userid)
-            .andWhere("cats.is_shown", true);
+            .where("volunteer_id", volId)
+            .andWhere("cats.is_shown", true)
+            .orderBy("cats.id");
 
         return vol_post;
     };
 
     post_delete = async (postId: number) => {
-        // const queryResult = await this.client.query(
-        //     /*SQL*/ `SELECT cats.is_shown FROM cats where cats.id = '${postId}';`
-        // );
-
-        // if (queryResult) {
-        //     await this.client.query(
-        //         /*SQL*/ `UPDATE cats set is_shown = false where cats.id = '${postId}';`
-        //     );
-        // }
-
         const vol_post = await this.knex("cats").select("cats.is_shown").where("cats.id", postId);
 
         if (vol_post) {
@@ -59,28 +42,28 @@ export class vol_post_service {
     };
 
     post_create = async (
-        userid: number,
+        volId: number,
         name: string,
         gender: string,
         age: string,
         breed: string,
         character: string,
-        cat_health: string,
+        health: string,
         habit: string,
         intro: string
     ) => {
         const vol_post = await this.knex("cats")
             .insert({
-                volunteer_id: userid,
+                volunteer_id: volId,
                 c_name: name,
                 age: age,
                 gender: gender,
                 breed: breed,
                 character: character,
-                cat_health: cat_health,
+                cat_health: health,
                 food_habits: habit,
                 intro: intro,
-            })
+            }).returning("id")
 
         return vol_post;
     };

@@ -4,7 +4,7 @@ window.onload = () => {
 
 // Load Volunteers post function
 async function loadCatCard() {
-    const resp = await fetch("/cat_adopt_data");
+    const resp = await fetch("/public_cat");
     const cats = await resp.json();
     console.log(cats);
     let catAdoptHtml = "";

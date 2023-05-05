@@ -1,6 +1,6 @@
 import type { Knex } from "knex";
 
-export class user_register_service {
+export class public_register_service {
     constructor(private knex: Knex) {}
 
     user_register = async (
@@ -40,5 +40,25 @@ export class user_register_service {
                 future_plan,
             })
             .returning("id");
+    };
+
+    vol_register = async (
+        username: string,
+        password: string,
+        name: string,
+        email: string,
+        birth_date: string,
+        phone_number: string,
+        address: string
+    ) => {
+        await this.knex("volunteers").insert({
+            v_username: username,
+            v_password: password,
+            v_name: name,
+            v_email: email,
+            v_birth_date: birth_date,
+            v_phone_number: phone_number,
+            v_address: address,
+        });
     };
 }

@@ -1,15 +1,11 @@
 import type { Request, Response } from "express";
 import { hashPassword } from "../../utils/hash";
-import { user_register_service } from "../../services/public/user_register_service";
+import { public_register_service } from "../../services/public/public_register_service";
 
-// export const registerRoute = express.Router();
+export class public_register_controller {
+    constructor(private public_register_service: public_register_service) {}
 
-// user_selfProfileEdit.html to modify user information
-
-export class user_register_controller {
-    constructor(private user_register_service: user_register_service) {}
-
-    user_register = async (req: Request, res: Response) => {
+    public_user_register = async (req: Request, res: Response) => {
         try {
             const u_username = req.body.u_username;
             const u_password = req.body.u_password;
@@ -29,7 +25,7 @@ export class user_register_controller {
 
             let hashed = await hashPassword(u_password);
 
-            await this.user_register_service.user_register(
+            await this.public_register_service.user_register(
                 u_username,
                 hashed,
                 u_password,
@@ -49,6 +45,35 @@ export class user_register_controller {
             );
         } catch (err) {
             res.status(500).json({ message: "internal server error" });
+        }
+    };
+
+    public_vol_register = async (req: Request, res: Response) => {
+        try {
+            const v_username = req.body.v_username;
+            const v_password = req.body.v_password;
+            const v_name = req.body.v_name;
+            const v_email = req.body.v_email;
+            const v_birth_date = req.body.v_birth_date;
+            const v_phone_number = req.body.v_phone_number;
+            const v_address = req.body.v_address;
+
+            let hashed = await hashPassword(v_password);
+
+            await this.public_register_service.vol_register(
+                v_username,
+                hashed,
+                v_name,
+                v_email,
+                v_birth_date,
+                v_phone_number,
+                v_address
+            );
+
+            res.status(200).json({ message: "success" });
+        } catch (err) {
+            console.error(err);
+            res.status(400).json({ message: "something wrong with post edition" });
         }
     };
 }
