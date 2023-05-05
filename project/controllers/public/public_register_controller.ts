@@ -24,6 +24,25 @@ export class public_register_controller {
             const future_plan = req.body.future_plan;
 
             let hashed = await hashPassword(u_password);
+            console.log(
+                u_username,
+                hashed,
+                u_password,
+                u_name,
+                u_email,
+                u_birth_date,
+                u_phone_number,
+                u_address,
+                home_size_id,
+                income_id,
+                existed_pet,
+                pet_before,
+                is_allergy,
+                smoker,
+                knowledge,
+                future_plan
+            );
+            console.log("c", u_birth_date);
 
             await this.public_register_service.user_register(
                 u_username,
@@ -43,6 +62,7 @@ export class public_register_controller {
                 knowledge,
                 future_plan
             );
+            res.status(200).json({ message: "success" });
         } catch (err) {
             res.status(500).json({ message: "internal server error" });
         }
