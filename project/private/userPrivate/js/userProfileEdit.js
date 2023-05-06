@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 async function userProfileData() {
-    const resp = await fetch("/user_profile_data");
+    const resp = await fetch("/user_profile");
     const userProfile = await resp.json();
     console.log(userProfile.id);
     const smoker = userProfile.smoker;

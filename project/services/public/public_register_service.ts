@@ -4,45 +4,39 @@ export class public_register_service {
     constructor(private knex: Knex) {}
 
     user_register = async (
-        u_username: string,
-        hashed: string,
-        u_password: string,
-        u_name: string,
-        u_email: string,
-        u_birth_date: Date,
-        u_phone_number: string,
-        u_address: string,
-        home_size_id: number,
-        income_id: number,
+        username: string,
+        password: string,
+        name: string,
+        email: string,
+        birth_date: string,
+        phone_number: string,
+        address: string,
+        home_size: number,
+        income: number,
         existed_pet: boolean,
-        pet_before: boolean,
-        is_allergy: boolean,
+        experience: boolean,
+        allergy: boolean,
         smoker: boolean,
         knowledge: string,
         future_plan: string
     ) => {
-        const outputId = await this.knex("users")
-            .insert([
-                {
-                    u_username,
-                    u_password: hashed,
-                    u_name,
-                    u_email,
-                    u_birth_date,
-                    u_phone_number,
-                    u_address,
-                    home_size_id,
-                    income_id,
-                    existed_pet,
-                    pet_before,
-                    is_allergy,
-                    smoker,
-                    knowledge,
-                    future_plan,
-                },
-            ])
-            .returning("id");
-        return outputId;
+        await this.knex("users").insert({
+            u_username: username,
+            u_password: password,
+            u_name: name,
+            u_email: email,
+            u_birth_date: birth_date,
+            u_phone_number: phone_number,
+            u_address: address,
+            home_size_id: home_size,
+            income_id: income,
+            pet_before: experience,
+            existed_pet: existed_pet,
+            smoker: smoker,
+            is_allergy: allergy,
+            knowledge: knowledge,
+            future_plan: future_plan,
+        });
     };
 
     vol_register = async (

@@ -9,7 +9,7 @@ async function userProfileData() {
     const catName = await resp.json();
     console.log(catName);
 
-    const resp1 = await fetch("/user_profile_data");
+    const resp1 = await fetch("/user_profile");
     const userProfile = await resp1.json();
     let catBoxHtml = "";
     let userBoxHtml = "";
@@ -165,7 +165,7 @@ async function userProfileData() {
         const form = e.target;
         const ApplyForm = new FormData(form);
 
-        const resp = await fetch("/apply_form", {
+        const resp = await fetch("/user_apply_submit", {
             method: "POST",
             body: ApplyForm,
         });

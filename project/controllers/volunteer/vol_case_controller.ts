@@ -6,11 +6,11 @@ export class vol_case_controller {
 
     vol_case = async (req: Request, res: Response) => {
         try {
-            const volId: any = req.session.userid;
+            const volId: any = req.session.userId;
 
             const vol_case = await this.vol_case_service.case(volId);
 
-            res.status(200).json(vol_case.rows);
+            res.status(200).json(vol_case);
         } catch (err) {
             console.error(err);
             res.status(400).json({ message: "something wrong with the cases" });
@@ -33,9 +33,7 @@ export class vol_case_controller {
     vol_case_accept = async (req: Request, res: Response) => {
         try {
             const caseId = req.body.caseID;
-            console.log('hi')
-            console.log(caseId);
-
+            
             await this.vol_case_service.case_accept(caseId);
             
 
@@ -80,12 +78,7 @@ export class vol_case_controller {
                 const date = DateAndTime[0];
                 const time = DateAndTime[1];
                 const event = BodyObj.Event;
-                console.log('hi');
-                console.log(caseId);
-                console.log(date);
-                console.log(time);
-                console.log(event);
-
+                
                 await this.vol_case_service.case_edit(caseId, date, time, event);
             }
             

@@ -1,8 +1,6 @@
-// import pg from "pg";
 import type { Knex } from "knex";
 
 export class vol_profile_service {
-    // constructor(private client: pg.Client) {}
     constructor(private knex: Knex) {}
 
     profile = async (volId: number) => {

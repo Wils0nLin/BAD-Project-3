@@ -7,7 +7,7 @@ window.onload = async () => {
 
 async function pendingCaseData(caseID) {
     console.log(caseID);
-    const resp = await fetch(`/pending_case_data/${caseID}`);
+    const resp = await fetch(`/user_apply_info/${caseID}`);
     const pendingCase = await resp.json();
     console.log(pendingCase);
     let catBoxHtml = "";
@@ -68,7 +68,7 @@ async function pendingCaseData(caseID) {
 }
 
 async function getPassEvents(caseID) {
-    const resp = await fetch(`/get_event/${caseID}`);
+    const resp = await fetch(`/user_apply_event/${caseID}`);
 
     const result = await resp.json();
     const lastResult = result[result.length - 1];
@@ -142,8 +142,8 @@ document.querySelector("#user-data").addEventListener("submit", async (e) => {
     const urlSearch = new URLSearchParams(window.location.search).get("caseID");
     const caseID = parseInt(urlSearch);
     console.log(caseID);
-    const resp = await fetch(`/confirm/${caseID}`, {
-        method: "POST",
+    const resp = await fetch(`/user_apply_update/${caseID}`, {
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },

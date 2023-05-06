@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 async function adoptCaseData() {
-    const sResp = await fetch("/apply_status_data");
+    const sResp = await fetch("/user_apply");
     const adoptStatus = await sResp.json();
     console.log(adoptStatus);
     let catAdoptHtml = "";

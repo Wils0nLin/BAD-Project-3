@@ -24,7 +24,7 @@ export class vol_case_service {
             ) x
             where n = 1;
         `);
-        return vol_case;
+        return vol_case.rows;
     };
 
     case_info = async (caseId: number) => {
@@ -63,6 +63,5 @@ export class vol_case_service {
             time: time,
             event: event,
         });
-        console.log('2')
     };
 }

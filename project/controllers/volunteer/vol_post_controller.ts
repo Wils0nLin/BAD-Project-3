@@ -1,5 +1,5 @@
 import formidable from "formidable";
-import { form } from "../../routers/formidable";
+import { form } from "../../utils/formidable";
 import { vol_post_service } from "../../services/volunteer/vol_post_service";
 import { Request, Response } from "express";
 
@@ -8,10 +8,10 @@ export class vol_post_controller {
 
     vol_post = async (req: Request, res: Response) => {
         try {
-            const volId: any = req.session.userid;
+            const volId: any = req.session.userId;
 
             const vol_post = await this.vol_post_service.post(volId);
-
+            
             res.status(200).json(vol_post);
         } catch (err) {
             console.error(err);
@@ -39,7 +39,7 @@ export class vol_post_controller {
     vol_post_create = async (req: Request, res: Response) => {
         try {
             form.parse(req, async (err, fields, files) => {
-                const volId: any = req.session.userid;
+                const volId: any = req.session.userId;
                 const name: any = fields.names;
                 const gender: any = fields.gender;
                 const age: any = fields.age;
@@ -95,7 +95,7 @@ export class vol_post_controller {
             const postId = +req.params.id;
 
             const vol_post = await this.vol_post_service.post_info(postId);
-
+            
             res.status(200).json(vol_post);
         } catch (err) {
             console.error(err);

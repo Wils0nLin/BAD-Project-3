@@ -1,6 +1,5 @@
 import { publicCatController } from "../server";
-import { volLoginController } from "../server";
-import { user_login_Controller } from "../server";
+import { publicLoginController } from "../server";
 import { publicRegisterController } from "../server";
 import { publicForgotController } from "../server";
 
@@ -12,11 +11,9 @@ export const public_main_route = express.Router();
 public_main_route.get("/public_cat", publicCatController.public_cat);
 public_main_route.get("/public_cat_info/:id", publicCatController.public_cat_info);
 
-// from  ../controllers/vol_login_controller.ts
-public_main_route.post("/public_volunteer_login", volLoginController.public_vol_login);
-
-// // from ../controllers/user_login_controller.ts
-public_main_route.post("/user_login", user_login_Controller.user_login);
+// from  ../controllers/public/public_login_controller.ts
+public_main_route.post("/public_user_login", publicLoginController.public_user_login);
+public_main_route.post("/public_volunteer_login", publicLoginController.public_vol_login);
 
 // // from ../controllers/public/public_register_controller.ts
 public_main_route.post("/public_user_register", publicRegisterController.public_user_register);
