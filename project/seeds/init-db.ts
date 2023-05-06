@@ -3,15 +3,11 @@ import { Knex } from "knex";
 export async function seed(knex: Knex): Promise<void> {
     // Deletes ALL existing entries
     // Inserts seed entries
-    const queryResult =await knex.raw( `SELECT form_images.f_image,*, adopt_forms.id AS ad_id FROM adopt_forms
-    INNER JOIN users
-    ON users.id = adopt_forms.user_id
-    INNER JOIN cats
-    ON cats.id = adopt_forms.cat_id
-    INNER JOIN cat_image
-    ON cats.id = cat_image.cat_id
-    JOIN form_images 
-    ON form_images.adopt_forms_id = adopt_forms.id;`)
+    const queryResult = await knex("cats")
+        .select("*", "cats.id")
+        .join("cat_image", "cats.id", "=", "cat_image.cat_id")
+        .where("cats.id", 1);
+
     // u_name: "1",
     // u_email: "2@2",
     // u_birth_date: 20200202,

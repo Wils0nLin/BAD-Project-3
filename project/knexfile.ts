@@ -19,12 +19,13 @@ const config: { [key: string]: Knex.Config } = {
             tableName: "knex_migrations",
         },
     },
-    staging: {
+    test: {
         client: "postgresql",
         connection: {
-            database: "my_db",
-            user: "username",
-            password: "password",
+            host: process.env.POSTGRES_HOST,
+            database: process.env.POSTGRES_DB,
+            user: process.env.POSTGRES_USER,
+            password: process.env.POSTGRES_PASSWORD,
         },
         pool: {
             min: 2,
