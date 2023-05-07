@@ -2,7 +2,7 @@ import type { Knex } from "knex";
 
 export class public_forgot_service {
     constructor(private knex: Knex) {}
-
+    
     user_forgot = async (username: string, phone: string, email: string) => {
         if (!username || !phone || !email) {
             throw new Error("missing information");

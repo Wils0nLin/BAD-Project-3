@@ -56,7 +56,6 @@ export class vol_case_service {
     };
 
     case_edit = async (caseId: number, date: Date, time: string, event: string) => {
-        console.log('1');
         await this.knex("events").select().insert({
             adopt_forms_id: caseId,
             date: date,
