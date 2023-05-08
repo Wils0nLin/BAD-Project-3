@@ -13,16 +13,41 @@ env:
     POSTGRES_HOST: postgres
 
 jobs:
+    testing:
+        runs-on: ubuntu-latest
+        container: node:latest
+        services:
+            postgres:
+                image: postgres:14
+                env:
+                    POSTGRES_HOST: ${{env.POSTGRES_HOST}}
+                    POSTGRES_DB: ${{env.POSTGRES_DB}}
+                    POSTGRES_USER: ${{env.POSTGRES_USER}}
+                    POSTGRES_PASSWORD: ${{env.POSTGRES_PASSWORD}}
+                ports:
+                    - 5432:5432
+        steps:
+            - uses: actions/checkout@v3
+            - run: |
+                  yarn install 
+                  yarn knex migrate:latest --env test
+                  yarn jest
     deploy:
         if: github.ref_name == 'production'
         runs-on: ubuntu-latest
+        needs: testing
         steps:
             - name: ssh to pull latest version
               uses: appleboy/ssh-action@master
               with:
                   script: |
                       cd BAD-Project-3
-                      ls
+                      eval `ssh-agent`
+                      ssh-add ~/.ssh/id_rsa
+                      git pull origin production
+                      yarn install
+                      yarn knex migrate:latest --env production
+                      pm2 restart -c 'node index.js'
                   host: 3.215.58.203 # ip address or your own domain 每次重開server呢到都要改
                   username: ubuntu
                   port: 22
