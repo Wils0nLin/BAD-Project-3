@@ -220,7 +220,7 @@ describe("Service TestCases", () => {
             v_password: "$2a$10$dAl2VHcAddW4CU/wwAE1KeTr0ckNgHD7MZDKWCTswEd43xPb8zEyW",
         });
     });
-
+    
     test("User forgot Password - Login Success", async () => {
         await publicForgotService.user_forgot("user", "88888888", "user@gmail.com");
 

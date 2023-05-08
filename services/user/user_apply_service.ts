@@ -79,7 +79,6 @@ export class user_apply_service {
     };
 
     apply_edit = async (applyId: number, dateId: number) => {
-        console.log(dateId);
         await this.knex("events").select().update({ is_select: "1" }).where("id", dateId);
 
         await this.knex("events")
