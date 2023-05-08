@@ -23,6 +23,7 @@ const config: { [key: string]: Knex.Config } = {
     test: {
         client: "postgresql",
         connection: {
+            host: process.env.POSTGRES_HOST, //暫寫
             database: process.env.TEST_DB_NAME,
             user: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
