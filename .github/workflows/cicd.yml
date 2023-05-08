@@ -35,15 +35,15 @@ jobs:
     deploy:
         if: github.ref_name == 'production'
         runs-on: ubuntu-latest
-        needs: testing
         steps:
             - name: ssh to pull latest version
               uses: appleboy/ssh-action@master
               with:
                   script: |
                       cd BAD-Project-3
+                      ls
                       eval `ssh-agent`
-                       ssh-add ~/./id_rsa
+                      ssh-add ~/./id_rsa
                       git pull origin production
                       yarn install
                       yarn knex migrate:latest --env production
