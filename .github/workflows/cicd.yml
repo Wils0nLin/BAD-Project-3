@@ -7,9 +7,9 @@ on:
     workflow_dispatch:
 
 env:
-    TEST_DB_NAME: cat_platform
-    DB_USERNAME: postgres
-    DB_PASSWORD: postgres
+    POSTGRES_DB: cat_platform
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
     POSTGRES_HOST: postgres
 
 jobs:
@@ -21,9 +21,9 @@ jobs:
                 image: postgres:14
                 env:
                     POSTGRES_HOST: ${{env.POSTGRES_HOST}}
-                    TEST_DB_NAME: ${{env.TEST_DB_NAME}}
-                    DB_USERNAME: ${{env.DB_USERNAME}}
-                    DB_PASSWORD: ${{env.DB_PASSWORD}}
+                    POSTGRES_DB: ${{env.POSTGRES_DB}}
+                    POSTGRES_USER: ${{env.POSTGRES_USER}}
+                    POSTGRES_PASSWORD: ${{env.POSTGRES_PASSWORD}}
                 ports:
                     - 5432:5432
         steps:
