@@ -160,7 +160,7 @@ async function userProfileData() {
 
         if (response.status === 200) {
             const data = await response.json();
-            window.location = "/user_selfProfile.html";
+            window.location = "/user_profile.html";
             console.log(data);
             alert("修改成功");
         } else {

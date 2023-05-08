@@ -52,7 +52,7 @@ async function adoptCaseData() {
                 `;
             } else if (myAdopt.adopt_status == "ACCEPT") {
                 catAdoptHtml += `
-                <a href="user_applicationStatus.html?caseID=${myAdopt.form_id}"><div class="cat-card">
+                <a href="user_apply_info.html?caseID=${myAdopt.form_id}"><div class="cat-card">
                     <img src="${myAdopt.img}" width="200px" class="cat-image">
                     <div class="status-info">
                         <div class="cat-name"><i class="fa-solid fa-paw"></i>${myAdopt.cat_name}</div>

@@ -151,5 +151,5 @@ document.querySelector("#user-data").addEventListener("submit", async (e) => {
     });
 
     const result = await resp.json();
-    window.location = "/user_myApplication.html";
+    window.location = "/user_application.html";
 });

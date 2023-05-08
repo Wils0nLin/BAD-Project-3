@@ -95,7 +95,7 @@ async function userProfileData() {
     <div class="text-box text-box-profile">${userProfile.future_plan}</div>
   </div>
   <div id="submit-box">
-    <a href="user_selfProfileEdit.html"><input type="button" class="dark-button" id="change-button" value="修改資料"></a>
+    <a href="user_profile_update.html"><input type="button" class="dark-button" id="change-button" value="修改資料"></a>
   </div>`;
 
     document.querySelector("#user-name").innerHTML = userNameHtml;

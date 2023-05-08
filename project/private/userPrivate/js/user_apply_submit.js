@@ -171,6 +171,6 @@ async function userProfileData() {
         });
         const result = await resp.json();
 
-        window.location = "../user_myApplication.html";
+        window.location = "../user_application.html";
     });
 }

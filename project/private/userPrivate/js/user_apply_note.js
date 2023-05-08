@@ -11,7 +11,7 @@ async function loadCatIndividualData() {
   console.log(urlSearchParams.get("id"));
   document.querySelector(
     "#form-location"
-  ).innerHTML = ` <a href="user_adoptForm.html?id=${urlSearchParams.get(
+  ).innerHTML = ` <a href="user_apply_submit.html?id=${urlSearchParams.get(
     "id"
   )}"><input type="button" class="dark-button adopt-button" value="確定領養"/></a>`;
 }

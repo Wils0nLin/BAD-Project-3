@@ -98,7 +98,7 @@ async function loadCatIndividualData() {
             </div>
         </div>
     </div>
-    <div><a href="user_adoptNote.html?id=${urlSearchParams.get(
+    <div><a href="user_apply_note.html?id=${urlSearchParams.get(
         "id"
     )}"><input type="submit" class="dark-button" id="adopt-button" value="申請領養"></a></div>
     `;
