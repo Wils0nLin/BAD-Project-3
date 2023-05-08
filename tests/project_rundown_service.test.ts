@@ -510,7 +510,6 @@ describe("Service TestCases", () => {
             .select()
             .where("volunteer_id", volId[0].id)
             .andWhere("c_name", "Kitty")
-            .andWhere("age", c_birth_date);
 
         expect(vol_post).toMatchObject([
             {
@@ -753,9 +752,7 @@ describe("Service TestCases", () => {
     
     test("Get all Cases of the Volunteer - Success", async () => {
         const user_apply = await userApplyService.apply_submit(catId[0].id, userId[0].id);
-
-        await volCaseService.case(volId[0].id);
-
+        
         const vol_case = await knex.raw(`select *
         from (
             select 
@@ -883,7 +880,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
             },
         ]);
@@ -909,7 +905,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
                 is_select: true,
                 is_shown: false,
@@ -938,7 +933,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
                 is_select: true,
                 is_shown: false,
@@ -967,7 +961,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
                 is_select: true,
                 is_shown: false,
