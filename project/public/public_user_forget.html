@@ -13,13 +13,13 @@
     <script src="https://kit.fontawesome.com/e2741782a0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/userFormat.css" />
-    <link rel="stylesheet" href="./css/indexFormat.css" />
-    <title>CAT@Log - 主頁</title>
+    <link rel="stylesheet" href="./css/userLoginFormat.css" />
+    <title>CAT@Log - 用戶驗證</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" id="logo" href="user_index.html">
+            <a class="navbar-brand" id="logo" href="index.html">
                 <div>CAT</div>
                 <div id="logo-a">@</div>
                 <div>Log</div>
@@ -32,43 +32,36 @@
                 </ul>
                 <ul class="navbar-nav" id="nav-button-box">
                     <li class="nav-item nav-button">
-                        <a class="nav-link" href="user_about.html"><i class="fa-solid fa-paw"></i>關於我們</a>
+                        <a class="nav-link" href="public_about.html"><i class="fa-solid fa-paw"></i>關於我們</a>
                     </li>
                     <li class="nav-item nav-button">
-                        <a class="nav-link" href="user_profile.html"><i class="fa-solid fa-paw"></i>我的帳戶</a>
+                        <a class="nav-link" href="public_cat_adopt.html"><i class="fa-solid fa-paw"></i>待領養貓貓</a>
                     </li>
                     <li class="nav-item nav-button">
-                        <a class="nav-link" href="user_cat_adopt.html"><i class="fa-solid fa-paw"></i>待領養貓貓</a>
-                    </li>
-                    <li class="nav-item nav-button">
-                        <a class="nav-link" href="index.html"><i class="fa-solid fa-paw"></i>登出</a>
+                        <a class="nav-link" href="index.html"><i class="fa-solid fa-paw"></i>返回主頁</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <section>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active data-bs-interval="2000">
-                    <a href="user_cat_adopt.html"><img src="./assets/1.jpg" class="d-block w-100 banner" alt="..tem"></a>
-                </div>
-                <div class="carousel-item">
-                    <a href="user_cat_adopt.html"><img src="./assets/2.jpg" class="d-block w-100 banner" alt="..."/></a>
-                </div>
-                <div class="carousel-item">
-                    <a href="user_cat_adopt.html"><img src="./assets/3.jpg" class="d-block w-100 banner" alt="..."/></a>
+
+    <section id="login">
+        <div class="jumbotron d-flex align-items-center">
+            <div class="container">
+                <div class="col-12" id="login-box">
+                    <hi id="page-title">用戶驗證</hi>
+                    <form id="login-form" style="margin-top: 2vh">
+                        <div><i class="fa-solid fa-right-to-bracket"></i>用戶名稱</div>
+                        <input type="text" id="username" class="text-box login-text" name="u_username" placeholder="請輸入用戶名稱">
+                        <div><i class="fa-solid fa-circle-exclamation"></i>如忘記用戶名稱，請聯絡網站管理員</div>
+                        <div style="margin-top: 10px;"><i class="fa-solid fa-phone-flip"></i>電話</div>
+                        <input type="number" id="phone_number" class="text-box login-text" name="u_phone_number" placeholder="請輸入電話">
+                        <div style="margin-top: 10px;"><i class="fa-solid fa-envelope"></i>電郵</div>
+                        <input type="email" id="email" class="text-box login-text" name="u_email" placeholder="請輸入電郵">
+                        <input type="submit" class="dark-button" id="login-button" value="驗證">
+                    </form>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </section>
 
@@ -97,5 +90,7 @@
             </div>
         </div>
     </footer>
+    
+    <script src="./js/public_user_forgot.js"></script>
 </body>
 </html>
