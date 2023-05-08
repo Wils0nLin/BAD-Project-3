@@ -753,28 +753,9 @@ describe("Service TestCases", () => {
     test("Get all Cases of the Volunteer - Success", async () => {
         const user_apply = await userApplyService.apply_submit(catId[0].id, userId[0].id);
         
-        const vol_case = await knex.raw(`select *
-        from (
-            select 
-            cat_image.id AS img_id,
-            cat_image.c_image AS img,
-            adopt_forms.id AS form_id,
-            cats.c_name AS cat_name,
-            adopt_status AS adopt_status,
-            ROW_NUMBER() over(
-                partition by cats.c_name
-                ORDER BY cats.c_name
-                ) n
-            from cats 
-            JOIN adopt_forms ON cats.id = adopt_forms.cat_id
-            JOIN users ON adopt_forms.user_id = users.id
-            JOIN cat_image on cat_image.cat_id = cats.id 
-            where cats.volunteer_id = ${volId[0].id}
-            ) x
-            where n = 1;
-        `);
+        const vol_case = await volCaseService.case(volId[0].id);
 
-        expect(vol_case.rows).toMatchObject([
+        expect(vol_case).toMatchObject([
             {
                 img_id: imgId[0].id,
                 img: "image-1.jpeg",
