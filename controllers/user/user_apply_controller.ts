@@ -34,7 +34,7 @@ export class user_apply_controller {
             const userId: any = req.session.userId;
 
             const vol_apply = await this.user_apply_service.application(userId);
-            
+
             res.status(200).json(vol_apply);
         } catch (err) {
             console.error(err);
@@ -47,7 +47,7 @@ export class user_apply_controller {
             const applyId = +req.params.id;
 
             const vol_apply = await this.user_apply_service.apply_info(applyId);
-            
+
             res.status(200).json(vol_apply);
         } catch (err) {
             console.error(err);
@@ -60,7 +60,7 @@ export class user_apply_controller {
             const applyId = +req.params.id;
 
             const vol_apply = await this.user_apply_service.apply_event(applyId);
-            
+
             res.status(200).json(vol_apply);
         } catch (err) {
             console.error(err);
