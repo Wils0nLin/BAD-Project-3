@@ -42,6 +42,8 @@ jobs:
               with:
                   script: |
                       cd BAD-Project-3
+                      eval `ssh-agent`
+                       ssh-add ~/./id_rsa
                       git pull origin production
                       yarn install
                       yarn knex migrate:latest --env production
