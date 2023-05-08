@@ -47,7 +47,7 @@ jobs:
             yarn install
             yarn knex migrate:latest --env production
             pm2 restart -c 'node index.js'
-          host: 3.215.58.203 # ip address or your own domain 每次重開server呢到都要改
+          host: 52.221.135.54 # ip address or your own domain 每次重開server呢到都要改
           username: ubuntu
           port: 22
           key: ${{secrets.cat_platform}} #.SSH_PRIVATE_KEY 改咩名都得
