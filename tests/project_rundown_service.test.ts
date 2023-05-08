@@ -149,7 +149,6 @@ describe("Service TestCases", () => {
                 u_password: "password",
                 u_name: "New User",
                 u_email: "test@gmail.com",
-                u_birth_date: u_birth_date,
                 u_phone_number: "99999999",
                 u_address: "address",
                 home_size_id: 1,
@@ -186,7 +185,6 @@ describe("Service TestCases", () => {
                 v_password: "password",
                 v_name: "New Volunteer",
                 v_email: "test@gmail.com",
-                v_birth_date: v_birth_date,
                 v_phone_number: "66666666",
                 v_address: "address",
             },
@@ -344,7 +342,6 @@ describe("Service TestCases", () => {
             id: catId[0].id,
             cat_name: "Cat",
             intro: "已絕育",
-            age: c_birth_date,
             gender: "M",
             breed: "Cat",
             characters: "文善",
@@ -364,7 +361,6 @@ describe("Service TestCases", () => {
             u_password: "$2a$10$dAl2VHcAddW4CU/wwAE1KeTr0ckNgHD7MZDKWCTswEd43xPb8zEyW",
             u_name: "User",
             u_email: "user@gmail.com",
-            u_birth_date: u_birth_date,
             u_phone_number: "88888888",
             u_address: "address",
             home_size_id: 1,
@@ -405,7 +401,6 @@ describe("Service TestCases", () => {
                 u_password: "$2a$10$dAl2VHcAddW4CU/wwAE1KeTr0ckNgHD7MZDKWCTswEd43xPb8zEyW",
                 u_name: "User",
                 u_email: "user@gmail.com",
-                u_birth_date: u_birth_date,
                 u_phone_number: "99999999",
                 u_address: "address",
                 home_size_id: 1,
@@ -428,7 +423,6 @@ describe("Service TestCases", () => {
             v_password: "$2a$10$dAl2VHcAddW4CU/wwAE1KeTr0ckNgHD7MZDKWCTswEd43xPb8zEyW",
             v_name: "Volunteer",
             v_email: "volunteer@gmail.com",
-            v_birth_date: v_birth_date,
             v_phone_number: "55555555",
             v_address: "address",
         });
@@ -453,7 +447,6 @@ describe("Service TestCases", () => {
                 v_password: "$2a$10$dAl2VHcAddW4CU/wwAE1KeTr0ckNgHD7MZDKWCTswEd43xPb8zEyW",
                 v_name: "Volunteer",
                 v_email: "volunteer@gmail.com",
-                v_birth_date: v_birth_date,
                 v_phone_number: "66666666",
                 v_address: "address",
             },
@@ -516,14 +509,12 @@ describe("Service TestCases", () => {
         const vol_post = await knex("cats")
             .select()
             .where("volunteer_id", volId[0].id)
-            .andWhere("c_name", "Kitty")
-            .andWhere("age", c_birth_date);
+            .andWhere("c_name", "Kitty");
 
         expect(vol_post).toMatchObject([
             {
                 volunteer_id: volId[0].id,
                 c_name: "Kitty",
-                age: c_birth_date,
                 gender: "F",
                 breed: "Cat",
                 character: "文善",
@@ -605,7 +596,6 @@ describe("Service TestCases", () => {
             {
                 volunteer_id: volId[0].id,
                 c_name: "Kitty",
-                age: c_birth_date,
                 gender: "F",
                 breed: "Cat",
                 character: "文善",
@@ -653,7 +643,6 @@ describe("Service TestCases", () => {
             img: ["image-1.jpeg", "image-2.jpeg", "image-3.jpeg", "image-4.jpeg"],
             cat_name: "Cat",
             intro: "已絕育",
-            age: c_birth_date,
             gender: "M",
             breed: "Cat",
             characters: "文善",
@@ -679,7 +668,6 @@ describe("Service TestCases", () => {
         expect(vol_post).toMatchObject([
             {
                 volunteer_id: volId[0].id,
-                age: c_birth_date,
                 gender: "M",
                 breed: "Kitty",
                 character: "文善",
@@ -811,13 +799,11 @@ describe("Service TestCases", () => {
                 is_allergy: true,
                 smoker: true,
                 is_banned: true,
-                u_birth_date: u_birth_date,
                 knowledge: "knowledge",
                 future_plan: "future plan",
                 volunteer_id: volId[0].id,
                 is_finish: true,
                 intro: "已絕育",
-                age: c_birth_date,
                 c_name: "Cat",
                 gender: "M",
                 breed: "Cat",
@@ -873,7 +859,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
             },
         ]);
@@ -899,7 +884,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
                 is_select: true,
                 is_shown: false,
@@ -928,7 +912,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
                 is_select: true,
                 is_shown: false,
@@ -959,7 +942,6 @@ describe("Service TestCases", () => {
             {
                 event: "家訪",
                 adopt_forms_id: user_apply[0].id,
-                date: event_date,
                 time: "14:13",
                 is_select: true,
                 is_shown: false,
