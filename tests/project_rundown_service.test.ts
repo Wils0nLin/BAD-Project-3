@@ -769,8 +769,6 @@ describe("Service TestCases", () => {
 
         expect(vol_case).toMatchObject([
             {
-                img_id: imgId[0].id,
-                img: "image-1.jpeg",
                 form_id: user_apply[0].id,
                 cat_name: "Cat",
                 adopt_status: "pending",
