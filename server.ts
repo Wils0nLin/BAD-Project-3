@@ -118,7 +118,7 @@ const volMiddleware = (req: Request, res: Response, next: NextFunction) => {
     if (req.session.isLoggedIn) next();
     else res.redirect("/");
 };
-app.use(volMiddleware, express.static(path.join(__dirname, "private", "volPrivate")));
+app.use(volMiddleware, express.static(path.join(__dirname, "private", "VolPrivate")));
 
 // ------------------------------ Error Handling ------------------------------ //
 app.use((_req, res) => {
