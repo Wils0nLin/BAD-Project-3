@@ -17,7 +17,7 @@ async function adoptCaseData() {
                 <div>你尚未收到領養申請</div>
                 <div>去發佈新的貓貓讓更多人認識牠吧</div>
                 <li class="nav-button" id="empty-button">
-                    <a href="vol_createNewCase.html">
+                    <a href="volunteer_post_create.html">
                         <div class="cat-logo"><i class="fa-solid fa-paw"></i></div>
                         發佈新貓貓
                         <div class="cat-logo cat-logo-right"><i class="fa-solid fa-paw"></i></div>
