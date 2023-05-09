@@ -17,7 +17,7 @@ form.addEventListener("submit", async (e) => {
     });
 
     if (resp.status === 200) {
-        window.location = "/user_index.html";
+        window.location = "/user_password_reset.html";
     } else {
         const data = await resp.json();
         alert(data.message);

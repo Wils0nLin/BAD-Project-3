@@ -17,7 +17,7 @@ async function adoptCaseData() {
                 <div>你尚未提出申請領養</div>
                 <div>去看看有哪些貓貓正等待着你吧</div>
                 <li class="nav-button" id="empty-button">
-                    <a href="user_adoptPage.html">
+                    <a href="user_cat_adopt.html">
                         <div class="cat-logo"><i class="fa-solid fa-paw"></i></div>
                         待領養貓貓
                         <div class="cat-logo cat-logo-right"><i class="fa-solid fa-paw"></i></div>
