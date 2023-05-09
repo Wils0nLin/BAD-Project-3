@@ -1,10 +1,10 @@
 window.onload = () => {
-    userProfile();
+    volProfile();
 };
 
 function check_password_again() {
-    const passwordInput = document.getElementById("u_password").value;
-    const confirmInput = document.getElementById("u_password_check").value;
+    const passwordInput = document.getElementById("v_password").value;
+    const confirmInput = document.getElementById("v_password_check").value;
 
     if (passwordInput != confirmInput) {
         alert("兩次密碼須一致");
@@ -13,8 +13,8 @@ function check_password_again() {
     }
 }
 
-async function userProfile() {
-    const resp = await fetch("/user_profile");
+async function volProfile() {
+    const resp = await fetch("/volunteer_profile");
     const profile = await resp.json();
     console.log(profile);
 
@@ -23,7 +23,7 @@ async function userProfile() {
 
     userNameHtml = `
     <div class="info-title"><i class="fa-solid fa-user-check"></i>用戶姓名</div>
-    <div class="text-box text-box-spread">${profile.u_username}</div>
+    <div class="text-box text-box-spread">${profile.v_username}</div>
     `;
 
     document.querySelector("#user-name").innerHTML = userNameHtml;
@@ -33,12 +33,12 @@ async function userProfile() {
     formData.addEventListener("submit", async (event) => {
         event.preventDefault();
         const formData = event.target;
-        const password = formData.u_password.value;
+        const password = formData.v_password.value;
         let formObject = {
             password,
         };
         
-        const response = await fetch(`/public_user_reset`, {
+        const response = await fetch(`/public_volunteer_reset`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formObject),
@@ -46,7 +46,7 @@ async function userProfile() {
 
         if (response.status === 200) {
             const data = await response.json();
-            window.location = "/public_user_login.html";
+            window.location = "/public_volunteer_login.html";
 
             alert("修改成功");
         } else {

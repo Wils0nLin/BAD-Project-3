@@ -41,7 +41,7 @@ export class public_forgot_controller {
         try {
             const userId: any = req.session.userId;
             const password = req.body.password;
-
+            
             let passwordH = await hashPassword(password);
 
             await this.public_forgot_service.user_reset(
