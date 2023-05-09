@@ -14,7 +14,7 @@ form.addEventListener("submit", async (e) => {
     });
 
     if (resp.status === 200) {
-        window.location = "/volunteer_password_reset.html";
+        window.location = "/public_volunteer_reset.html";
     } else {
         const data = await resp.json();
         alert(data.message);
