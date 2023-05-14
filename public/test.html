@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form name="AI-cat" id="AI-cat">
+            <input type="file" name="image" />
+            <input type="submit" />
+        </form>
+    </body>
+    <script>
+        document
+            .querySelector('#AI-cat')
+            .addEventListener('submit', async (e) => {
+                e.preventDefault()
+                const form = e.target
+
+                const formObject = new FormData(form)
+
+                const resp = await fetch('/predict', {
+                    method: 'POST',
+                    body: formObject,
+                })
+                const result = await resp.json()
+                console.log(result)
+            })
+    </script>
+</html>
