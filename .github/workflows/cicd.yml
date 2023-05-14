@@ -39,7 +39,7 @@ jobs:
         steps:
             - name: Unzip Python Server and AI Model
               run: |
-                  unzip -o BAD-Project-3/pythonServer.zip -d BAD-Project-3
+                  unzip -q pythonServer.zip -d pythonServer
               working-directory: .
             - name: ssh to pull latest version
               uses: appleboy/ssh-action@master
