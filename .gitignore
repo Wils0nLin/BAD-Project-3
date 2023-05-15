@@ -6,7 +6,7 @@ pythonServer/tf_python
 pythonServer/model_2
 
 .DS_Store
-upload
+uploads
 .python-version
 test_model
 model2

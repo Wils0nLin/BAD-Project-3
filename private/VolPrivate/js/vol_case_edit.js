@@ -189,22 +189,22 @@ async function getPassEvents(caseID) {
     document.querySelector("#old-event").innerHTML = "";
 
     newEventHtml = `
-  <div><i class="fa-solid fa-paw" id="new-logo"></i>已安排${new Date(
+  <div><i class="fa-solid fa-paw" id="new-logo"></i> <label for="text-fade" class="u-label u-label-14">已安排${new Date(
       lastResult.date
   ).getFullYear()}年${new Date(lastResult.date).getMonth() + 1}月${new Date(
         lastResult.date
-    ).getDate()}日進行${lastResult.event}</div>
+    ).getDate()}日進行${lastResult.event}</label></div>
   <i class="fa-solid fa-arrow-up"></i>
   `;
 
     for (let i = 0; i < result.length - 1; i++) {
         oldEventHtml += `
       <div>
-          <div><i class="fa-solid fa-paw" id="old-logo"></i>已安排${new Date(
+          <div><i class="fa-solid fa-paw" id="old-logo"></i> <label for="text-fade" class="u-label u-label-14">已安排${new Date(
               result[i].date
           ).getFullYear()}年${new Date(result[i].date).getMonth() + 1}月${new Date(
             result[i].date
-        ).getDate()}日進行${result[i].event}</div>
+        ).getDate()}日進行${result[i].event}</label></div>
           <i class="fa-solid fa-arrow-up"></i>
       </div>
       `;

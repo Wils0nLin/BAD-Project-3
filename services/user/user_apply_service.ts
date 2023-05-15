@@ -50,12 +50,16 @@ export class user_apply_service {
             events.id,
             events.date,
             events.time,
+            cats.id AS cat_id,
             cats.age,
             cats.gender,
             cats.c_name,
             cat_image.c_image,
             cats.breed AS breed,
             events.event,
+            volunteers.v_name,
+            volunteers.v_phone_number,
+            volunteers.v_email,
             ROW_NUMBER() over( 
                 partition BY events.id 
                 ORDER BY events.id 
@@ -63,7 +67,8 @@ export class user_apply_service {
             FROM events
             JOIN adopt_forms ON adopt_forms_id = adopt_forms.id
             JOIN cats ON cats.id = adopt_forms.cat_id
-            JOIN cat_image ON cat_image.cat_id = cats.id 
+            JOIN cat_image ON cat_image.cat_id = cats.id
+            JOIN volunteers ON cats.volunteer_id = volunteers.id
             WHERE adopt_forms_id = ${applyId}
             ) x
             WHERE n = 1;
