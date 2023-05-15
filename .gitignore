@@ -1,0 +1,12 @@
+node_modules
+
+.DS_Store
+.python-version
+pythonServer/tf_python
+pythonServer/model_2
+
+.DS_Store
+upload
+.python-version
+
+.env
