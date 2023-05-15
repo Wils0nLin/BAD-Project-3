@@ -1,134 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/e2741782a0.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/volFormat.css" />
-    <link rel="stylesheet" href="./css/volAdoptProfileFormat.css" />
-    <title>CAT@Log - 我的待領養貓貓資料</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" id="logo" href="volunteer_index.html">
-                <div>CAT</div>
-                <div id="logo-a">@</div>
-                <div>Log</div>
-            </a>
-            <button class="navbar-toggler light-button" id="light-button-login" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                </ul>
-                <ul class="navbar-nav" id="nav-button-box">
-                    <li class="nav-item nav-button">
-                        <a class="nav-link" href="volunteer_about.html"><i class="fa-solid fa-paw"></i>關於我們</a>
-                    </li>
-                    <li class="nav-item nav-button">
-                        <a class="nav-link" href="volunteer_profile.html"><i class="fa-solid fa-paw"></i>我的帳戶</a>
-                    </li>
-                    <li class="nav-item nav-button">
-                        <a class="nav-link" href="volunteer_cat_adopt.html"><i class="fa-solid fa-paw"></i>待領養貓貓</a>
-                    </li>
-                    <li class="nav-item nav-button">
-                        <a class="nav-link" href="index.html"><i class="fa-solid fa-paw"></i>登出</a>
-                    </li>
-                </ul>
+<html style="font-size: 16px" lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta name="keywords" content="​Cat, ​貓貓資料​, ​​簡介" />
+        <meta name="description" content="" />
+        <title>CAT@Log - 待領養貓貓資料</title>
+        <link rel="stylesheet" href="./css/volunteer_nicepage.css" media="screen" />
+        <link rel="stylesheet" href="./css/volunteer_case_update.css" media="screen" />
+        <script src="https://kit.fontawesome.com/e2741782a0.js" crossorigin="anonymous"></script>
+        <script class="u-script" type="text/javascript" src="./js/jquery.js" defer=""></script>
+        <script class="u-script" type="text/javascript" src="./js/nicepage.js" defer=""></script>
+        <meta name="generator" content="Nicepage 5.9.10, nicepage.com" />
+        <meta name="referrer" content="origin" />
+        <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"/>
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                "name": "public",
+                "logo": "images/TEST-removebg-preview.png",
+                "sameAs": [
+                    "https://www.facebook.com/",
+                    "https://twitter.com/",
+                    "https://www.instagram.com/",
+                    "https://hk.linkedin.com/"
+                ]
+            }
+        </script>
+        <meta name="theme-color" content="#478ac9" />
+        <meta name="twitter:site" content="@" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="volunteer_case_update" />
+        <meta name="twitter:description" content="" />
+        <meta property="og:title" content="volunteer_case_update" />
+        <meta property="og:type" content="website" />
+        <meta data-intl-tel-input-cdn-path="intlTelInput/" />
+    </head>
+    <body class="u-body u-white u-xl-mode" data-lang="en">
+        <header class="u-clearfix u-header u-header" id="sec-9356">
+            <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+                <a href="volunteer_index.html" class="u-image u-logo u-image-1" data-image-width="918" data-image-height="245" title="volunteer_index">
+                    <img src="./assets/public_logo.png" class="u-logo-image u-logo-image-1"/>
+                </a>
+                <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+                    <div class="menu-collapse" style="font-size: 1.6875rem; letter-spacing: 0px; font-weight: 700;">
+                        <a class="u-button-style u-custom-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+                            <svg class="u-svg-link" viewBox="0 0 24 24">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+                            </svg>
+                            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <rect y="1" width="16" height="2"></rect>
+                                    <rect y="7" width="16" height="2"></rect>
+                                    <rect y="13" width="16" height="2"></rect>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="u-custom-menu u-nav-container">
+                        <ul class="u-nav u-unstyled u-nav-1">
+                            <li class="u-nav-item">
+                                <a class="u-button-style u-nav-link u-text-active-custom-color-4 u-text-custom-color-4 u-text-hover-custom-color-3" href="volunteer_about.html" style="padding: 10px 20px"><i class="fa-solid fa-paw"></i> 關於我們</a>
+                            </li>
+                            <li class="u-nav-item">
+                                <a class="u-button-style u-nav-link u-text-active-custom-color-4 u-text-custom-color-4 u-text-hover-custom-color-3" href="volunteer_profile.html" style="padding: 10px 20px"><i class="fa-solid fa-paw"></i> 我的帳戶</a>
+                            </li>
+                            <li class="u-nav-item">
+                                <a class="u-button-style u-nav-link u-text-active-custom-color-4 u-text-custom-color-4 u-text-hover-custom-color-3" href="volunteer_cat_adopt.html" style="padding: 10px 20px"><i class="fa-solid fa-paw"></i> 待領養貓貓</a>
+                            </li>
+                            <li class="u-nav-item">
+                                <a class="u-button-style u-nav-link u-text-active-custom-color-4 u-text-custom-color-4 u-text-hover-custom-color-3" href="index.html" style="padding: 10px 20px"><i class="fa-solid fa-paw"></i> 登出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="u-custom-menu u-nav-container-collapse">
+                        <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                            <div class="u-inner-container-layout u-sidenav-overflow">
+                                <div class="u-menu-close"></div>
+                                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                                    <li class="u-nav-item">
+                                        <a class="u-button-style u-nav-link" href="volunteer_about.html"><i class="fa-solid fa-paw"></i> 關於我們</a
+                                        >
+                                    </li>
+                                    <li class="u-nav-item">
+                                        <a class="u-button-style u-nav-link" href="volunteer_profile.html"><i class="fa-solid fa-paw"></i> 我的帳戶</a>
+                                    </li>
+                                    <li class="u-nav-item">
+                                        <a class="u-button-style u-nav-link" href="volunteer_cat_adopt.html"><i class="fa-solid fa-paw"></i> 待領養貓貓</a>
+                                    </li>
+                                    <li class="u-nav-item">
+                                        <a class="u-button-style u-nav-link" href="index.html"><i class="fa-solid fa-paw"></i> 登出</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                    </div>
+                </nav>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <section id="adopt">
-        <div class="jumbotron d-flex align-items-center">
-            <div class="container">
-                <div class="col-12" id="content-box">
-                    <hi id="page-title">我的領養進度</hi>
-                    <div id="adopt-content" style="margin-top: 2vh">
-                        <div id="cat-data"></div>
-                        <form id="user-data">
-                            <div id="apply-detail">
-                                <div id="user-data-spread"></div>
-                                <p style="width: 20px"></p>
-                                <div id="cat-event-detail">
-                                    <div>
-                                        <div><i class="fa-solid fa-list"></i>請選擇日程內容及日期予申請者選擇：<button class="dark-button" id="data-button">增加</button></div>
-                                        <div id="date-box">
-                                            <div>
-                                                <div id="event-box">
-                                                    <select name="event" id="event" class="text-box text-box-spread">
-                                                        <option value="家訪">家訪</option>
-                                                        <option value="睇貓">睇貓</option>
-                                                        <option value="領養">領養</option>
-                                                    </select>  
-                                                </div>
-                                                <div id="date-title">
-                                                    <i class="fa-solid fa-calendar-days"></i>日期
-                                                </div>
-                                                <input type="datetime-local" name="date" id="date" class="text-box text-box-profile" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="margin-top: 10px;">
-                                        <div><i class="fa-solid fa-list"></i>領養進度</div>
-                                        <div id="data-col-event">
-                                            <div id="new-event"></div>
-                                            <div id="old-event"></div>
-                                            <div id="first-event">
-                                                <div><i class="fa-solid fa-paw" id="old-logo"></i>已接受申請</div>
-                                            </div>
-                                        </div>
-                                    </div>
+        <section class="u-clearfix u-custom-color-6 u-section-1" id="sec-af8e">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-shape u-shape-svg u-text-custom-color-2 u-shape-1">
+                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 150" style="">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1073"></use>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 160 150" x="0px" y="0px" id="svg-1073">
+                        <path d="M43.2,126.9c14.2,1.3,27.6,7,39.1,15.6c8.3,6.1,19.4,10.3,32.7,5.3c11.7-4.4,18.6-17.4,21-30.2c2.6-13.3,8.1-25.9,15.7-37.1
+c8.3-12.1,10.8-27.9,5.3-42.7C150.5,20.3,134.6,9,117,7.6C107.9,6.9,98.8,5,90.1,1.9C83-0.6,75-0.7,67.4,2.1
+c-9.9,3.7-17,11.6-20.1,21c-3.3,10.1-10.9,18-20.6,22.2c-0.1,0-0.1,0.1-0.2,0.1c-20.3,8.9-31,32-24.6,53.2
+C6.9,115.6,25.2,125.2,43.2,126.9z"></path>
+                    </svg>
+                </div>
+                <div class="u-align-left u-image u-image-circle u-preserve-proportions u-image-1" data-image-width="1920" data-image-height="1280"></div>
+                <div class="u-custom-color-5 u-shape u-shape-circle u-shape-2"></div>
+                <div
+                    class="u-form u-hidden-md u-hidden-sm u-hidden-xs u-radius-10 u-white u-form-1"
+                >
+                    <div class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" name="form" style="padding: 28px">
+                        <p class="u-align-center u-form-group u-form-text u-text u-text-1">&nbsp;​​​申請者資料</p>
+                        <div class="u-form-group u-form-group-2" id="user-name">
+                            <label class="u-label u-label-1"><i class="fa-solid fa-user-check"></i> 姓名</label>
+                            <input type="text" placeholder="請輸入姓名" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-1" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3" id="user-birth">
+                            <label class="u-label u-label-2"><i class="fa-solid fa-calendar-days"></i> 出生日期</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-2" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4" id="user-phone">
+                            <label class="u-label u-label-3"><i class="fa-solid fa-phone-flip"></i> 電話</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-3" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-email u-form-group u-form-group-5" id="user-email">
+                            <label class="u-label u-label-4"><i class="fa-solid fa-envelope"></i> 電郵</label>
+                            <input type="email" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-4" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-group-6" id="user-address">
+                            <label class="u-label u-label-5"><i class="fa-solid fa-location-dot"></i> 地址</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-7">
+                            <label class="u-label u-label-6"><i class="fa-solid fa-house-chimney"></i> 居住尺數</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-8">
+                            <label for="select-1653" class="u-label u-label-7"><i class="fa-solid fa-sack-dollar"></i> 家庭總收入</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-input-layout-horizontal u-form-partition-factor-2 u-form-radiobutton u-form-group-9" id="user-exp">
+                            <label class="u-label u-label-8"><i class="fa-solid fa-paw"></i> 是否有養貓經驗？</label>
+                            <div class="u-form-radio-button-wrapper">
+                                <div class="u-input-row">
+                                    <input type="radio" name="exp" value="1" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">有</label>
+                                </div>
+                                <div class="u-input-row">
+                                    <input type="radio" name="exp" value="0" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
                                 </div>
                             </div>
-                            <div id="edit-box" style="margin-top: 10px;">
-                                <a href="volunteer_cat_adopt.html"><input type="submit" class="dark-button" name="status" id="APPLY" value="更新領養進度"></a>
-                                <a href="volunteer_cat_adopt.html"><input type="submit" class="dark-button" name="status" id="Reject" value="中止領養申請"></a>
-                                <a href="volunteer_cat_adopt.html"><input type="submit" class="dark-button" name="status" id="Finish" value="完成領養"></a>  
+                        </div>
+                        <div class="u-form-group u-form-input-layout-horizontal u-form-partition-factor-2 u-form-radiobutton u-form-group-10" id="user-pet">
+                            <label class="u-label u-label-9"><i class="fa-solid fa-cat"></i> 是否有貓及其他寵物？</label>
+                            <div class="u-form-radio-button-wrapper">
+                                <div class="u-input-row">
+                                    <input type="radio" name="existedPet" value="1" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">有</label>
+                                </div>
+                                <div class="u-input-row">
+                                    <input type="radio" name="existedPet" value="0" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="u-form-group u-form-input-layout-horizontal u-form-partition-factor-2 u-form-radiobutton u-form-group-11" id="user-smoke">
+                            <label class="u-label u-label-10"><i class="fa-solid fa-joint"></i> 有否吸煙？</label>
+                            <div class="u-form-radio-button-wrapper">
+                                <div class="u-input-row">
+                                    <input type="radio" name="smoker" value="1" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">有</label>
+                                </div>
+                                <div class="u-input-row">
+                                    <input type="radio" name="smoker" value="0" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-form-group u-form-input-layout-horizontal u-form-partition-factor-2 u-form-radiobutton u-form-group-12" id="user-health">
+                            <label class="u-label u-label-11"><i class="fa-solid fa-stethoscope"></i> 呼吸系統疾病？</label>
+                            <div class="u-form-radio-button-wrapper">
+                                <div class="u-input-row">
+                                    <input type="radio" name="isAllergy" value="1" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">有</label>
+                                </div>
+                                <div class="u-input-row">
+                                    <input type="radio" name="isAllergy" value="0" class="u-field-input"/>
+                                    <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-form-group u-form-textarea u-form-group-13" id="user-know">
+                            <label class="u-label u-label-12"><i class="fa-solid fa-shield-cat"></i> 對貓隻護理及知識的認識</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-group-14" id="user-plan">
+                            <label for="text-b7d4" class="u-label u-label-13"><i class="fa-solid fa-laptop-file"></i> 會否將貓貓例入你未來的計劃內</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+                        </div>
+                        <div class="u-form-group u-form-group-14" id="user-home">
+                            <label for="text-b7d4" class="u-label u-label-13"><i class="fa-solid fa-file-image"></i> 申請者家居情況</label>
+                            <input type="text" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+                        </div>
+                        <div class="u-align-right u-form-group u-form-submit">
+                            <a class="u-active-custom-color-7 u-border-2 u-border-active-custom-color-7 u-border-custom-color-2 u-border-hover-custom-color-7 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-2 u-hover-custom-color-7 u-radius-10 u-btn-1"
+                            >完成領養</a>
+                            <input
+                                type="submit"
+                                value="submit"
+                                class="u-form-control-hidden"
+                            />
+                        </div>
+                        <input
+                            type="hidden"
+                            value=""
+                            name="recaptchaResponse"
+                        />
+                        <input
+                            type="hidden"
+                            name="formServices"
+                            value="0cbf09e668e1579b8641fb0f45958b5d"
+                        />
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="jumbotron d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="slogan">「支持領養等於拯救生命」</div>
-                                <div id="slogan-text">拯救來自繁殖埸及被遺棄的貓貓，給貓貓們一個永遠的家</div>
-                            </div>
-                            <div class="col-md-3 offset-md-3">
-                                <div id="social-title">聯絡我們</div>
-                                <div style="display: flex">
-                                    <div class="social-icons"><i class="bi bi-facebook"></i></div>
-                                    <div class="social-icons"><i class="bi bi-instagram"></i></div>
-                                    <div class="social-icons"><i class="bi bi-twitter"></i></div>
-                                    <div class="social-icons"><i class="bi bi-envelope-fill"></i></i></div>
+                <div
+                    class="u-align-center u-container-style u-custom-color-5 u-expanded-width-xs u-group u-radius-20 u-shape-round u-group-1"
+                    data-animation-name="customAnimationIn"
+                    data-animation-duration="1750"
+                    data-animation-delay="500"
+                >
+                    <div class="u-container-layout u-container-layout-1" id="cat-info"></div>
+                </div>
+                <a
+                    href="#"
+                    class="u-active-custom-color-3 u-border-2 u-border-active-custom-color-3 u-border-custom-color-2 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-10 u-btn-2"
+                >
+                    中止領養申請</a
+                >
+                <div class="u-expanded-width-sm u-expanded-width-xs u-form u-radius-20 u-white u-form-2"
+                >
+                    <form class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" name="form" style="padding: 28px">
+                        <p class="u-align-left u-form-group u-form-text u-text u-text-6"><i class="fa-solid fa-list"></i> ​請選擇日​程內容及日期予申請者選擇：<button id="data-button">增加</button></p>
+                        <div class="u-form-group u-form-group-17">
+                            <div id="date-box">
+                                <div>
+                                    <div id="event-box">
+                                        <select name="event" id="event" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-10">
+                                            <option value="家訪">家訪</option>
+                                            <option value="睇貓">睇貓</option>
+                                            <option value="領養">領養</option>
+                                        </select>  
+                                    </div>
+                                    <div id="date-title">
+                                        <i class="fa-solid fa-calendar-days"></i> <label for="text-fade" class="u-label u-label-14">日期</label>
+                                    </div>
+                                    <input type="datetime-local" name="date" id="date" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-10" value="">
+                                    <p></p>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="u-align-right u-form-group u-form-submit">
+                            <a class="u-active-custom-color-7 u-border-2 u-border-active-custom-color-7 u-border-custom-color-2 u-border-hover-custom-color-7 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-2 u-hover-custom-color-7 u-radius-10 u-btn-3">更新領養進度</a>
+                            <input type="submit" value="submit" class="u-form-control-hidden" id="APPLY"/>
+                        </div>
+                        <input type="hidden" value="" name="recaptchaResponse"/>
+                        <input type="hidden" name="formServices" value="0cbf09e668e1579b8641fb0f45958b5d"/>
+                    </form>
+                </div>
+                <div class="u-expanded-width-sm u-expanded-width-xs u-form u-radius-20 u-white u-form-3">
+                    <div class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" name="form" style="padding: 28px">
+                        <p class="u-align-left u-form-group u-form-text u-text u-text-7"><i class="fa-solid fa-list"></i> ​領養進度</p>
+                        <div id="data-col-event">
+                            <div id="new-event"></div>
+                            <div id="old-event"></div>
+                            <div id="first-event">
+                                <div><i class="fa-solid fa-paw" id="old-logo"></i> <label for="text-fade" class="u-label u-label-14">已接受申請</label></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <script src="./js/vol_case_edit.js"></script>
-  
-</body>
+        </section>
+
+        <footer class="u-align-center-md u-align-center-sm u-align-center-xs u-clearfix u-custom-color-4 u-footer" id="sec-efd3">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <a href="volunteer_index.html" class="u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="918" data-image-height="245" title="volunteer_index">
+                    <img src="./assets/public_logo.png" class="u-logo-image u-logo-image-1"/>
+                </a>
+                <p class="u-align-center-lg u-align-center-md u-align-center-xl u-text u-text-1">
+                    <span style="font-size: 1.5rem">「支持領養等於拯救生命」</span>
+                    <br />
+                    <span style="font-size: 0.75rem">拯救來自繁殖埸及被遺棄的貓貓，給貓貓們一個永遠的家</span>
+                    <br />
+                </p>
+                <div class="u-align-left u-social-icons u-spacing-10 u-social-icons-1">
+                    <a class="u-social-url" title="facebook" target="_blank" href="https://www.facebook.com/">
+                        <span class="u-icon u-social-facebook u-social-icon u-icon-1">
+                            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style="">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-aff0"></use>
+                            </svg>
+                            <svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-aff0">
+                                <circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle>
+                                <path fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
+      c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a class="u-social-url" title="twitter" target="_blank" href="https://twitter.com/">
+                        <span class="u-icon u-social-icon u-social-twitter u-icon-2">
+                            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style="">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-a58f"></use>
+                            </svg>
+                            <svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-a58f">
+                                <circle fill="currentColor" class="st0" cx="56.1" cy="56.1" r="55"></circle>
+                                <path fill="#FFFFFF" d="M83.8,47.3c0,0.6,0,1.2,0,1.7c0,17.7-13.5,38.2-38.2,38.2C38,87.2,31,85,25,81.2c1,0.1,2.1,0.2,3.2,0.2
+      c6.3,0,12.1-2.1,16.7-5.7c-5.9-0.1-10.8-4-12.5-9.3c0.8,0.2,1.7,0.2,2.5,0.2c1.2,0,2.4-0.2,3.5-0.5c-6.1-1.2-10.8-6.7-10.8-13.1
+      c0-0.1,0-0.1,0-0.2c1.8,1,3.9,1.6,6.1,1.7c-3.6-2.4-6-6.5-6-11.2c0-2.5,0.7-4.8,1.8-6.7c6.6,8.1,16.5,13.5,27.6,14
+      c-0.2-1-0.3-2-0.3-3.1c0-7.4,6-13.4,13.4-13.4c3.9,0,7.3,1.6,9.8,4.2c3.1-0.6,5.9-1.7,8.5-3.3c-1,3.1-3.1,5.8-5.9,7.4
+      c2.7-0.3,5.3-1,7.7-2.1C88.7,43,86.4,45.4,83.8,47.3z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a class="u-social-url" title="instagram" target="_blank" href="https://www.instagram.com/">
+                        <span class="u-icon u-social-icon u-social-instagram u-icon-3">
+                            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style="">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2949"></use>
+                            </svg>
+                            <svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-2949">
+                                <circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle>
+                                <path fill="#FFFFFF" d="M55.9,38.2c-9.9,0-17.9,8-17.9,17.9C38,66,46,74,55.9,74c9.9,0,17.9-8,17.9-17.9C73.8,46.2,65.8,38.2,55.9,38.2
+      z M55.9,66.4c-5.7,0-10.3-4.6-10.3-10.3c-0.1-5.7,4.6-10.3,10.3-10.3c5.7,0,10.3,4.6,10.3,10.3C66.2,61.8,61.6,66.4,55.9,66.4z"></path>
+                                <path fill="#FFFFFF" d="M74.3,33.5c-2.3,0-4.2,1.9-4.2,4.2s1.9,4.2,4.2,4.2s4.2-1.9,4.2-4.2S76.6,33.5,74.3,33.5z"></path>
+                                <path fill="#FFFFFF" d="M73.1,21.3H38.6c-9.7,0-17.5,7.9-17.5,17.5v34.5c0,9.7,7.9,17.6,17.5,17.6h34.5c9.7,0,17.5-7.9,17.5-17.5V38.8
+      C90.6,29.1,82.7,21.3,73.1,21.3z M83,73.3c0,5.5-4.5,9.9-9.9,9.9H38.6c-5.5,0-9.9-4.5-9.9-9.9V38.8c0-5.5,4.5-9.9,9.9-9.9h34.5
+      c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a class="u-social-url" title="linkedin" target="_blank" href="https://hk.linkedin.com/" >
+                        <span class="u-icon u-social-icon u-social-linkedin u-icon-4">
+                            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style="">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-86ab"></use>
+                            </svg>
+                            <svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-86ab">
+                                <circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle>
+                                <path fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
+      C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
+      H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script src="./js/vol_case_edit.js"></script>
+    </body>
 </html>

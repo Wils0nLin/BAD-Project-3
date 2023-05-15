@@ -2,7 +2,36 @@
   width: 500px;
 }
 
+#old-event {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 400px;
+}
+
+#new-logo {
+  padding: 7px;
+  border-radius: 20px;
+  background-color: rgb(104, 74, 34);
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 8px 16px 0px rgb(0, 0, 0, 0.2);
+}
+
+#old-logo {
+  padding: 7px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.fa-arrow-up {
+  margin: 5px;
+  margin-left: 6px;
+  font-size: 1.3em;
+  color: #474747;
+}
+
 .u-section-1 {
+  min-height: 1700px;
   background-image: none;
 }
 
