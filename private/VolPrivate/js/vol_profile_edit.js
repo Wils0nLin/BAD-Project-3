@@ -3,51 +3,65 @@ window.onload = () => {
 };
 
 async function volProfileData() {
-  const resp = await fetch("/volunteer_profile");
-  const volProfile = await resp.json();
-  console.log(volProfile);
-  let volNameHtml = "";
-  let volBoxHtml = "";
-  document.querySelector("#vol-name").innerHTML = "";
-  document.querySelector("#vol-info").innerHTML = "";
+    const resp = await fetch("/volunteer_profile");
+    const volProfile = await resp.json();
+    
+    let volNameHtml = "";
+    let formNameHtml = "";
+    let formBirthHtml = "";
+    let formPhoneHtml = "";
+    let formEmailHtml = "";
+    let formAddressHtml = "";
+    document.querySelector("#vol-name").innerHTML = "";
+    document.querySelector("#form-name").innerHTML = "";
+    document.querySelector("#form-birth").innerHTML = "";
+    document.querySelector("#form-phone").innerHTML = "";
+    document.querySelector("#form-email").innerHTML = "";
+    document.querySelector("#form-address").innerHTML = "";
 
-  const v_birth_date = volProfile.v_birth_date.substring(0,10);
-  
-  volNameHtml = `<div class="info-title"><i class="fa-solid fa-user-check"></i>用戶姓名</div>
-    <input type="text" class="text-box text-box-spread  text-box-name" value="${volProfile.v_name}"  name="v_name">`;
+    const v_birth_date = volProfile.v_birth_date.substring(0, 10);
 
-    volBoxHtml = `<div class="data-col">
-        <div class="info-title"><i class="fa-solid fa-envelope"></i>電郵地址</div>  
-            <input type="text" class="text-box text-box-profile" name="v_email" value="${volProfile.v_email}">  
-        </div>
-        <div class="data-col data-col-spread">
-            <div>
-                <div class="info-title"><i class="fa-solid fa-calendar-days"></i>出生日期</div>
-                <input type="date" class="text-box text-box-spread" name="v_birth_date" value="${v_birth_date}" >
-            </div>
-            <div id="data-col-right">
-                <div class="info-title"><i class="fa-solid fa-phone-flip"></i>電話號碼</div>
-                <input type="text" class="text-box text-box-spread" name="v_phone_number" value="${volProfile.v_phone_number}">
-            </div>
-        </div>
-    <div class="data-col">
-        <div class="info-title"><i class="fa-solid fa-location-dot"></i>用戶地址</div>
-        <input type="text" class="text-box text-box-profile" name="v_address" value="${volProfile.v_address}">
-    </div>
-    <div id="edit-box">
-    <input type="submit" class="dark-button" id="change-button" value="提交修改">
-  </div>`;
+    volNameHtml = `${volProfile.v_name}`;
 
-  document.querySelector("#vol-name").innerHTML = volNameHtml;
-  document.querySelector("#vol-info").innerHTML = volBoxHtml;
+    formNameHtml = `
+    <label class="u-label u-label-1"><i class="fa-solid fa-user-check"></i> 姓名</label>
+    <input type="text" value="${volProfile.v_name}" id="v_name" name="v_name" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-1" required="required"/>
+    `;
 
-  const formData = document.querySelector("#vol-info");
+    formBirthHtml = `
+    <label class="u-label u-label-2"><i class="fa-solid fa-calendar-days"></i> 出生日期</label>
+    <input type="date" value="${v_birth_date}" id="v_birth_date" name="v_birth_date" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-2" required="" data-date-format="dd/mm/yyyy"/>
+    `;
+
+    formPhoneHtml = `
+    <label class="u-label u-label-3"><i class="fa-solid fa-phone-flip"></i> 電話</label>
+    <input type="number" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" value="${volProfile.v_phone_number}" id="v_phone_number" name="v_phone_number" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-3" required=""/>
+    `;
+
+    formEmailHtml = `
+    <label class="u-label u-label-4"><i class="fa-solid fa-envelope"></i> 電郵</label>
+    <input type="email" value="${volProfile.v_email}" id="v_email" name="v_email" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-4" required="required"/>
+    `;
+
+    formAddressHtml = `
+    <label for="text-2557" class="u-label u-label-5"><i class="fa-solid fa-location-dot"></i> 地址</label>
+    <input type="text" value="${volProfile.v_address}" id="v_address" name="v_address" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" required="required"/>
+    `;
+    
+    document.querySelector("#vol-name").innerHTML = volNameHtml;
+    document.querySelector("#form-name").innerHTML = formNameHtml;
+    document.querySelector("#form-birth").innerHTML = formBirthHtml;
+    document.querySelector("#form-phone").innerHTML = formPhoneHtml;
+    document.querySelector("#form-email").innerHTML = formEmailHtml;
+    document.querySelector("#form-address").innerHTML = formAddressHtml;
+
+    const formData = document.querySelector("#edit-form");
 
     formData.addEventListener("submit", async (event) => {
         event.preventDefault();
-        // console.log("click");
+        
         const formData = event.target;
-        const v_name = document.querySelector(".text-box-name").value;
+        const v_name = formData.v_name.value;
         const v_email = formData.v_email.value;
         const v_birth_date = formData.v_birth_date.value;
         const v_phone_number = formData.v_phone_number.value;
@@ -60,8 +74,7 @@ async function volProfileData() {
             v_phone_number,
             v_address,
         };
-
-        // console.log(volProfile.id);
+        
         const response = await fetch(`/volunteer_profile_update/${volProfile.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },

@@ -6,143 +6,172 @@ window.onload = async () => {
 
 async function pendingCaseData(caseID) {
     const resp = await fetch(`/volunteer_case_info/${caseID}`);
-    const pendingCase = await resp.json();
-    console.log(pendingCase);
-    let catBoxHtml = "";
-    let userBoxHtml = "";
-    document.querySelector("#cat-data").innerHTML = "";
-    document.querySelector("#user-data").innerHTML = "";
+    const volCase = await resp.json();
+    console.log(volCase);
 
-    for (let file of pendingCase) {
+    let userNameHtml = "";
+    let userBirthHtml = "";
+    let userPhoneHtml = "";
+    let userEmailHtml = "";
+    let userAddressHtml = "";
+    let userExpHtml = "";
+    let userPetHtml = "";
+    let userSmokeHtml = "";
+    let userHealthHtml = "";
+    let userKnowHtml = "";
+    let userPlanHtml = "";
+    let userHomeHtml = "";
+    let catInfoHtml = "";
+
+    const thisYear = new Date().getFullYear();
+    const thisMonth = new Date().getMonth();
+    const cat_birth_year = new Date(volCase[0].age).getFullYear() + 1;
+    const cat_birth_month = new Date(volCase[0].age).getMonth();
+    let cat_year_difference = thisYear - cat_birth_year;
+    if (cat_year_difference < 0) {
+        cat_year_difference = 0;
+    }
+    let cat_month_difference = "";
+    if (cat_birth_month <= thisMonth) {
+        cat_month_difference = thisMonth - cat_birth_month;
+    } else {
+        cat_month_difference = 13 - cat_birth_month + thisMonth;
+    }
+    const catAge = cat_year_difference + "歲" + cat_month_difference + "個月";
+
+    catInfoHtml = `
+    <img
+        class="u-border-7 u-border-grey-5 u-image u-image-circle u-preserve-proportions u-image-2"
+        src="${volCase[0].c_image}"
+        alt=""
+        data-image-width="1200"
+        data-image-height="1197"
+        data-animation-name="customAnimationIn"
+        data-animation-duration="1500"
+        data-animation-delay="500"
+    />
+    <h1 class="u-align-left u-text u-text-custom-color-4 u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="750">${volCase[0].c_name}</h1>
+    <h3 class="u-align-left u-text u-text-3">歲數：${catAge}</h3>
+    <h3 class="u-align-left u-text u-text-4">性別：${volCase[0].gender}</h3>
+    <h3 class="u-align-left u-text u-text-5">品種：${volCase[0].breed}</h3>
+    `;
+
+    for (let file of volCase) {
         const smoker = file.smoker;
         const existedPet = file.existed_pet;
         const exp = file.pet_before;
         const isAllergy = file.is_allergy;
 
-        // 計算貓貓年齡
-        const thisYear = new Date().getFullYear();
-        const thisMonth = new Date().getMonth();
-        const cat_birth_year = new Date(file.age).getFullYear() + 1;
-        const cat_birth_month = new Date(file.age).getMonth();
-        let cat_year_difference = thisYear - cat_birth_year;
-        if (cat_year_difference < 0) {
-            cat_year_difference = 0;
-        }
-        let cat_month_difference = "";
-        if (cat_birth_month <= thisMonth) {
-            cat_month_difference = thisMonth - cat_birth_month;
-        } else {
-            cat_month_difference = 13 - cat_birth_month + thisMonth;
-        }
-        const catAge = cat_year_difference + "歲" + cat_month_difference + "個月";
+        userNameHtml = `
+        <label class="u-label u-label-1"><i class="fa-solid fa-user-check"></i> 姓名</label>
+        <input type="text" value="${file.u_name}" class="u-border-2 u-border-custom-color-3 u-input u-input-rectangle u-radius-10 u-input-1" readonly="readonly"/>
+        `;
 
-        //提取貓資料
+        userBirthHtml = `
+        <label class="u-label u-label-2"><i class="fa-solid fa-calendar-days"></i> 出生日期</label>
+        <input type="text" value="${new Date(file.u_birth_date).getFullYear()}年${new Date(file.u_birth_date).getMonth() + 1}月${new Date(file.u_birth_date).getDate()}日" class="u-border-2 u-border-custom-color-3 u-input u-input-rectangle u-radius-10 u-input-2" readonly="readonly"/>
+        `;
 
-        catBoxHtml = `
-            <div>
-                <div class="cat-name"><i class="fa-solid fa-paw"></i>${file.c_name}</div>
-                <div><i class="fa-solid fa-calendar-days"></i>歲數<div class="text-box text-box-spread">${catAge}</div></div>
-                <div><i class="fa-solid fa-restroom"></i>性別<div class="text-box text-box-spread">${file.gender}</div></div>
-                <div><i class="fa-solid fa-cat"></i>品種<div class="text-box text-box-spread">${file.breed}</div></div>
-            </div>
-            <div id="image-box">
-                <div id="cat-image-main"><img src="${file.c_image}" id="cat-image" width="200px"></div>
-            </div>
-            `;
+        userPhoneHtml = `
+        <label class="u-label u-label-3"><i class="fa-solid fa-phone-flip"></i> 電話</label>
+        <input type="text" value="${file.u_phone_number}" class="u-border-2 u-border-custom-color-3  u-input u-input-rectangle u-radius-10 u-input-3" readonly="readonly"/>
+        `;
 
-        userBoxHtml = `<div id="apply-detail">
-            <div class="user-data-spread">
-                <div class="data-col"> 
-                    <div><i class="fa-solid fa-user-check"></i>用戶姓名</div>
-                    <div class="text-box text-box-profile">${file.u_name}</div>
-                </div>
-                <div class="data-col">
-                    <div><i class="fa-solid fa-envelope"></i>電郵地址</div>
-                    <div class="text-box text-box-profile">${file.u_email}</div>
-                </div>
-                <div class="data-col data-col-spread">
-                    <div>
-                        <div><i class="fa-solid fa-calendar-days"></i>出生日期</div>
-                        <div class="text-box text-box-spread">${new Date(
-                            file.u_birth_date
-                        ).getFullYear()}年${new Date(file.u_birth_date).getMonth() + 1}月${new Date(
-            file.u_birth_date
-        ).getDate()}日</div>
-                    </div>
-                    <div id="data-col-right">
-                        <div><i class="fa-solid fa-phone-flip"></i>電話號碼</div>
-                        <div class="text-box text-box-spread">${file.u_phone_number}</div>
-                    </div>
-                </div>
-                <div class="data-col">
-                    <div><i class="fa-solid fa-location-dot"></i>地址</div>
-                    <div class="text-box text-box-profile">${file.u_address}</div>
-                </div>
-                <div class="data-col data-col-spread">
-                    <div>
-                        <div><i class="fa-solid fa-house-chimney"></i>居住尺數</div>
-                        <div class="text-box text-box-spread">${file.home_size_id}</div>
-                    </div>
-                    <div id="data-col-right">
-                        <div><i class="fa-solid fa-sack-dollar"></i>家庭總收入</div>
-                        <div class="text-box text-box-spread">${file.income_id}</div>
-                    </div>
-                </div>
-                <div class="data-col" id="data-col-radio">
-                    <div id="data-col-left">
-                        <div><i class="fa-solid fa-paw"></i>是否有養貓經驗？</div>
-                        <label>是</label>
-                        <input type="radio" ${exp ? "checked" : ""} name="exp" >
-                        <label>否</label>
-                        <input type="radio" ${!exp ? "checked" : ""} name="exp" >
-                    </div>
-                    <div id="data-col-right">
-                        <div><i class="fa-solid fa-cat"></i>是否有貓及其他寵物？</div>
-                        <label>是</label>
-                        <input type="radio" ${existedPet ? "checked" : ""} name="existedPet">
-                        <label>否</label>
-                        <input type="radio" ${!existedPet ? "checked" : ""} name="existedPet">
-                    </div>
-                </div>
-                <div class="data-col" id="data-col-radio">
-                    <div id="data-col-left">
-                        <div><i class="fa-solid fa-joint"></i>有否吸煙？</div>
-                        <label>是</label>
-                        <input type="radio"  ${smoker ? "checked" : ""}  name="smoker">
-                        <label>否</label>
-                        <input type="radio"  ${!smoker ? "checked" : ""}  name="smoker">
-                    </div>
-                    <div id="data-col-right">
-                        <div><i class="fa-solid fa-stethoscope"></i>哮喘，其他呼吸系統疾病？</div>
-                        <label>是</label>
-                        <input type="radio" ${isAllergy ? "checked" : ""} name="isAllergy">
-                        <label>否</label>
-                        <input type="radio" ${!isAllergy ? "checked" : ""} name="isAllergy">
-                    </div>
-                </div>
+        userEmailHtml = `
+        <label class="u-label u-label-4"><i class="fa-solid fa-envelope"></i> 電郵</label>
+        <input type="email" value="${file.u_email}" class="u-border-2 u-border-custom-color-3 u-input u-input-rectangle u-radius-10 u-input-4" readonly="readonly"/>
+        `;
+
+        userAddressHtml = `
+        <label class="u-label u-label-5"><i class="fa-solid fa-location-dot"></i> 地址</label>
+        <input type="text" value="${file.u_address}" class="u-border-2 u-border-custom-color-3 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+        `;
+
+        userExpHtml = `
+        <label class="u-label u-label-8"><i class="fa-solid fa-paw"></i> 是否有養貓經驗？</label>
+        <div class="u-form-radio-button-wrapper">
+            <div class="u-input-row">
+                <input type="radio" name="exp" value="1" class="u-field-input" ${exp ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">有</label>
             </div>
-            <p style="width: 10px"></p>
-            <div class="user-data-spread">
-                <div class="data-col">
-                    <div><i class="fa-solid fa-shield-cat"></i>對貓隻護理及知識有多認識</div>
-                    <div class="text-box text-box-profile">${file.knowledge}</div>
+            <div class="u-input-row">
+                <input type="radio" name="exp" value="0" class="u-field-input" ${!exp ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
                 </div>
-                <div class="data-col">
-                    <div><i class="fa-solid fa-laptop-file"></i>會否將貓貓例入你未來的計劃內</div>
-                    <div class="text-box text-box-profile">${file.future_plan}</div>
-                </div>
-                <div class="data-col">
-                    <div><i class="fa-solid fa-file-image"></i>申請者家居情況</div>
-                    <div><img src="${file.f_image}" id="home-image"></div>
-                </div>
+        </div>
+        `;
+
+        userPetHtml = `
+        <label class="u-label u-label-9"><i class="fa-solid fa-cat"></i> 是否有貓及其他寵物？</label>
+        <div class="u-form-radio-button-wrapper">
+            <div class="u-input-row">
+                <input type="radio" name="existedPet" value="1" class="u-field-input" ${existedPet ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">有</label>
             </div>
+            <div class="u-input-row">
+                <input type="radio" name="existedPet" value="0" class="u-field-input" ${!existedPet ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
             </div>
-            <div id="edit-box">
-                <a href="volunteer_case_update.html?caseID=${caseID}"><input type="submit" class="dark-button" name="status" id="Accept" value="接受申請"></a>
-            </div>`;
+        </div>
+        `;
+
+        userSmokeHtml = `
+        <label class="u-label u-label-10"><i class="fa-solid fa-joint"></i> 有否吸煙？</label>
+        <div class="u-form-radio-button-wrapper">
+            <div class="u-input-row">
+                <input type="radio" name="smoker" value="1" class="u-field-input" ${smoker ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">有</label>
+            </div>
+            <div class="u-input-row">
+                <input type="radio" name="smoker" value="0" class="u-field-input" ${!smoker ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
+            </div>
+        </div>
+        `;
+
+        userHealthHtml = `
+        <label class="u-label u-label-11"><i class="fa-solid fa-stethoscope"></i> 呼吸系統疾病？</label>
+        <div class="u-form-radio-button-wrapper">
+            <div class="u-input-row">
+                <input type="radio" name="isAllergy" value="1" class="u-field-input" ${isAllergy ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">有</label>
+            </div>
+            <div class="u-input-row">
+                <input type="radio" name="isAllergy" value="0" class="u-field-input" ${!isAllergy ? "checked" : ""}/>
+                <label class="u-field-label" style="font-size: 1.125rem">沒有</label>
+            </div>
+        </div>
+        `;
+
+        userKnowHtml = `
+        <label class="u-label u-label-12"><i class="fa-solid fa-shield-cat"></i> 對貓隻護理及知識的認識</label>
+        <input type="text" value="${file.knowledge}" class="u-border-2 u-border-custom-color-3 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+        `;
+
+        userPlanHtml = `
+        <label for="text-b7d4" class="u-label u-label-13"><i class="fa-solid fa-laptop-file"></i> 會否將貓貓例入你未來的計劃內</label>
+        <input type="text" value="${file.future_plan}" class="u-border-2 u-border-custom-color-3 u-input u-input-rectangle u-radius-10 u-input-5" readonly="readonly"/>
+        `;
+
+        userHomeHtml = `
+        <label for="text-b7d4" class="u-label u-label-13"><i class="fa-solid fa-file-image"></i> 申請者家居情況</label>
+        <img src="${file.f_image}" id="home-image">
+        `;
     }
-    document.querySelector("#cat-data").innerHTML = catBoxHtml;
-    document.querySelector("#user-data").innerHTML = userBoxHtml;
+
+    document.querySelector("#user-name").innerHTML = userNameHtml;
+    document.querySelector("#user-birth").innerHTML = userBirthHtml;
+    document.querySelector("#user-phone").innerHTML = userPhoneHtml;
+    document.querySelector("#user-email").innerHTML = userEmailHtml;
+    document.querySelector("#user-address").innerHTML = userAddressHtml;
+    document.querySelector("#user-exp").innerHTML = userExpHtml;
+    document.querySelector("#user-pet").innerHTML = userPetHtml;
+    document.querySelector("#user-smoke").innerHTML = userSmokeHtml;
+    document.querySelector("#user-health").innerHTML = userHealthHtml;
+    document.querySelector("#user-know").innerHTML = userKnowHtml;
+    document.querySelector("#user-plan").innerHTML = userPlanHtml;
+    document.querySelector("#user-home").innerHTML = userHomeHtml;
+    document.querySelector("#cat-info").innerHTML = catInfoHtml;
 }
 
 document.querySelector("#accept").addEventListener("submit", async (e) => {

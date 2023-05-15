@@ -22,13 +22,13 @@ async function userProfile() {
     document.querySelector("#user-name").innerHTML = "";
 
     userNameHtml = `
-    <div class="info-title"><i class="fa-solid fa-user-check"></i>用戶姓名</div>
-    <div class="text-box text-box-spread">${profile.u_username}</div>
+    <label class="u-label u-label-1"><i class="fa-solid fa-user-check"></i> 姓名</label>
+    <input type="text" readonly="readonly" placeholder="${profile.u_name}" class="u-border-2 u-border-palette-3-light-1 u-input u-input-rectangle u-radius-10 u-input-1" required=""/>
     `;
 
     document.querySelector("#user-name").innerHTML = userNameHtml;
 
-    const formData = document.querySelector("#register-form");
+    const formData = document.querySelector("#reset-form");
 
     formData.addEventListener("submit", async (event) => {
         event.preventDefault();

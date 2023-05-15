@@ -5,41 +5,77 @@ window.onload = () => {
 async function volProfileData() {
     const resp = await fetch("/volunteer_profile");
     const volProfile = await resp.json();
-    console.log(volProfile);
+    const postResp = await fetch("/volunteer_post");
+    const volPost = await postResp.json();
+    const caseResp = await fetch("/volunteer_case");
+    const volCase = await caseResp.json();
+    
     let volNameHtml = "";
-    let volBoxHtml = "";
+    let volEmailHtml = "";
+    let volPhoneHtml = "";
+    let volPostHtml = "";
+    let volCaseHtml = "";
     document.querySelector("#vol-name").innerHTML = "";
-    document.querySelector("#vol-info").innerHTML = "";
+    document.querySelector("#vol-email").innerHTML = "";
+    document.querySelector("#vol-phone").innerHTML = "";
+    document.querySelector("#post-box").innerHTML = "";
+    document.querySelector("#case-box").innerHTML = "";
 
-    volNameHtml = `<div class="info-title"><i class="fa-solid fa-user-check"></i>用戶姓名</div>
-    <div class="text-box text-box-name">${volProfile.v_name}</div>`;
-
-    volBoxHtml = `<div class="data-col">
-        <div class="info-title"><i class="fa-solid fa-envelope"></i>電郵地址</div>  
-            <div class="text-box">${volProfile.v_email}</div>  
-        </div>
-        <div class="data-col data-col-spread">
-            <div>
-                <div class="info-title"><i class="fa-solid fa-calendar-days"></i>出生日期</div>
-                <div class="text-box text-box-spread">${new Date(
-                    volProfile.v_birth_date
-                ).getFullYear()}年${new Date(volProfile.v_birth_date).getMonth() + 1}月${new Date(
-        volProfile.v_birth_date
-    ).getDate()}日</div>
-            </div>
-            <div id="data-col-right">
-                <div class="info-title"><i class="fa-solid fa-phone-flip"></i>電話號碼</div>
-                <div class="text-box text-box-spread">${volProfile.v_phone_number}</div>
-            </div>
-        </div>
-    <div class="data-col">
-        <div class="info-title"><i class="fa-solid fa-location-dot"></i>用戶地址</div>
-        <div class="text-box">${volProfile.v_address}</div>
-    </div>
-    <div id="submit-box">
-    <a href="volunteer_profile_update.html"><input type="button" class="dark-button" id="change-button" value="修改資料"></a>
-  </div>`;
+    volNameHtml = `${volProfile.v_name}`;
+    volEmailHtml = `${volProfile.v_email}`;
+    volPhoneHtml = `${volProfile.v_phone_number}`;
 
     document.querySelector("#vol-name").innerHTML = volNameHtml;
-    document.querySelector("#vol-info").innerHTML = volBoxHtml;
+    document.querySelector("#vol-email").innerHTML = volEmailHtml;
+    document.querySelector("#vol-phone").innerHTML = volPhoneHtml;
+
+    for (let i = 0; i < 2; i++) {
+        volPostHtml += `
+        <div class="u-align-left-xs u-container-style u-grey-70 u-list-item u-radius-15 u-repeater-item u-shape-round u-list-item-1" data-href="volunteer_post_info.html?caseID=${volPost[i].id}">
+            <div class="u-container-layout u-similar-container u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xl u-container-layout-1">
+                <img
+                    class="u-border-7 u-border-grey-5 u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xl u-image u-image-default u-image-1"
+                    src="${volPost[i].c_image}"
+                    alt=""
+                    data-image-width="1200"
+                    data-image-height="1197"
+                    data-animation-name="customAnimationIn"
+                    data-animation-duration="1500"
+                    data-animation-delay="500"
+                />
+                <h4 class="u-custom-font u-text u-text-3" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"><i class="fa-solid fa-paw"></i> ${volPost[i].c_name.slice(0,6)}</h4>
+                <p class="u-hidden-xs u-text u-text-4" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
+                    性別：<span style="font-weight: 700">${volPost[i].gender}</span>
+                </p>
+                <p class="u-hidden-xs u-text u-text-5" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
+                    簡介：<span style="font-weight: 700">${volPost[i].intro.slice(0,6)}</span>
+                </p>
+            </div>
+        </div>
+        `;
+
+        document.querySelector("#post-box").innerHTML = volPostHtml;
+    }
+
+    for (let j = 0; j < 3; j++) {
+        volCaseHtml += `
+        <div class="u-align-left-xs u-container-style u-grey-70 u-list-item u-radius-15 u-repeater-item u-shape-round u-list-item-3" data-href="volunteer_case_info.html?caseID=${volCase[j].form_id}">
+            <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-3">
+                <img
+                    class="u-align-center u-border-7 u-border-grey-5 u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-default u-image-3"
+                    src="${volCase[j].img}"
+                    alt=""
+                    data-image-width="1200"
+                    data-image-height="1197"
+                    data-animation-name="customAnimationIn"
+                    data-animation-duration="1500"
+                    data-animation-delay="500"
+                />
+                <h4 class="u-custom-font u-text u-text-9" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">${volCase[j].cat_name.slice(0,6)}</h4>
+            </div>
+        </div>
+        `;
+
+        document.querySelector("#case-box").innerHTML = volCaseHtml;
+    }
 }

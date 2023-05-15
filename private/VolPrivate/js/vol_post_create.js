@@ -1,4 +1,4 @@
-document.querySelector("#content-box").addEventListener("submit", async (event) => {
+document.querySelector("#create-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
     // Restrict Volunteers Post the cat's birth date should older than today!!!

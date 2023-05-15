@@ -6,9 +6,28 @@ async function loadCatIndividualData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const resp = await fetch(`/public_cat_info/${urlSearchParams.get("id")}`);
     const catProfile = await resp.json();
-    console.log(catProfile);
+    
+    let catImg2 = "";
+    let catImg3 = "";
+    let catImg4 = "";
+    if (!catProfile.img[1]) {
+        catImg2 = catProfile.img[0]
+    } else {
+        catImg2 = catProfile.img[1]
+    }
 
-    // 計算貓貓年齡;
+    if (!catProfile.img[1]) {
+        catImg3 = catProfile.img[0]
+    } else {
+        catImg3 = catProfile.img[2]
+    }
+
+    if (!catProfile.img[1]) {
+        catImg4 = catProfile.img[0]
+    } else {
+        catImg4 = catProfile.img[3]
+    }
+    
     const thisYear = new Date().getFullYear();
     const thisMonth = new Date().getMonth();
     const cat_birth_year = new Date(catProfile.age).getFullYear() + 1;
@@ -25,83 +44,101 @@ async function loadCatIndividualData() {
     }
     const catAge = cat_year_difference + "歲" + cat_month_difference + "個月";
 
-    let htmlStr;
-    let imageStr = "";
-
-    for (let mini of catProfile.img) {
-        imageStr += `<div class="cat-image-mini"><img src="${mini}" id="cat-image" width="50px"></div>`;
+    let catGender = "";
+    if (catProfile.gender = "M") {
+        catGender = "男"
+    } else {
+        catGender = "女"
     }
 
-    htmlStr = `
-  <div id="cat-data">
-      <div>
-          <div class="cat-name"><i class="fa-solid fa-paw"></i>${catProfile.cat_name}</div>
-          <div><i class="fa-solid fa-calendar-days"></i>歲數<div class="text-box text-box-spread">${catAge}</div></div>
-          <div><i class="fa-solid fa-restroom"></i>性別<div class="text-box text-box-spread">${catProfile.gender}</div></div>
-          <div><i class="fa-solid fa-cat"></i>品種<div class="text-box text-box-spread">${catProfile.breed}</div></div>
-      </div>
-      <div id="image-box">
-          <div id="cat-image-main"><img src="${catProfile.img[0]}" id="cat-image" width="200px"></div>
-          <div id="image-list"></div>
-      </div>
-  </div>
-  <div id="user-data">
-      <div class="user-data-spread">
-          <div class="data-col data-col-spread">
-              <div>
-                  <div><i class="fa-solid fa-user-check"></i>負責義工</div>
-                  <div class="text-box text-box-spread">${catProfile.v_name}</div>
-              </div>
-              <div id="data-col-right">
-                  <div><i class="fa-solid fa-phone-flip"></i>義工電話</div>
-                  <div class="text-box text-box-spread">${catProfile.v_phone_number}</div>
-              </div>
-          </div>
-          <div class="data-col">
-              <div><i class="fa-solid fa-envelope"></i>義工電郵</div>
-              <div class="text-box text-box-profile">${catProfile.v_email}</div>
-          </div>
-          <div class="data-col"> 
-              <div><i class="fa-solid fa-face-smile"></i>性格</div>
-              <div class="text-box text-box-profile">${catProfile.characters}</div>
-          </div>
-          <div class="data-col">
-              <div><i class="fa-solid fa-fish"></i>進食習慣</div>
-              <div class="text-box text-box-profile">${catProfile.food_habits}</div>
-          </div>
-          <div class="data-col">
-              <div><i class="fa-solid fa-stethoscope"></i>身體狀況</div>
-              <div class="text-box text-box-profile">${catProfile.cat_health}</div>
-          </div>
-      </div>
-      <p style="width: 10px"></p>
-      <div class="user-data-spread">
-          <div class="data-col">
-              <div><i class="fa-solid fa-file"></i>簡介</div>
-              <div class="text-box text-box-intro">${catProfile.intro}</div>
-          </div>
-          <div class="data-col">
-              <div><i class="fa-solid fa-video"></i>生活短片</div>
-              <video controls class="text-box text-box-video" style="height: 300px">
-                  <source src="${catProfile.video[0]}" type="video/mp4">
-              </video>
-          </div>
-      </div>
-  </div>
-  <div class="test-box">打算申請領養？</div>
-  <div><a href="public_user_login.html"><input type="submit" class="dark-button" id="adopt-button" value="登入"></a></div>
-  `;
+    let volNameHtml = "";
+    let volPhoneHtml = "";
+    let volEmailHtml = "";
+    let catInfoHtml = "";
+    let catDataHtml = "";
+    let catIntroHtml = "";
+    let catVideoHtml = "";
+    document.querySelector("#vol-name").innerHTML = "";
+    document.querySelector("#vol-phone").innerHTML = "";
+    document.querySelector("#vol-email").innerHTML = "";
+    document.querySelector("#cat-info").innerHTML = "";
+    document.querySelector("#cat-data").innerHTML = "";
+    document.querySelector("#cat-intro").innerHTML = "";
+    document.querySelector("#cat-video").innerHTML = "";
 
-    document.querySelector("#profile-content").innerHTML = htmlStr;
-    document.querySelector("#image-list").innerHTML = imageStr;
+    volNameHtml += `
+    <a class="u-active-none u-border-1 u-border-hover-white u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-light-2 u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""></a>
+        <i></i>負責義工<br />${catProfile.v_name}
+    `;
 
-    const miniClick = document.querySelectorAll(".cat-image-mini");
+    volPhoneHtml += `
+    <a class="u-active-none u-border-1 u-border-hover-white u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-light-2 u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""></a>
+        <i></i>義工電話<br />${catProfile.v_phone_number}
+    `;
+
+    volEmailHtml += `
+    <a class="u-active-none u-border-1 u-border-hover-white u-border-no-left u-border-no-right u-border-no-top u-border-palette-2-light-2 u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""></a>
+        <i></i>義工電郵<br />${catProfile.v_email}
+    `;
+
+    catInfoHtml += `
+    <div id="cat-main"><img class="u-image u-image-circle u-preserve-proportions u-image-2" src="${catProfile.img[0]}" alt="" data-image-width="1200" data-image-height="1197" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"/></div>
+    <img class="u-image u-image-circle u-preserve-proportions u-image-3 cat-image" src="${catProfile.img[0]}" alt="" data-image-width="1200" data-image-height="1197" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"/>
+    <img class="u-image u-image-circle u-preserve-proportions u-image-4 cat-image" src="${catImg2}" alt="" data-image-width="1200" data-image-height="1197" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"/>
+    <img class="u-image u-image-circle u-preserve-proportions u-image-5 cat-image" src="${catImg3}" alt="" data-image-width="1200" data-image-height="1197" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"/>
+    <img class="u-image u-image-circle u-preserve-proportions u-image-6 cat-image" src="${catImg4}" alt="" data-image-width="1200" data-image-height="1197" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"/>
+    <h1 class="u-align-center u-text u-text-4" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="750"><i class="fa-solid fa-paw"></i> ${catProfile.cat_name}</h1>
+    <p class="u-align-center u-text u-text-5">我是一隻${catAge}大的${catGender}貓貓，品種是${catProfile.breed}。</p>
+    `;
+
+    catDataHtml += `
+    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-list-item-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="250">
+        <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-1">
+            <p class="u-text u-text-palette-5-light-1 u-text-2"><i class="fa-solid fa-face-smile"></i> 性格<span style="font-weight: 700"></span></p>
+            <h6 class="u-text u-text-default-xl u-text-3">${catProfile.characters}</h6>
+        </div>
+    </div>
+    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-list-item-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="250">
+        <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-2">
+            <p class="u-text u-text-palette-5-light-1 u-text-4"><i class="fa-solid fa-fish"></i> 進食習慣</p>
+            <h6 class="u-text u-text-default-xl u-text-5">${catProfile.food_habits}</h6>
+        </div>
+    </div>
+    <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-list-item-3" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="250">
+        <div class="u-container-layout u-similar-container u-valign-top-xl u-container-layout-3">
+            <p class="u-text u-text-palette-5-light-1 u-text-6"><i class="fa-solid fa-stethoscope"></i> 身體狀況</p>
+            <h6 class="u-text u-text-default-xl u-text-7">${catProfile.cat_health}</h6>
+        </div>
+    </div>
+    `;
+
+    catIntroHtml += `${catProfile.intro}`;
+
+    catVideoHtml += `
+    <div class="u-container-layout u-container-layout-2">
+        <video controls id="info-video">
+            <source src="${catProfile.video[0]}" type="video/mp4">
+        </video>
+    </div>
+    `;
+
+    document.querySelector("#vol-name").innerHTML = volNameHtml;
+    document.querySelector("#vol-phone").innerHTML = volPhoneHtml;
+    document.querySelector("#vol-email").innerHTML = volEmailHtml;
+    document.querySelector("#cat-info").innerHTML = catInfoHtml;
+    document.querySelector("#cat-data").innerHTML = catDataHtml;
+    document.querySelector("#cat-intro").innerHTML = catIntroHtml;
+    document.querySelector("#cat-video").innerHTML = catVideoHtml;
+
+    const miniClick = document.querySelectorAll(".cat-image");
     for (let miniC of miniClick) {
         miniC.addEventListener("click", function (e) {
             const miniImage = e.target;
             document.querySelector(
-                "#cat-image-main"
-            ).innerHTML = `<img src="${miniImage.src}" id="cat-image" width="200px">`;
+                "#cat-main"
+            ).innerHTML = `
+            <img class="u-image u-image-circle u-preserve-proportions u-image-2" src="${miniImage.src}" alt="" data-image-width="1200" data-image-height="1197" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500"/>
+            `;
         });
     }
 }

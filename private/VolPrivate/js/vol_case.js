@@ -5,54 +5,46 @@ window.onload = () => {
 async function adoptCaseData() {
     const sResp = await fetch("/volunteer_case");
     const adoptStatus = await sResp.json();
-    console.log(adoptStatus.length);
-    let catAdoptHtml = "";
-    document.querySelector("#adopt-box").innerHTML = "";
+
+    let volCaseHtml = "";
+    document.querySelector("#case-box").innerHTML = "";
 
     if (adoptStatus.length == 0) {
-        catAdoptHtml += `
-        <div id="empty-card">
-            <div class="cat-pic"><i class="fa-solid fa-paw"></i></div>
-            <div id="empty-text">
-                <div>你尚未收到領養申請</div>
-                <div>去發佈新的貓貓讓更多人認識牠吧</div>
-                <li class="nav-button" id="empty-button">
-                    <a href="volunteer_post_create.html">
-                        <div class="cat-logo"><i class="fa-solid fa-paw"></i></div>
-                        發佈新貓貓
-                        <div class="cat-logo cat-logo-right"><i class="fa-solid fa-paw"></i></div>
-                    </a>
-                </li>
+        volCaseHtml += `
+        <div class="u-align-center u-container-style u-grey-70 u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1" data-href="volunteer_post_create.html">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+                <h4 class="u-align-left u-text u-text-white u-text-2">你尚未收到領養申請</h4>
+                <p class="u-align-left u-text u-text-3">去發佈新的貓貓讓更多人認識牠吧</p>
             </div>
-            <div class="cat-pic"><i class="fa-solid fa-paw"></i></div>
         </div>
         `;
-        document.querySelector("#adopt-box").innerHTML = catAdoptHtml;
+
+        document.querySelector("#case-box").innerHTML = volCaseHtml;
     } else {
         for (let myAdopt of adoptStatus) {
             if (myAdopt.adopt_status == "pending") {
-                console.log("hi");
-                catAdoptHtml += `
-                <a href="volunteer_case_info.html?caseID=${myAdopt.form_id}"><div class="cat-card">
-                    <img src="${myAdopt.img}" width="200px" class="cat-image">
-                    <div class="status-info">
-                        <div class="cat-name"><i class="fa-solid fa-paw"></i>${myAdopt.cat_name}</div>
-                        <div class="card-text">已收到領養申請，請審核</div>
+                volCaseHtml += `
+                <div class="u-align-center u-container-style u-grey-70 u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1" data-href="volunteer_case_info.html?caseID=${myAdopt.form_id}">
+                    <div class="u-container-layout u-similar-container u-container-layout-1">
+                        <img class="u-border-7 u-border-grey-5 u-image u-image-default u-image-1" src="${myAdopt.img}" alt="" data-image-width="735" data-image-height="980"/>
+                        <h4 class="u-align-left u-text u-text-white u-text-2"><i class="fa-solid fa-paw"></i> ${myAdopt.cat_name}</h4>
+                        <p class="u-align-left u-text u-text-3">已收到領養申請，請審核</p>
                     </div>
-                </div></a>
+                </div>
                 `;
             } else if (myAdopt.adopt_status == "ACCEPT") {
-                catAdoptHtml += `
-                <a href="volunteer_case_update.html?caseID=${myAdopt.form_id}"><div class="cat-card">
-                    <img src="${myAdopt.img}" width="200px" class="cat-image">
-                    <div class="status-info">
-                            <div class="cat-name"><i class="fa-solid fa-paw"></i>${myAdopt.cat_name}</div>
-                            <div class="card-text">已收到領養者答覆，請點擊查看詳情</div>
+                volCaseHtml += `
+                <div class="u-align-center u-container-style u-grey-70 u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1" data-href="volunteer_case_update.html?caseID=${myAdopt.form_id}">
+                    <div class="u-container-layout u-similar-container u-container-layout-1">
+                        <img class="u-border-7 u-border-grey-5 u-image u-image-default u-image-1" src="${myAdopt.img}" alt="" data-image-width="735" data-image-height="980"/>
+                        <h4 class="u-align-left u-text u-text-white u-text-2"><i class="fa-solid fa-paw"></i> ${myAdopt.cat_name}</h4>
+                        <p class="u-align-left u-text u-text-3">已初步接受申請，請點擊查看詳情</p>
                     </div>
-                </div></a>
+                </div>
                 `;
             }
         }
-        document.querySelector("#adopt-box").innerHTML = catAdoptHtml;
+        
+        document.querySelector("#case-box").innerHTML = volCaseHtml;
     }
 }

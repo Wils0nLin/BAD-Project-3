@@ -2,3 +2,5 @@ node_modules
 tf_python
 .DS_Store
 upload
+.python-version
+test_model
