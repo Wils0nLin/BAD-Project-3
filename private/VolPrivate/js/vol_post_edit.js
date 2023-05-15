@@ -4,67 +4,105 @@ window.onload = () => {
 
 async function catProfileData() {
     const urlSearchParams = new URLSearchParams(window.location.search);
-    console.log(urlSearchParams.get("caseID"));
-
     const resp = await fetch(`/volunteer_post_info/${urlSearchParams.get("caseID")}`);
-
     const catProfile = await resp.json();
-
-const catDateFormat = catProfile.age.substring(0, 10);
-
- 
     console.log(catProfile);
-  
-    let htmlStr;
-    htmlStr = `
-    <div id="cat-data">
-        <div>
-            <div class="cat-name"><i class="fa-solid fa-paw"></i>${catProfile.cat_name}</div>
-            <div><i class="fa-solid fa-calendar-days"></i>歲數<input type="text" class="text-box text-box-spread" name="age" value="${catDateFormat}"></div>
-            <div><i class="fa-solid fa-restroom"></i>性別<input type="text" class="text-box text-box-spread" name="gender" value="${catProfile.gender}"></div>
-            <div><i class="fa-solid fa-cat"></i>品種<input type="text" class="text-box text-box-spread" name="breed" value="${catProfile.breed}"></div>
-        </div>
-        <div id="image-box">
-            <div id="cat-image-main"><img src="${catProfile.img[0]}" id="cat-image" width="200px"></div>
-            <div id="image-list"></div>
-        </div>
-    </div>
-    <div id="user-data">
-        <div class="user-data-spread">
-            <div class="data-col"> 
-                <div><i class="fa-solid fa-face-smile"></i>性格</div>
-                <input type="text" class="text-box text-box-profile" name="characters" value="${catProfile.characters}">
-            </div>
-            <div class="data-col">
-                <div><i class="fa-solid fa-fish"></i>進食習慣</div>
-                <input type="text" class="text-box text-box-profile" name="food_habits" value="${catProfile.food_habits}">
-            </div>
-            <div class="data-col">
-                <div><i class="fa-solid fa-stethoscope"></i>身體狀況</div>
-                <input type="text" class="text-box text-box-profile" name="cat_health" value="${catProfile.cat_health}">
-            </div>
-            <div class="data-col">
-                <div><i class="fa-solid fa-file"></i>簡介</div>
-                <textarea id="intro" name="intro" form="intro" value="" class="text-box text-box-intro" style="resize: none; height: 100px; font-size: 1.2em;">${catProfile.intro}</textarea>
-            </div>
-        </div>
-        <div class="user-data-spread"></div>
-    </div>
-    <input type="submit" class="dark-button" id="adopt-button" value="提交修改">`;
-    document.querySelector("#profile-content").innerHTML = htmlStr;
 
-    const formData = document.querySelector("#content-box");
+    const catDateFormat = catProfile.age.substring(0, 10);
+    
+    let catNameHtml = "";
+    let catBirthHtml = "";
+    let catBreedHtml = "";
+    let catGenderHtml = "";
+    let catCharacterHtml = "";
+    let catHabitHtml = "";
+    let catHealthHtml = "";
+    let catIntroHtml = "";
+    let catFileHtml = "";
+    document.querySelector("#cat-name").innerHTML = "";
+    document.querySelector("#cat-birth").innerHTML = "";
+    document.querySelector("#cat-breed").innerHTML = "";
+    document.querySelector("#cat-gender").innerHTML = "";
+    document.querySelector("#cat-character").innerHTML = "";
+    document.querySelector("#cat-habit").innerHTML = "";
+    document.querySelector("#cat-health").innerHTML = "";
+    document.querySelector("#cat-intro").innerHTML = "";
+    document.querySelector("#cat-file").innerHTML = "";
+
+    catNameHtml = `
+    <label class="u-label u-label-1"><i class="fa-solid fa-paw"></i> 貓貓的名稱*</label>
+    <input type="text" value="${catProfile.cat_name}" id="names" name="names" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-1" required="required"/>
+    `;
+
+    catBirthHtml = `
+    <label class="u-label u-label-2"><i class="fa-solid fa-calendar-days"></i> 貓貓的出生日期*</label>
+    <input type="date" value="${catDateFormat}" id="age" name="age" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-2" required="" data-date-format="dd/mm/yyyy"/>
+    `;
+
+    catBreedHtml = `
+    <label class="u-label u-label-3"><i class="fa-solid fa-cat"></i> 貓貓的品種*</label>
+    <input type="text" value="${catProfile.breed}" id="breed" name="breed" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-3" required="required"/>
+    `;
+
+    catGenderHtml = `
+    <label class="u-label u-label-5"><i class="fa-solid fa-restroom"></i> 貓貓的性別*</label>
+    <input type="text" value="${catProfile.gender}" id="gender" name="gender" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-4" required="required"/>
+    `;
+
+    catCharacterHtml = `
+    <label class="u-label u-label-5"><i class="fa-solid fa-face-smile"></i> 貓貓的性格*</label>
+    <input type="text" value="${catProfile.characters}" id="characters" name="characters" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-4" required="required"/>
+    `;
+
+    catHabitHtml = `
+    <label class="u-label u-label-6"><i class="fa-solid fa-fish"></i> 貓貓的進食習慣*</label>
+    <input type="text" value="${catProfile.food_habits}" id="food_habits" name="food_habits" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-5" required="required"/>
+    `;
+
+    catHealthHtml = `
+    <label class="u-label u-label-7"><i class="fa-solid fa-stethoscope"></i> 貓貓的身體狀況*</label>
+    <input type="text" value="${catProfile.cat_health}" id="cat_health" name="cat_health" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-6" required="required"/>
+    `;
+
+    catIntroHtml = `
+    <label class="u-label u-label-8"><i class="fa-solid fa-file"></i> 貓貓的簡介*</label>
+    <textarea rows="4" cols="50" id="intro" form="intro" name="intro" class="u-border-2 u-border-custom-color-3 u-grey-10 u-input u-input-rectangle u-radius-10 u-input-7" required="">${catProfile.intro}</textarea>
+    `;
+
+    catFileHtml = `
+    <div class="u-align-center u-container-style u-custom-color-5 u-group u-radius-20 u-shape-round u-group-1" data-animation-name="customAnimationIn" data-animation-duration="1750" data-animation-delay="500">
+        <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-sm u-valign-bottom-xl u-valign-bottom-xs u-container-layout-1">
+            <h1 class="u-align-left u-text u-text-custom-color-4 u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="750">${catProfile.cat_name}</h1>
+        </div>
+    </div>
+    <img
+        class="u-border-7 u-border-grey-5 u-image u-image-circle u-preserve-proportions u-image-2"
+        src="${catProfile.img[0]}"
+        alt=""
+        ata-image-width="1200"
+        data-image-height="1197"
+        data-animation-name="customAnimationIn"
+        data-animation-duration="1500"
+        data-animation-delay="500"
+    />
+    `;
+   
+    document.querySelector("#cat-name").innerHTML = catNameHtml;
+    document.querySelector("#cat-birth").innerHTML = catBirthHtml;
+    document.querySelector("#cat-breed").innerHTML = catBreedHtml;
+    document.querySelector("#cat-gender").innerHTML = catGenderHtml;
+    document.querySelector("#cat-character").innerHTML = catCharacterHtml;
+    document.querySelector("#cat-habit").innerHTML = catHabitHtml;
+    document.querySelector("#cat-health").innerHTML = catHealthHtml;
+    document.querySelector("#cat-intro").innerHTML = catIntroHtml;
+    document.querySelector("#cat-file").innerHTML = catFileHtml;
+    
+    const formData = document.querySelector("#edit-form");
 
     formData.addEventListener("submit", async (event) => {
-        console.log("hi")
         event.preventDefault();
-        const form = event.target;
-       
-        console.log(document.querySelector("#intro").value )
-        // const formData = new FormData(form);
-        // console.log(intro.value);
-        // formData.append("intro", intro.value);
 
+        const form = event.target;
         const age = form.age.value;
         const gender = form.gender.value;
         const breed = form.breed.value;
@@ -82,13 +120,7 @@ const catDateFormat = catProfile.age.substring(0, 10);
             cat_health,
             intro,
         };
-        console.log(formObject);
-
-        // for (const v of formData.values()) {
-        //     console.log(v);
-        // }
-        // console.log(JSON.stringify(formData));
-        // console.log(urlSearchParams.get("caseID"));
+        
         const urlSearchParams = new URLSearchParams(window.location.search);
         const caseID = urlSearchParams.get("caseID");
 
@@ -97,9 +129,6 @@ const catDateFormat = catProfile.age.substring(0, 10);
             headers: {
                 "Content-Type": "application/json",
             },
-            // headers: {
-            //     "Content-Type": "application/x-www-urlencoded",
-            // },
             body: JSON.stringify(formObject),
         });
 
@@ -113,4 +142,3 @@ const catDateFormat = catProfile.age.substring(0, 10);
         }
     });
 }
-

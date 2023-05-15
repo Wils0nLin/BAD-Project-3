@@ -20,6 +20,8 @@ export class user_apply_service {
         const user_apply = await this.knex.raw(`SELECT *
         FROM (
             SELECT 
+            cats.intro AS intro,
+            cats.gender AS gender,
             cat_image.id AS img_id,
             cat_image.c_image AS img,
             adopt_forms.id AS form_id,

@@ -7,7 +7,7 @@ async function adoptCaseData() {
     const adoptStatus = await sResp.json();
     console.log(adoptStatus);
     let catAdoptHtml = "";
-    document.querySelector("#adopt-box").innerHTML = "";
+    document.querySelector("#apply-box").innerHTML = "";
 
     if (adoptStatus.length == 0) {
         catAdoptHtml += `
@@ -32,36 +32,54 @@ async function adoptCaseData() {
         for (let myAdopt of adoptStatus) {
             if (myAdopt.adopt_status == "pending") {
                 catAdoptHtml += `
-            <div class="cat-card card-pending">
-                <img src="${myAdopt.img}" class="cat-image">
-                <div class="status-info">
-                    <div class="cat-name"><i class="fa-solid fa-paw"></i>${myAdopt.cat_name}</div>
-                    <div class="card-text">你的申請已遞交，正在審核</div>
+                <div class="u-align-center u-container-style u-grey-70 u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1">
+                    <div class="u-container-layout u-similar-container u-container-layout-1">
+                        <img
+                            class="u-border-7 u-border-grey-5 u-image u-image-default u-image-1"
+                            src="${myAdopt.img}"
+                            alt=""
+                            data-image-width="735"
+                            data-image-height="980"
+                        />
+                        <h4 class="u-align-left u-text u-text-white u-text-2"><i class="fa-solid fa-paw"></i> ${myAdopt.cat_name}</h4>
+                        <p class="u-align-left u-text u-text-3">你的申請已遞交，正在審核</p>
+                    </div>
                 </div>
-            </div>
-            `;
+                `;
             } else if (myAdopt.adopt_status == "REJECT") {
                 catAdoptHtml += `
-                <div class="cat-card card-pending">
-                    <img src="${myAdopt.img}" class="cat-image">
-                    <div class="status-info">
-                        <div class="cat-name"><i class="fa-solid fa-paw"></i>${myAdopt.cat_name}</div>
-                        <div class="card-text">你的申請已被拒絕</div>
+                <div class="u-align-center u-container-style u-grey-70 u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1">
+                    <div class="u-container-layout u-similar-container u-container-layout-1">
+                        <img
+                            class="u-border-7 u-border-grey-5 u-image u-image-default u-image-1"
+                            src="${myAdopt.img}"
+                            alt=""
+                            data-image-width="735"
+                            data-image-height="980"
+                        />
+                        <h4 class="u-align-left u-text u-text-white u-text-2"><i class="fa-solid fa-paw"></i> ${myAdopt.cat_name}</h4>
+                        <p class="u-align-left u-text u-text-3">你的申請已被拒絕</p>
                     </div>
                 </div>
                 `;
             } else if (myAdopt.adopt_status == "ACCEPT") {
                 catAdoptHtml += `
-                <a href="user_apply_info.html?caseID=${myAdopt.form_id}"><div class="cat-card">
-                    <img src="${myAdopt.img}" width="200px" class="cat-image">
-                    <div class="status-info">
-                        <div class="cat-name"><i class="fa-solid fa-paw"></i>${myAdopt.cat_name}</div>
-                        <div class="card-text">義工已初步接受申請，請點擊查看詳情</div>
+                <div class="u-align-center u-container-style u-grey-70 u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1" data-href="user_apply_info.html?caseID=${myAdopt.form_id}">
+                    <div class="u-container-layout u-similar-container u-container-layout-1">
+                        <img
+                            class="u-border-7 u-border-grey-5 u-image u-image-default u-image-1"
+                            src="${myAdopt.img}"
+                            alt=""
+                            data-image-width="735"
+                            data-image-height="980"
+                        />
+                        <h4 class="u-align-left u-text u-text-white u-text-2"><i class="fa-solid fa-paw"></i> ${myAdopt.cat_name}</h4>
+                        <p class="u-align-left u-text u-text-3">義工已初步接受申請，請點擊查看詳情</p>
                     </div>
-                </div></a>
+                </div>
                 `;
             }
         }
     }
-    document.querySelector("#adopt-box").innerHTML = catAdoptHtml;
+    document.querySelector("#apply-box").innerHTML = catAdoptHtml;
 }

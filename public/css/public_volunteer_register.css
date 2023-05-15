@@ -1,0 +1,278 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 1404px;
+}
+
+.u-section-1 .u-shape-1 {
+  width: 1088px;
+  height: 918px;
+  margin: 60px 0 0 auto;
+}
+
+.u-section-1 .u-image-1 {
+  width: 690px;
+  height: 691px;
+  object-position: 0% 50%;
+  background-position: 50% 50%;
+  background-image: url("../assets/public_vol_register.jpg");
+  margin: -354px 0 0 auto;
+}
+
+.u-section-1 .u-shape-2 {
+  width: 227px;
+  height: 228px;
+  background-image: none;
+  margin: -607px auto 0 24px;
+}
+
+.u-section-1 .u-form-1 {
+  height: 516px;
+  background-image: none;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+  margin: -816px 457px 60px 91px;
+}
+
+.u-section-1 .u-text-1 {
+  margin-left: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-label-1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-1 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-label-2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-2 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-form-group-4 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-3 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-form-group-5 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-4 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-form-group-6 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-5 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-5 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-form-group-7 {
+  margin-left: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.u-section-1 .u-label-6 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-6 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-form-group-8 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-7 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-7 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-form-group-9 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-8 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.u-section-1 .u-input-8 {
+  font-size: 1.125rem;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-image: none;
+  width: 100%;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1329px;
+  }
+
+  .u-section-1 .u-shape-1 {
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 625px;
+    height: 625px;
+    margin-right: 24px;
+  }
+
+  .u-section-1 .u-shape-2 {
+    width: 203px;
+    height: 204px;
+    margin-left: 30px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-right: 380px;
+    margin-left: 58px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1436px;
+  }
+
+  .u-section-1 .u-shape-1 {
+    height: 718px;
+    width: 706px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 505px;
+    height: 505px;
+    margin-top: 114px;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-shape-2 {
+    width: 155px;
+    height: 156px;
+    margin-top: -1075px;
+    margin-left: 14px;
+  }
+
+  .u-section-1 .u-form-1 {
+    height: 953px;
+    margin-top: -418px;
+    margin-right: 150px;
+    margin-left: 68px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1322px;
+  }
+
+  .u-section-1 .u-shape-1 {
+    height: 559px;
+    margin-top: 51px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 403px;
+    height: 403px;
+    margin-top: 250px;
+  }
+
+  .u-section-1 .u-shape-2 {
+    width: 117px;
+    height: 118px;
+    margin-top: -1211px;
+    margin-left: 26px;
+  }
+
+  .u-section-1 .u-form-1 {
+    height: 902px;
+    margin: -128px 106px 361px 44px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1334px;
+  }
+
+  .u-section-1 .u-shape-1 {
+    height: 290px;
+    width: 328px;
+    margin-top: 323px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 276px;
+    height: 276px;
+    margin-top: 385px;
+  }
+
+  .u-section-1 .u-shape-2 {
+    width: 91px;
+    height: 92px;
+    margin-top: -1283px;
+    margin-left: 38px;
+  }
+
+  .u-section-1 .u-form-1 {
+    height: 1007px;
+    width: 294px;
+    margin: -33px auto 60px;
+  }
+}
