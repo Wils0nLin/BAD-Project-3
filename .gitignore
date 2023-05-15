@@ -1,5 +1,10 @@
 node_modules
-tf_python
+
+.DS_Store
+.python-version
+pythonServer/tf_python
+pythonServer/model_2
+
 .DS_Store
 upload
 .python-version
