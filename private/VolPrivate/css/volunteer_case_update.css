@@ -1,4 +1,8 @@
- .u-section-1 {
+#home-image {
+  width: 500px;
+}
+
+.u-section-1 {
   background-image: none;
 }
 
@@ -748,5 +752,9 @@
     width: auto;
     margin-right: initial;
     margin-left: initial;
+  }
+
+  #home-image {
+    width: 250px;
   }
 }

@@ -1,4 +1,8 @@
- .u-section-1 {
+#home-image {
+  width: 500px;
+}
+
+.u-section-1 {
   background-image: none;
 }
 
@@ -535,5 +539,9 @@
     padding-right: 104px;
     padding-bottom: 11px;
     padding-left: 103px;
+  }
+
+  #home-image {
+    width: 250px;
   }
 }

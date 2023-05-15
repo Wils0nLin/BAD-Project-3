@@ -47,7 +47,7 @@ jobs:
                       git pull origin production
                       yarn install
                       yarn knex migrate:latest --env production
-                      pm2 restart 'yarn start'
+                      pm2 restart all
                   host: 3.215.58.203 # ip address or your own domain 每次重開server呢到都要改
                   username: ubuntu
                   port: 22

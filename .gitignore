@@ -4,3 +4,6 @@ tf_python
 upload
 .python-version
 test_model
+model2
+.env
+pythonServer
