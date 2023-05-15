@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
 .python-version
-tf_python
+pythonServer/tf_python
 test_model
+.env
