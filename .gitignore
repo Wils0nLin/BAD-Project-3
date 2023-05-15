@@ -1,7 +1,15 @@
 node_modules
+
+.DS_Store
+.python-version
+pythonServer/tf_python
+pythonServer/mdoel_2
+
 tf_python
 .DS_Store
 upload
 .python-version
+
 test_model
+
 .env
