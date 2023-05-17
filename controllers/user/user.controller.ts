@@ -1,12 +1,21 @@
 import formidable from "formidable";
 import { form } from "../../utils/formidable";
-import { user_apply_service } from "../../services/user/user_apply_service";
-import { Request, Response } from "express";
+import { UserApplyService } from "../../services/user/user.service";
+import { Request, Response, Router } from "express";
 
 export class user_apply_controller {
-    constructor(private user_apply_service: user_apply_service) {}
+    public router: Router;
 
-    user_apply_submit = async (req: Request, res: Response) => {
+    constructor(private user_apply_service: UserApplyService) {
+        this.router = Router();
+        this.router.post("/application", this.create);
+        this.router.get("/application", this.getAllForm);
+        this.router.get("/application/:id", this.getFormById);
+        this.router.get("/events/:id", this.getEventById);
+        this.router.put("/event/:id", this.update);
+    }
+
+    create = async (req: Request, res: Response) => {
         try {
             form.parse(req, async (err, fields, files) => {
                 const userId: any = req.session.userId;
@@ -29,7 +38,7 @@ export class user_apply_controller {
         }
     };
 
-    user_apply = async (req: Request, res: Response) => {
+    getAllForm = async (req: Request, res: Response) => {
         try {
             const userId: any = req.session.userId;
 
@@ -42,7 +51,7 @@ export class user_apply_controller {
         }
     };
 
-    user_apply_info = async (req: Request, res: Response) => {
+    getFormById = async (req: Request, res: Response) => {
         try {
             const applyId = +req.params.id;
 
@@ -55,7 +64,7 @@ export class user_apply_controller {
         }
     };
 
-    user_apply_event = async (req: Request, res: Response) => {
+    getEventById = async (req: Request, res: Response) => {
         try {
             const applyId = +req.params.id;
 
@@ -68,7 +77,7 @@ export class user_apply_controller {
         }
     };
 
-    user_apply_edit = async (req: Request, res: Response) => {
+    update = async (req: Request, res: Response) => {
         try {
             const caseId: any = +req.params.id;
             const dateId: any = req.body.date_id;

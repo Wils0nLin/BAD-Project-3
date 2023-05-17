@@ -1,6 +1,6 @@
 import { getRequest, getResponse } from "../utils";
-import { user_apply_controller } from "../../controllers/user/user_apply_controller";
-import { user_apply_service } from "../../services/user/user_apply_service";
+import { user_apply_controller } from "../../controllers/user/user.controller";
+import { user_apply_service } from "../../services/user/user.service";
 import { Knex } from "knex";
 import { Request, Response } from "express";
 

@@ -52,7 +52,7 @@ import { public_forgot_controller } from "./controllers/public/public_forgot_con
 
 // User Controller
 import { user_profile_controller } from "./controllers/user/user_profile_controller";
-import { user_apply_controller } from "./controllers/user/user_apply_controller";
+import { user_apply_controller } from "./controllers/user/user.controller";
 
 // Volunteer Controller
 import { vol_profile_controller } from "./controllers/volunteer/vol_profile_controller";
@@ -77,11 +77,11 @@ export const publicForgotController = new public_forgot_controller(publicForgotS
 
 // User Service
 import { user_profile_service } from "./services/user/user_profile_service";
-import { user_apply_service } from "./services/user/user_apply_service";
+import { UserApplyService } from "./services/user/user.service";
 
 const userProfileService = new user_profile_service(knex);
 export const userProfileController = new user_profile_controller(userProfileService);
-const userApplyService = new user_apply_service(knex);
+const userApplyService = new UserApplyService(knex);
 export const userApplyController = new user_apply_controller(userApplyService);
 
 // Volunteer Service
@@ -98,10 +98,11 @@ export const volCaseController = new vol_case_controller(volCaseService);
 
 // ------------------------------- Route Handlers -------------------------------- //
 import { public_main_route } from "./routers/public_main_route";
-import { user_main_route } from "./routers/user_main_route";
+// import { user_main_route } from "./routers/user_main_route";
 import { vol_main_route } from "./routers/vol_main_route";
 app.use(public_main_route);
-app.use(user_main_route);
+// app.use('/user', user_main_route);
+app.use("/user", userApplyController.router);
 app.use(vol_main_route);
 
 // ------------------------------ Serve ------------------------------ //

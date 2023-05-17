@@ -1,13 +1,18 @@
 import type { Knex } from "knex";
 
-export class user_apply_service {
+export class UserApplyService {
     constructor(private knex: Knex) {}
 
     apply_submit = async (catId: number, userId: number) => {
-        const user_apply = await this.knex("adopt_forms")
-            .insert({ cat_id: catId, user_id: userId, adopt_status: "pending" })
-            .returning("id");
-        return user_apply;
+        try {
+            const user_apply = await this.knex("adopt_forms")
+                .insert({ cat_id: catId, user_id: userId, adopt_status: "pending" })
+                .returning("id");
+            return user_apply;
+        } catch (err) {
+            console.log(err);
+            return [{ id: -1 }];
+        }
     };
 
     apply_image = async (applyID: number, img: string) => {

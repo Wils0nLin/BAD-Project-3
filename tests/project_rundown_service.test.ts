@@ -3,7 +3,7 @@ import { public_cat_service } from "../services/public/public_cat_service";
 import { public_forgot_service } from "../services/public/public_forgot_service";
 import { public_login_service } from "../services/public/public_login_service";
 import { public_register_service } from "../services/public/public_register_service";
-import { user_apply_service } from "../services/user/user_apply_service";
+import { user_apply_service } from "../services/user/user.service";
 import { user_profile_service } from "../services/user/user_profile_service";
 import { vol_case_service } from "../services/volunteer/vol_case_service";
 import { vol_post_service } from "../services/volunteer/vol_post_service";
